@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_084109) do
+ActiveRecord::Schema.define(version: 2018_11_20_031212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "foods", force: :cascade do |t|
+    t.string "name"
+    t.boolean "deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "photo"
+    t.index ["user_id"], name: "index_menus_on_user_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.bigint "food_id"
+    t.bigint "menu_id"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_results_on_food_id"
+    t.index ["menu_id"], name: "index_results_on_menu_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +52,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_084109) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "menus", "users"
+  add_foreign_key "results", "foods"
+  add_foreign_key "results", "menus"
 end
