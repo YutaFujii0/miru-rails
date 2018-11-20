@@ -1,13 +1,14 @@
-<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
 <%= render 'form', menu: @menu %>
-<p><%= @vis %></p>
-<gcse:search></gcse:search>
+<p><%=@vis.description %></p>
+<div id="content"></div>
 <script>
-  (function() {
-    var cx = '017643444788069204610:4gvhea_mvga'; // Insert your own Custom Search engine ID here
-    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
-    gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
-  })();
+  function hndlr(response) {
+    for (var i = 0; i < response.items.length; i++) {
+      var item = response.items[i];
+      // in production code, item.htmlTitle should have the HTML entities escaped.
+      document.getElementById("content").innerHTML += "<img src='" + item.pagemap.cse_image[0].src + "' width='200' height='200' >";
+    }
+  
+  }
 </script>
+<script src=""></script>
