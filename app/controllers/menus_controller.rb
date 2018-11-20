@@ -5,7 +5,6 @@ class MenusController < ApplicationController
     vision = Google::Cloud::Vision.new
     file_url = "app/assets/images/curry.jpg"
     @vis = vision.image(file_url).label
-    raise
   end
   def create
     @menu = Menu.new(menu_params)
