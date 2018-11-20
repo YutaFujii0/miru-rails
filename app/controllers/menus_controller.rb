@@ -1,6 +1,10 @@
+require "google/cloud/vision"
 class MenusController < ApplicationController
   def new
     @menu = Menu.new
+    vision = Google::Cloud::Vision.new
+    file_url = "app/assets/images/menu.jpg"
+    @vis = vision.image(file_url).text
   end
   def create
     @menu = Menu.new(menu_params)
