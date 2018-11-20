@@ -30,10 +30,8 @@ class MenusController < ApplicationController
     fel = "/Users/arifmohammad/code/NinthAutumn/miru-rails/app/assets/images/menu.jpg"
     @visss << viss.image(fel).text
 
-    raise
-
   end
-  
+
   def create
     @menu = Menu.new(menu_params)
     @menu.user = current_user
