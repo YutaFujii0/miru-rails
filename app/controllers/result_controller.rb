@@ -1,2 +1,0 @@
-class ResultController < ApplicationController
-end
