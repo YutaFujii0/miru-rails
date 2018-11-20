@@ -4,7 +4,7 @@ Food.destroy_all
 Menu.destroy_all
 
 # results table should be empty since it's a joint table
-raise unless Result.first.empty?
+raise unless Result.all.empty?
 
 # if there is no user instance, create one
 if User.all.count.zero?
@@ -52,7 +52,7 @@ menu_img_array = [
 puts "Start creating menus table"
 menu_img_array.each do |element|
   Menu.create!({
-    user_id: User.all.sample,
+    user_id: User.all.sample.id,
     remote_photo_url: element
   })
 end
