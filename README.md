@@ -26,3 +26,9 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
     text  = vision.image(image_path).text
     puts text.text # -> return an array
 ```
+
+## Google Custom Search API
+
+[Google Custom Search](https://developers.google.com/custom-search/v1/cse/list)
+
+use [partial response](https://developers.google.com/custom-search/v1/performance) to improve the performance
