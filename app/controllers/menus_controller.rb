@@ -4,7 +4,6 @@ require 'json'
 class MenusController < ApplicationController
   def new
     @menu = Menu.new
-    
     url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyBSPZb5vnrwpc3k-BTZoyrd8VB9Wr0wIBc&cx=012820589925743782948:zubopphjzvw&q=udon+food&source=lnms&tbm=isch"
     uri = URI(url)
     response = Net::HTTP.get(uri)
@@ -34,6 +33,7 @@ class MenusController < ApplicationController
     raise
 
   end
+  
   def create
     @menu = Menu.new(menu_params)
     @menu.user = current_user
