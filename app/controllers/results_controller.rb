@@ -3,12 +3,12 @@ class ResultsController < ApplicationController
 
 #  for production, uncomment here
 #     # TODO: return all results with image paths
-#     @results = Menu.find(params[:menu_id]).results
-#     @results.each do |result|
-#       # call searhcimages method and store the returned array
-#       result.food.images = SearchImages.call(result.food.name)
-#     end
-#     raise
+    @results = Menu.find(params[:menu_id]).results
+    @results_with_data = {}
+    @results.each do |result|
+      # call searhcimages method and store the returned array
+      @results_with_data[result] = SearchImages.call(result.food.name)
+    end
 
     @menus = Menu.where(user_id: current_user.id)
     @foods = Food.all
