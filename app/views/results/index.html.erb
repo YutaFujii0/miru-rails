@@ -4,7 +4,7 @@
       <div class="cards">
         <% counter = 0 %>
         <% @foods.each do |food| %>
-          <div class="col-xs-6 col-sm-4 col-md-3">
+          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
             <% counter += 1 %>
             <div class="card">
               <%= cl_image_tag(@images[counter], class: "img") %>
