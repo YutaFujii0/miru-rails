@@ -1,22 +1,31 @@
-<div class="index-wrapper">
-  <div class="index-container">
-    <div class="row" style="margin:0;">
-      <div class="cards">
-        <% counter = 0 %>
-        <% @foods.each do |food| %>
-          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding: 1px;">
-            <div class="cards">
-              <% counter += 1 %>
-              <div class="card">
-                <%= cl_image_tag(@images[counter], class: "img") %>
-                <div class="list">
-                  <p><%= food.name %></p>
-                  <i class="fas fa-shopping-cart"></i>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+  <div class="index-wrapper">
+    <div class="index-container">
+      <div class="row" style="margin:0;">
+        <div class="cards">
+          <% counter = 0 %>
+          <% @foods.each do |food| %>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding: 1px;">
+              <div class="cards">
+                <% counter += 1 %>
+                <div class="card">
+                  <%= cl_image_tag(@images[counter], class: "img") %>
+                  <div class="list">
+                    <p><%= food.name %></p>
+                    <div v-if="!clicked">
+                      <a  @click="logEvent"><i class="fas fa-shopping-cart" ></i></a>
+                    </div>
+                    <div v-else>
+                      <a  @click="logEvent"><i class="fas fa-shopping-cart yellow-cart" ></i></a>
+                      <style></style>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
