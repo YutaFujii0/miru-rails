@@ -40,7 +40,6 @@ food_name_array.each do |element|
     deleted: false
   })
 end
-
 puts "Finished (foods table)"
 
 # seeds for menus table =============================
@@ -56,7 +55,24 @@ menu_img_array.each do |element|
     remote_photo_url: element
   })
 end
-
 puts "Finished (menus table)"
 
+# seeds for results table =============================
+puts "Start creating results table"
+Menu.all.each do |menu|
+  rand(2..5).times do
+    Result.create!({
+      menu_id: menu.id,
+      food_id: Food.all.sample.id
+    })
+  end
+end
+puts "Finished (results table)"
+
 puts "Finished creating seeds"
+puts "instance - first id"
+puts "-------------------"
+puts "User     - #{User.first.id}"
+puts "Food     - #{Food.first.id}"
+puts "Menu     - #{Menu.first.id}"
+puts "Result   - #{Result.first.id}"
