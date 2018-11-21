@@ -1,0 +1,16 @@
+<div class="container">
+  <% @images.each do |src| %>
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div class="food-img"><img src="<%= src %>" /></div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <dl>
+        <dt>food name</dt>
+        <dd><%= @food_summary %></dd>
+      </dl>
+    </div>
+  </div>
+  <% end %>
+</div>
