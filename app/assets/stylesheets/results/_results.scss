@@ -1,0 +1,39 @@
+.index-wrapper {
+  .index-container {
+    padding: 10px;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.cards {
+
+  margin-bottom: 0;
+
+  .card {
+    height: 25vh;
+
+    .list {
+      padding: 3px;
+      height: 55px;
+      display: flex;
+      justify-content: space-between;
+
+      i {
+        display: flex;
+        align-items: center;
+      }
+
+      p {
+        width: 80%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+
+    }
+  }
+}
