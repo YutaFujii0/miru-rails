@@ -1,6 +1,6 @@
 .bot-bar {
   display: flex;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
@@ -9,11 +9,12 @@
   height: 50px;
   width: 100%;
   background-color: yellow;
+  z-index: 2;
 }
 
 .top-bar {
   display: flex;
-  position: absolute;
+  position: fixed;
   align-items: center;
   justify-content: space-between;
   vertical-align: center;
@@ -23,10 +24,12 @@
   left: 0;
   right: 0;
   background-color: white;
+  z-index: 2;
 }
 
 .nav-icon {
   color: grey;
+  z-index: 3;
 }
 
 .heading {
@@ -37,6 +40,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 3;
 }
 
 .order-btn {
@@ -46,6 +50,7 @@
   background-color: grey;
   color: white;
   border-radius: 5px;
+  z-index: 4;
 }
 
 .qty-ordered {
@@ -55,4 +60,5 @@
   position: absolute;
   right: 10px;
   bottom: 0;
+  z-index: 4;
 }
