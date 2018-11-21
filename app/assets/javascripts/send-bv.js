@@ -1,6 +1,3 @@
-//= require rails-ujs
-//= require_tree .
-
 Vue.component('send-bv', {
   data: function () {
     return {
@@ -23,7 +20,3 @@ Vue.component('send-bv', {
   },
   template: '<a  @click="logEvent"><i class="fas fa-shopping-cart" :class="yellow"  ></i></a>'
 });
-
-new Vue({
-  el: "#app"
-})
