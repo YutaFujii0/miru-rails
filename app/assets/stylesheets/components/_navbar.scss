@@ -13,12 +13,15 @@
 
 .top-bar {
   display: flex;
-  position: relative;
+  position: absolute;
   align-items: center;
   justify-content: space-between;
   vertical-align: center;
   height: 50px;
   width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: white;
 }
 
@@ -33,5 +36,23 @@
   position: absolute;
   left: 0;
   right: 0;
+  bottom: 0;
+}
+
+.order-btn {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  background-color: grey;
+  color: white;
+  border-radius: 5px;
+}
+
+.qty-ordered {
+  font-size: 24px;
+  text-align: right;
+  vertical-align: center;
+  position: absolute;
+  right: 10px;
   bottom: 0;
 }
