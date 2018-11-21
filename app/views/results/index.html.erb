@@ -1,6 +1,4 @@
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<div id="app">
+<div id="hello">
   <div class="index-wrapper">
     <div class="index-container">
       <div class="row" style="margin:0;">
@@ -14,8 +12,7 @@
                   <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
                   <div class="list">
                     <p><%= result.food.name %></p>
-                    <send-bv>
-                    </send-bv>
+                    <Cart></Cart>
                   </div>
                 </div>
               </div>
