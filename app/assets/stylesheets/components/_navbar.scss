@@ -1,6 +1,6 @@
 .bot-bar {
   display: flex;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
@@ -14,7 +14,7 @@
 
 .top-bar {
   display: flex;
-  position: absolute;
+  position: fixed;
   align-items: center;
   justify-content: space-between;
   vertical-align: center;
