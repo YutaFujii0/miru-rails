@@ -21,6 +21,19 @@
       height: 55px;
       display: flex;
       justify-content: space-between;
+
+      i {
+        display: flex;
+        align-items: center;
+      }
+
+      p {
+        width: 80%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+
     }
   }
 }
