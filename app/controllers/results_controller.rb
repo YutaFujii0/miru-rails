@@ -1,5 +1,14 @@
 class ResultsController < ApplicationController
   def index
+#  for production, uncomment here
+#     # TODO: return all results with image paths
+#     @results = Menu.find(params[:menu_id]).results
+#     @results_with_image = @results.map do |result|
+#       # call searhcimages method and store the returned array
+#       SearchImages.call(result.food.name)
+#     end
+#     raise
+
     @menus = Menu.where(user_id: current_user.id)
     @foods = Food.all
     @images = [
@@ -15,6 +24,7 @@ class ResultsController < ApplicationController
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi-uTxIS9sz--YeEuhNbIBYGSeN2j0W3c7KUpEg_DxuyaJRi-yc5QTAITo"
     ]
   end
+
   def order
 
   end
