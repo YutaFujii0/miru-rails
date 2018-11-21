@@ -1,10 +1,11 @@
 <div class="index-wrapper">
   <div class="index-container">
     <div class="row">
-      <div class="col-xs-6">
-      </div>
-      <div class="col-xs-6">
-      </div>
+      <% @menus.each do |menu| %>
+        <div class="col-xs-6">
+          <%= cl_image_tag(menu.photo) %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
