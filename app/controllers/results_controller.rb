@@ -3,6 +3,7 @@ require "open-uri"
 
 class ResultsController < ApplicationController
   def index
+
 #  for production, uncomment here
 #     # TODO: return all results with image paths
 #     @results = Menu.find(params[:menu_id]).results
