@@ -1,9 +1,7 @@
-require "google/cloud/vision"
-require 'net/http'
-require 'json'
 class MenusController < ApplicationController
   def new
     @menu = Menu.new
+  
   end
 
   def create
