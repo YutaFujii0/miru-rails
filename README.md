@@ -5,9 +5,10 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 - Set up: follow [Cloud Vision API documents](https://cloud.google.com/vision/docs/libraries)
 
 1. create service account (no coding)
-  - IMPORTANT: you'll download a json file when create a service key. Note the path of that json file as you'll use it to set credential.
+  - IMPORTANT: you'll download a json file when create a service key. Note the path of that json file as you'll use it to set credential.(No need for contributers)
 2. set credential in terminal,
   ```bash
+  export GOOGLE_CLOUD_PROJECT="[PROJECT NAME]"
   export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
   ```
 
