@@ -1,3 +1,5 @@
+require 'json'
+
 class SearchImages
   def self.call(keyword)
     # TODO: return the array that contains image paths of the keyword given
@@ -9,8 +11,8 @@ class SearchImages
     base_url = "https://www.googleapis.com/customsearch/v1?&"
     parameters = {
       q: keyword,
-      cx: ENV["SEARCH_ENGINE_ID"],
-      key: ENV["GOOGLE_APPLICATION_CREDENTIALS"],
+      # cx: ENV["SEARCH_ENGINE_ID"],
+      # key: ENV["GOOGLE_APPLICATION_CREDENTIALS"],
       num: 10,
       searchType: "image",
       imgColorType: "color",
