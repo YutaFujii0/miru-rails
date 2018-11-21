@@ -46,6 +46,7 @@ class ResultsController < ApplicationController
     url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=udon"
 
     food_wiki= JSON.parse(open(url).read)
+    @food_title = food_wiki["query"]["pages"].values[0]["title"]
     @food_summary = food_wiki["query"]["pages"].values[0]["extract"]
   end
 
