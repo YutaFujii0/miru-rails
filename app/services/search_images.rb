@@ -12,7 +12,7 @@ class SearchImages
     parameters = {
       q: keyword,
       cx: ENV["SEARCH_ENGINE_ID"],
-      key: ENV["GOOGLE_APPLICATION_CREDENTIALS"],
+      key: ENV["GOOGLE_CUSTOM_SEARCH_KEY"],
       num: 10,
       searchType: "image",
       imgColorType: "color",
