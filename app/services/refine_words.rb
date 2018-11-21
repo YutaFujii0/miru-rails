@@ -1,5 +1,6 @@
 class RefineWords
   def self.call(words)
+    # store words because argument word is frozen
     new_words = +words
     # omit letters in parentheses
     new_words.gsub!(/\(.*\)/, "")
