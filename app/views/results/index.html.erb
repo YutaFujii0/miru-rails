@@ -1,11 +1,18 @@
 <div class="index-wrapper">
   <div class="index-container">
-    <div class="row">
-      <% @menus.each do |menu| %>
-        <div class="col-xs-6">
-          <%= cl_image_tag(menu.photo) %>
-        </div>
-      <% end %>
+    <div class="row" >
+      <div class="cards">
+        <% counter = 0 %>
+        <% @foods.each do |food| %>
+          <div class="col-xs-6 col-sm-4 col-md-3">
+            <% counter += 1 %>
+            <div class="card">
+              <%= cl_image_tag(@images[counter], class: "img") %>
+            </div>
+            <p><%= food.name %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
