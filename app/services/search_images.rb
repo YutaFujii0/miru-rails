@@ -13,7 +13,7 @@ class SearchImages
       q: keyword,
       cx: ENV["SEARCH_ENGINE_ID"],
       key: ENV["GOOGLE_CUSTOM_SEARCH_KEY"],
-      num: 3,
+      num: 1,
       searchType: "image",
       imgColorType: "color",
       safe: "active",
