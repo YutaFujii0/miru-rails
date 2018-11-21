@@ -9,7 +9,18 @@
   height: 100%;
 }
 
-.card {
-  width: 176px;
-  height: 141px;
+.cards {
+
+  margin-bottom: 0;
+
+  .card {
+    height: 25vh;
+
+    .list {
+      padding: 3px;
+      height: 55px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
