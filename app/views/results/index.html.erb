@@ -13,13 +13,8 @@
                   <%= cl_image_tag(@images[counter], class: "img") %>
                   <div class="list">
                     <p><%= food.name %></p>
-                    <div v-if="!clicked">
-                      <a  @click="logEvent"><i class="fas fa-shopping-cart" ></i></a>
-                    </div>
-                    <div v-else>
-                      <a  @click="logEvent"><i class="fas fa-shopping-cart yellow-cart" ></i></a>
-                      <style></style>
-                    </div>
+                    <send-bv>
+                    </send-bv>
                   </div>
                 </div>
               </div>
