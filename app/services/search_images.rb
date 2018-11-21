@@ -13,7 +13,7 @@ class SearchImages
       q: keyword,
       cx: ENV["SEARCH_ENGINE_ID"],
       key: ENV["GOOGLE_CUSTOM_SEARCH_KEY"],
-      num: 10,
+      num: 1,
       searchType: "image",
       imgColorType: "color",
       safe: "active",
@@ -23,7 +23,7 @@ class SearchImages
 
     # use begin/rescue method for the case the url returns no images
     begin
-      doc = JSON.parse(open(url).read)
+      doc = JSON.parse(open(URI.encode(url)).read)
       return doc["items"].map { |item| item["image"]["thumbnailLink"] }
     rescue NoMethodError
       # if doc has no images, it raise error, which is taken care of here
