@@ -12,7 +12,7 @@ class SearchImages
     parameters = {
       q: keyword,
       cx: ENV["SEARCH_ENGINE_ID"],
-      key: ENV["GOOGLE_APPLICATION_CREDENTIALS"],
+      key: ENV["GOOGLE_CUSTOM_SEARCH_KEY"],
       num: 10,
       searchType: "image",
       imgColorType: "color",
@@ -20,9 +20,14 @@ class SearchImages
       fields: "searchInformation(searchTime,totalResults),items/image/thumbnailLink"
     }
     url = base_url + parameters.map { |k, v| "#{k}=#{v}" }.join("&")
-    doc = JSON.parse(open(url).read)
-    return doc.items.map { |item| item.image.thumbnailLink }
+
+    # use begin/rescue method for the case the url returns no images
+    begin
+      doc = JSON.parse(open(url).read)
+      return doc["items"].map { |item| item["image"]["thumbnailLink"] }
+    rescue NoMethodError
+      # if doc has no images, it raise error, which is taken care of here
+      return {}
+    end
   end
 end
-
-puts SearchImages.call("udon")
