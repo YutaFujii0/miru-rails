@@ -22,7 +22,10 @@
                 <div class="card">
                   <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
                   <div class="list">
-                    <p><%= result.food.name %></p>
+                    <div class="text">
+                      <p id="english">English Name</p>
+                      <p><%= result.food.name %></p>
+                    </div>
                     <Cart></Cart>
                   </div>
                 </div>
@@ -40,7 +43,7 @@
       <%= link_to root_path, class: "nav-icon" do %>
         <i class="fas fa-camera"></i>
       <% end %>
-      <%= link_to 'See Order', root_path, class: "order-btn" %>
+      <%= link_to 'See Order', root_path, class: "btn btn-secondary" %>
       <%= link_to root_path, class: "nav-icon" do %>
         <i class="fas fa-heart"></i>
       <% end %>
