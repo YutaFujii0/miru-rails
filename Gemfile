@@ -18,15 +18,19 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+<<<<<<< HEAD
+=======
 gem "google-cloud-vision"
 gem 'rest-client', '~> 2.0', '>= 2.0.2'
 gem 'jquery', '~> 0.0.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'nprogress-rails', '~> 0.2.0.2'
+>>>>>>> efb057b5e1b133d965103630a8fa1bd96c43c31c
 
 # added gems
-gem 'google-cloud-vision'
+gem 'concurrent-ruby'
 gem 'faker'
+gem 'google-cloud-vision'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
