@@ -26,5 +26,15 @@
 }
 
 .food-description {
-  font-size: $font-size-paragraph;
+  font-size:$font-size-paragraph;
+  dd {height:52px;overflow:hidden;}
+}
+
+.quantity {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:150px;
+  .quantity-amount {width:50%;text-align:center;background:#f4f4f4;border:0;font-size:28px;}
+  button {margin-top:3px;}
 }
