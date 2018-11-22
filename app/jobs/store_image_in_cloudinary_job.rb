@@ -2,9 +2,7 @@ class StoreImageInCloudinaryJob < ApplicationJob
   queue_as :default
 
   def perform(menu_instance, image_path)
-    File.open(image_path) do |f|
-      menu_instance.photo = f
-      menu_instance.save!
-    end
+    menu_instance.remote_photo_url = image_path
+    menu_instance.save!
   end
 end
