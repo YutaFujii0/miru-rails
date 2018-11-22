@@ -33,26 +33,15 @@ class ResultsController < ApplicationController
     @results.each do |result|
       # ==========================================
       # ***** FOP DEVELOPMENT purpose *****
-<<<<<<< HEAD
       @results_with_data[result] = [@images.sample]
-=======
-      @results_with_data[result] =[ @images.sample]
->>>>>>> 98dea97c4d2e5bc00dd41eeff9b837e3f286b9dd
       # ***** FOP PRODUCTION purpose *****
       # call searhcimages method and store the returned array
       # @results_with_data[result] = SearchImages.call(result.food.name)
       # ==========================================
     end
 
-<<<<<<< HEAD
     # @menus = Menu.where(user_id: current_user.id)
     # @foods = Food.all
-
-=======
-
-    # @menus = Menu.where(user_id: current_user.id)
-    # @foods = Food.all
->>>>>>> 98dea97c4d2e5bc00dd41eeff9b837e3f286b9dd
   end
 
   def order
