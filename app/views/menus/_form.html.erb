@@ -1,6 +1,6 @@
-<%= simple_form_for(@menu) do |f|  %>
+<%= simple_form_for @menu, html: {enctype: "multipart/form-data"} do |f| %>
   <%= f.input :photo, capture: "camera", accept: "image/*" %>
-  <%= f.submit id: "menu-submit" %>
+  <%= f.submit %>
   <center>
     <div id="form-container" style="padding-top:70px; padding-left:5px;">
       <%= f.input :photo, capture: "camera", accept: "image/*", class: "form-control upload"  %>

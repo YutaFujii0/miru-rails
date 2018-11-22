@@ -19,25 +19,55 @@
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-    <%= javascript_pack_tag 'hello_vue' %>
+
     <!-- loading bar -->
     <script>
-      // Show the progress bar
       NProgress.start();
-      
-      // Increase randomly
       var interval = setInterval(function() { NProgress.inc(); }, 1000);
-      
-      // Trigger finish when page fully loaded
       jQuery(window).load(function () {
           clearInterval(interval);
           NProgress.done();
       });
-      
-      // Trigger bar when exiting the page
       jQuery(window).unload(function () {
           NProgress.start();
       });
     </script>
+
+    <!-- file upload loading -->
+    <!-- <script>
+      $(':submit').on('click', function() {
+        $.ajax({
+            // Your server script to process the upload
+            // Form data
+            url: '/menus',
+            type: 'POST',
+
+            data: new FormData($('form')[0]),
+
+            // Tell jQuery not to process data or worry about content-type
+            // You *must* include these options!
+            cache: false,
+            contentType: false,
+            processData: false,
+
+            // Custom XMLHttpRequest
+            xhr: function() {
+                var myXhr = $.ajaxSettings.xhr();
+                if (myXhr.upload) {
+                    // For handling the progress of the upload
+                    myXhr.upload.addEventListener('progress', function(e) {
+                        if (e.lengthComputable) {
+                            $('progress').attr({
+                                value: e.loaded,
+                                max: e.total,
+                            });
+                        }
+                    } , false);
+                }
+                return myXhr;
+            }
+        });
+      });
+    </script> -->
   </body>
 </html>
