@@ -3,22 +3,6 @@ require "open-uri"
 
 class ResultsController < ApplicationController
   def index
-    # TODO: return all results with image paths
-    @results = Menu.find(params[:menu_id]).results
-    @results_with_data = {}
-    @results.each do |result|
-      # ==========================================
-      # ***** FOP DEVELOPMENT purpose *****
-      # @results_with_data[result] = @images.sample
-      # ***** FOP PRODUCTION purpose *****
-      # call searhcimages method and store the returned array
-      @results_with_data[result] = SearchImages.call(result.food.name)
-      # ==========================================
-    end
-
-
-    # @menus = Menu.where(user_id: current_user.id)
-    # @foods = Food.all
     @images = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROOxkx63-nDWNxgEFCIIDxg4EIB8A16PLTaGfEttPEqFgvtkO8aN9yhtM",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCHPLNtU2fTUJvbA6T7-LNhf6PiTHmJDrlyymgR3vr5jm-O90JgjOdtjI",
@@ -31,7 +15,23 @@ class ResultsController < ApplicationController
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMAUsY6QemwF48ujlv2et21tPbe1_rQVzeGpyv3L1IkzdyXiXB78jsCog",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi-uTxIS9sz--YeEuhNbIBYGSeN2j0W3c7KUpEg_DxuyaJRi-yc5QTAITo"
     ]
+    # TODO: return all results with image paths
+    @results = Menu.find(params[:menu_id]).results
+    @results_with_data = {}
+    @results.each do |result|
+      # ==========================================
+      # ***** FOP DEVELOPMENT purpose *****
+      # @results_with_data[result] = [@images.sample]
+      # ***** FOP PRODUCTION purpose *****
+      # call searhcimages method and store the returned array
+      @results_with_data[result] = SearchImages.call(result.food.name)
+      # ==========================================
+    end
+
+
   end
+    # @menus = Menu.where(user_id: current_user.id)
+    # @foods = Food.all
 
   def order
     @orders = Result.where("order > ?", 0)
