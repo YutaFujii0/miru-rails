@@ -1,24 +1,22 @@
-<div id="hello">
-  <div class="index-wrapper">
-    <div class="index-container">
-      <div class="row" style="margin:0;">
-        <div class="cards">
-          <% counter = 0 %>
-          <% @results.each do |result| %>
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding: 1px;">
-              <div class="cards">
-                <% counter += 1 %>
-                <div class="card">
-                  <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
-                  <div class="list">
-                    <p><%= result.food.name %></p>
-                    <Cart></Cart>
-                  </div>
+<div class="index-wrapper">
+  <div class="index-container">
+    <div class="row" style="margin:0;">
+      <div class="cards">
+        <% counter = 0 %>
+        <% @results.each do |result| %>
+          <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding: 1px;">
+            <div class="cards">
+              <% counter += 1 %>
+              <div class="card">
+                <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
+                <div class="list">
+                  <p><%= result.food.name %></p>
+                  <Cart></Cart>
                 </div>
               </div>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

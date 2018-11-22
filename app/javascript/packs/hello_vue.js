@@ -43,7 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#hello',
     data: {
-      message: "Can you say hello?"
+      message: "Can you say hello?",
+      isLoading: true
+    },
+    mounted() {
+      setTimeout(() => {
+        this.isLoading = false
+      }, 5000)
     },
     components: {
       App,
