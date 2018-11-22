@@ -20,7 +20,9 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem "google-cloud-vision"
 gem 'rest-client', '~> 2.0', '>= 2.0.2'
-
+gem 'jquery', '~> 0.0.1'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'nprogress-rails', '~> 0.2.0.2'
 
 # added gems
 gem 'google-cloud-vision'

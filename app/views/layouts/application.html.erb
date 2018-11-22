@@ -7,9 +7,11 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-    <%= javascript_pack_tag 'hello_vue' %>
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -17,10 +19,28 @@
   </head>
   <body>
     <%= render 'shared/flashes' %>
-    <div id="hello">
-      <%= yield %>
-    </div>
+    <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+
+    <!-- loading bar -->
+    <script>
+      // Show the progress bar
+      NProgress.start();
+
+      // Increase randomly
+      var interval = setInterval(function() { NProgress.inc(); }, 1000);
+
+      // Trigger finish when page fully loaded
+      jQuery(window).load(function () {
+          clearInterval(interval);
+          NProgress.done();
+      });
+
+      // Trigger bar when exiting the page
+      jQuery(window).unload(function () {
+          NProgress.start();
+      });
+    </script>
   </body>
 </html>
