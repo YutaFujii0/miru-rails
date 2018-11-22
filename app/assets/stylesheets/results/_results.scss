@@ -45,6 +45,10 @@
   }
 }
 
+.fas {
+  font-size: 20px;
+}
+
 .yellow-cart {
   color: #F66203;
 }
@@ -65,10 +69,4 @@
   .left {
     flex-grow: 1;
   }
-}
-
-body {
-  padding-top: 55px;
-  padding-bottom: 55px;
-  background-color: white;
 }
