@@ -1,4 +1,3 @@
-
 .index-wrapper {
   .index-container {
     padding: 10px;
@@ -41,4 +40,27 @@
 
 .yellow-cart {
   color: #F66203;
+}
+
+.nav-container {
+  padding: 10px;
+  background-color: white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  h3 {
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .left {
+    flex-grow: 1;
+  }
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
