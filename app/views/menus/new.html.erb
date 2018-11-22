@@ -1,5 +1,10 @@
-<div id="container" style="padding-top:70px; padding-left:5px;">
-  <%= render 'form', menu: @menu %>
+<div class="main-wrapper">
+  <div class="logo-container">
+    <%= image_tag "logo.png", class: "" %>
+  </div>
+  <div id="form-container" style="padding-top:70px; padding-left:5px;">
+    <%= render 'form', menu: @menu %>
+  </div>
 </div>
 <script>
   function hndlr(response) {

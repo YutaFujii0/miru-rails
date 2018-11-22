@@ -1,0 +1,32 @@
+.main-wrapper {
+
+
+  .logo-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #form-container {
+
+
+    .form-group {
+      label {
+        display: none;
+      }
+
+      position:relative;
+      font-size:100px;
+      overflow:hidden;
+      border-radius: 50px;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      background-image: url("camera.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      color:white;
+      background-color:black;
+    }
+  }
+}
