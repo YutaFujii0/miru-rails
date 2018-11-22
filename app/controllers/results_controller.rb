@@ -10,7 +10,7 @@ class ResultsController < ApplicationController
     # search images for each food
     search_image_for_each_food
   end
-
+  
   def order
     @orders = Result.where("order > ?", 0)
     @images = [
