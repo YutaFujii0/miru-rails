@@ -16,7 +16,7 @@
         <div class="cards">
           <% counter = 0 %>
           <% @results.each do |result| %>
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding: 1px;">
+            <div class="col-xs-6" style="padding: 1px;">
               <div class="cards">
                 <% counter += 1 %>
                 <div class="card">
@@ -39,7 +39,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm bot-bar">
+    <div class="col-sm bot-bar fixed-bottom">
       <%= link_to root_path, class: "nav-icon" do %>
         <i class="fas fa-camera"></i>
       <% end %>
