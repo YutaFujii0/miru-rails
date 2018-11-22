@@ -4,19 +4,15 @@ class MenusController < ApplicationController
   end
 
   def create
-    # puts DetectWords.call(params[:menu][:photo].tempfile.path)
-    t = Time.now
+    # split the job to increase performance
     words = GoogleCloudVisionJob.perform_now(params[:menu][:photo].tempfile.path)
-    StoreImageInCloudinaryJob.perform_later(menu_params)
+    # make new instance without any params on purpose
     @menu = Menu.new
     @menu.user = current_user
     if @menu.save!
-      # if @menu is valid, go on to creating result instances
-      # then, redirect to results#index action
-      puts "============#{Time.now - t}"
-      sleep(1) unless words
-      puts "============#{Time.now - t}"
-      raise
+      # split the job to increase performance
+      StoreImageInCloudinaryJob.perform_later(@menu, menu_params[:photo].tempfile.path)
+      sleep(0.1) unless words
       create_result_instances(@menu, words)
       redirect_to menu_results_path(@menu)
     else

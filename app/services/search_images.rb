@@ -20,12 +20,6 @@ class SearchImages
     # for each item, pick up elements needed
     # return the array
     # use begin/rescue method for the case the url returns no images
-    begin
-      doc = JSON.parse(open(URI.encode(@url + "&q=#{keyword}")).read)
-      return doc["items"].map { |item| item["image"]["thumbnailLink"] }
-    rescue NoMethodError
-      # if doc has no images, it raise error, which is taken care of here
-      return {}
-    end
+    doc = JSON.parse(open(URI.encode(@url + "&q=#{keyword}")).read)
   end
 end
