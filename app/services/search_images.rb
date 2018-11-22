@@ -21,5 +21,11 @@ class SearchImages
     # return the array
     # use begin/rescue method for the case the url returns no images
     doc = JSON.parse(open(URI.encode(@url + "&q=#{keyword}")).read)
+    return doc["items"].map { |item| item["image"]["thumbnailLink"] }
+  rescue OpenURI::HTTPError => e
+    puts "============================================================"
+    puts e.message
+    puts "Please check if Google Custom Search API exceeds daily query limit."
+    puts "============================================================"
   end
 end
