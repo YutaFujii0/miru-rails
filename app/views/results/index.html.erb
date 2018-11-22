@@ -1,3 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm top-bar">
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-angle-left"></i>
+      <% end %>
+      <h2 class="heading">Results</h2>
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-sort-amount-down"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
 <div class="index-wrapper">
   <div class="index-container">
     <div class="row" style="margin:0;">
@@ -18,6 +31,19 @@
           </div>
         <% end %>
       </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm bot-bar">
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-camera"></i>
+      <% end %>
+      <%= link_to 'See Order', root_path, class: "order-btn" %>
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
     </div>
   </div>
 </div>
