@@ -1,6 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm top-bar">
+      <%= link_to menu_results_path, class: "nav-icon" do %>
+        <i class="fas fa-angle-left"></i>
+      <% end %>
+      <h2 class="heading">Order List</h2>
+    </div>
+  </div>
+</div>
 <div class="container result-container">
   <% @images.each do |src| %>
-<<<<<<< HEAD
   <div class="row each-food">
     <!-- img -->
     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 pic-column">
@@ -20,7 +29,7 @@
       </div>
     </div>
   </div>
-=======
+
     <div class="row each-food">
       <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 pic-column">
         <div class="food-img-div"><img src="<%= src %>" /></div>
@@ -33,10 +42,8 @@
         <div class="quantity"></div>
       </div>
     </div>
->>>>>>> 98dea97c4d2e5bc00dd41eeff9b837e3f286b9dd
   <% end %>
 </div>
-
  <script>
     let value,
     quantity = document.getElementsByClassName('quantity');
@@ -72,3 +79,13 @@
     }
     init();
   </script>
+<div class="container">
+  <div class="row">
+    <div class="col-sm bot-bar">
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-camera"></i>
+      <% end %>
+      <h3 class=qty-ordered>Items to order : <strong>#</strong></h3>
+    </div>
+  </div>
+</div>

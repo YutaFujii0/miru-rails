@@ -19,6 +19,7 @@ gem 'webpacker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem "google-cloud-vision"
+gem 'rest-client', '~> 2.0', '>= 2.0.2'
 
 
 # added gems
