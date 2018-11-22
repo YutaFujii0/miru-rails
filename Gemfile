@@ -25,8 +25,9 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'nprogress-rails', '~> 0.2.0.2'
 
 # added gems
-gem 'google-cloud-vision'
+gem 'concurrent-ruby'
 gem 'faker'
+gem 'google-cloud-vision'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
