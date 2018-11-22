@@ -28,14 +28,8 @@ class MenusController < ApplicationController
     # ==========================================
     # ***** FOP DEVELOPMENT purpose *****
     detect_words = "00000000000 1000\n本日のおすすめ\n播磨産生カキ\nお刺身盛合せ\n秋田しいたけ\nピクルス\n天ぷら\nマヨチーズ焼き5 9\nサーモンとキノコ"
-<<<<<<< HEAD
     # ***** FOP PRODUCTION purpose *****
     # detect_wrds = DetectWords.call(menu.photo.metadata["url"])
-=======
-
-    # ***** FOP PRODUCTION purpose *****
-    # detect_words = DetectWords.call(menu.photo.metadata["url"])
->>>>>>> 98dea97c4d2e5bc00dd41eeff9b837e3f286b9dd
     # ==========================================
     refined_words = RefineWords.call(detect_words)
     refined_words.each do |word|
