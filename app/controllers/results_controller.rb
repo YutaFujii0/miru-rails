@@ -8,9 +8,11 @@ class ResultsController < ApplicationController
     @results = Menu.find(params[:menu_id]).results
     @results_with_data = {}
     # search images for each food
+    t = Time.now
     search_image_for_each_food
+    puts "=============#{Time.now - t}"
   end
-  
+
   def order
     @orders = Result.where("order > ?", 0)
     @images = [
@@ -44,10 +46,10 @@ class ResultsController < ApplicationController
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
-        @results_with_data[result] = [Food::SAMPLE_IMAGES.sample]
+        # @results_with_data[result] = [Food::SAMPLE_IMAGES.sample]
         # ***** FOP PRODUCTION purpose *****
         # call searhcimages method and store the returned array
-        # @results_with_data[result] = SearchImages.call(result.food.name)
+        @results_with_data[result] = SearchImages.call(result.food.name)
         # ==========================================
         completed << 1
       end
