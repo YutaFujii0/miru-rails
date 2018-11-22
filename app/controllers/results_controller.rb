@@ -41,9 +41,9 @@ class ResultsController < ApplicationController
     end
 
 
+  end
     # @menus = Menu.where(user_id: current_user.id)
     # @foods = Food.all
-  end
 
   def order
     @orders = Result.where("order > ?", 0)
