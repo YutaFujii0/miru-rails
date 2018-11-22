@@ -23,9 +23,7 @@
   <body>
     <%= render 'shared/favtopbar' %>
     <%= render 'shared/flashes' %>
-    <div id="hello">
-      <%= yield %>
-    </div>
+    <%= yield %>
     <%= render 'shared/favbotbar' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
