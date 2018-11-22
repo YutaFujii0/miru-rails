@@ -8,10 +8,7 @@ export default {
   data: function() {
     return {
       clicked: false,
-      index: 0,
-      yellow: "",
-      array: [],
-      show: false
+      yellow: ""
     };
   },
   methods: {
