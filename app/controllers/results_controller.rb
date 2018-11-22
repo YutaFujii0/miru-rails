@@ -39,6 +39,7 @@ class ResultsController < ApplicationController
       # @results_with_data[result] = SearchImages.call(result.food.name)
       # ==========================================
     end
+  end
 
     # @menus = Menu.where(user_id: current_user.id)
     # @foods = Food.all
