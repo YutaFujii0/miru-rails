@@ -1,17 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm top-bar">
+      <%= link_to menu_results_path, class: "nav-icon" do %>
+        <i class="fas fa-angle-left"></i>
+      <% end %>
+      <h2 class="heading">Order List</h2>
+    </div>
+  </div>
+</div>
 <div class="container result-container">
   <% @images.each do |src| %>
   <div class="row each-food">
+    <!-- img -->
     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 pic-column">
       <div class="food-img-div"><img src="<%= src %>" /></div>
     </div>
-
+    <!-- desc -->
     <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
       <dl class="food-description">
         <dt><%= @food_title %></dt>
         <dd><%= @food_summary %></dd>
       </dl>
-      <div class="quantity"></div>
+      <!-- quantity -->
+      <div class="quantity">
+        <button class="decrease" type="button" title="Decrease Quantity"><i class="fas fa-minus-circle"></i></button>
+        <input type="text" class="quantity-amount" name="" value="1" />
+        <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button>
+      </div>
     </div>
   </div>
+
+    <div class="row each-food">
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 pic-column">
+        <div class="food-img-div"><img src="<%= src %>" /></div>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
+        <dl class="food-description">
+          <dt><%= @food_title %></dt>
+          <dd><%= @food_summary %></dd>
+        </dl>
+        <div class="quantity"></div>
+      </div>
+    </div>
   <% end %>
+</div>
+ <script>
+    let value,
+    quantity = document.getElementsByClassName('quantity');
+
+    function createBindings(quantityContainer) {
+      let quantityAmount = quantityContainer.getElementsByClassName('quantity-amount')[0];
+      let increase = quantityContainer.getElementsByClassName('increase')[0];
+      let decrease = quantityContainer.getElementsByClassName('decrease')[0];
+      increase.addEventListener('click', function () { increaseValue(quantityAmount); });
+      decrease.addEventListener('click', function () { decreaseValue(quantityAmount); });
+    }
+    function init() {
+        for (let i = 0; i < quantity.length; i++ ) {
+          createBindings(quantity[i]);
+        }
+    };
+    function increaseValue(quantityAmount) {
+        value = parseInt(quantityAmount.value, 10);
+
+        // console.log(quantityAmount, quantityAmount.value);
+
+        value = isNaN(value) ? 0 : value;
+        value++;
+        quantityAmount.value = value;
+    }
+    function decreaseValue(quantityAmount) {
+        value = parseInt(quantityAmount.value, 10);
+
+        value = isNaN(value) ? 0 : value;
+        if (value > 0) value--;
+
+        quantityAmount.value = value;
+    }
+    init();
+  </script>
+<div class="container">
+  <div class="row">
+    <div class="col-sm bot-bar">
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-camera"></i>
+      <% end %>
+      <h3 class=qty-ordered>Items to order : <strong>#</strong></h3>
+    </div>
+  </div>
 </div>

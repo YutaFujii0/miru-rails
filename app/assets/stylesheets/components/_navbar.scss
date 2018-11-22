@@ -8,7 +8,7 @@
   justify-content: space-between;
   height: 50px;
   width: 100%;
-  background-color: yellow;
+  background-color: #F4D500;
   z-index: 2;
 }
 
@@ -29,7 +29,7 @@
 
 .nav-icon {
   color: grey;
-  z-index: 3;
+  z-index: 4;
 }
 
 .heading {
@@ -43,15 +43,6 @@
   z-index: 3;
 }
 
-.order-btn {
-  text-align: center;
-  width: 100px;
-  height: 30px;
-  background-color: grey;
-  color: white;
-  border-radius: 5px;
-  z-index: 4;
-}
 
 .qty-ordered {
   font-size: 24px;
@@ -61,4 +52,15 @@
   right: 10px;
   bottom: 0;
   z-index: 4;
+}
+
+.fa-heart,
+.fa-camera {
+  color: black;
+
+}
+
+.fa-heart:hover,
+.fa-camera:hover {
+  text-shadow: 3px 3px 16px #272634;
 }

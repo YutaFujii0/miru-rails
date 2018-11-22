@@ -1,4 +1,10 @@
 <%= simple_form_for(@menu) do |f|  %>
   <%= f.input :photo, capture: "camera", accept: "image/*" %>
-  <%= f.submit %>
+  <%= f.submit id: "menu-submit" %>
+  <center>
+    <div id="form-container" style="padding-top:70px; padding-left:5px;">
+      <%= f.input :photo, capture: "camera", accept: "image/*", class: "form-control upload"  %>
+      <%= f.submit class: "btn btn-secondary", value: "Upload" %>
+    </div>
+  </center>
 <% end %>

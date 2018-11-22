@@ -1,5 +1,10 @@
-<%= render 'form', menu: @menu %>
-<div id="content"></div>
+<div class="main-wrapper">
+  <div class="logo-container">
+    <%= image_tag "logo.png", class: "" %>
+  </div>
+  <%= render 'form', menu: @menu %>
+</div>
+
 <script>
   function hndlr(response) {
     for (var i = 0; i < response.items.length; i++) {
@@ -10,4 +15,4 @@
 
   }
 </script>
-<script src=""></script>
+
