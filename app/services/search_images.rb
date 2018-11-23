@@ -27,5 +27,6 @@ class SearchImages
     puts e.message
     puts "Please check if Google Custom Search API exceeds daily query limit."
     puts "============================================================"
+    return [Food::DEFAULT_IMAGE]
   end
 end
