@@ -5,14 +5,17 @@
   <%= render 'form', menu: @menu %>
 </div>
 
+<div id="loading-layer">
+  <div class="img">
+    <%= image_tag "loading-animations.gif" %>
+    <div>scanning the menus...</div>
+  </div>
+</div>
+
 <script>
-  function hndlr(response) {
-    for (var i = 0; i < response.items.length; i++) {
-      var item = response.items[i];
-      // in production code, item.htmlTitle should have the HTML entities escaped.
-      document.getElementById("content").innerHTML += "<img src='" + item.pagemap.cse_image[0].src + "' width='200' height='200' >";
-    }
-
-  }
+  // auto submit when selected a file
+  document.getElementById("menu_photo").onchange = function() {
+    document.getElementById("new_menu").submit();
+    document.getElementById("loading-layer").classList.add("on");
+  };
 </script>
-
