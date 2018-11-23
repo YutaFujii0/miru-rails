@@ -5,7 +5,7 @@ class SearchImages
   parameters = {
     cx: ENV["SEARCH_ENGINE_ID"],
     key: ENV["GOOGLE_CUSTOM_SEARCH_KEY"],
-    num: 1,
+    num: 5,
     searchType: "image",
     imgColorType: "color",
     safe: "active",
