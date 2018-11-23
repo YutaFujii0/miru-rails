@@ -3,6 +3,8 @@ require "open-uri"
 
 class ResultsController < ApplicationController
   def index
+    @menu = Menu.where(user_id: current_user.id)
+
     # TODO: return all results with image paths
     # set the instances
     @results = Menu.find(params[:menu_id]).results
@@ -10,28 +12,31 @@ class ResultsController < ApplicationController
     # search images for each food
     search_image_for_each_food
   end
-
   def order
-    @orders = Result.where("order > ?", 0)
-    @images = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROOxkx63-nDWNxgEFCIIDxg4EIB8A16PLTaGfEttPEqFgvtkO8aN9yhtM",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCHPLNtU2fTUJvbA6T7-LNhf6PiTHmJDrlyymgR3vr5jm-O90JgjOdtjI",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUoMnJPRsuCb6FR0DWeEICML84nDYIXLGN7mxKB5xahU9yZ-82JrNxZ7x0",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEbm52BNP-3N9KeD1B-WnC7N6lxIhLG6SWLuP0U82zkHfXeaqUovXx09og",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-Wz7HyCHbgr3AEG4XFfQglZvVh_cdvUOc7BdT7-ajRAJimYytCU3xEDTW",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5ccGlcyS-uo0PNMVimcpP9pgQptx3Gbf50uLcjOmqkOYmlUfpYBil_mPb",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUzJYxy5Jn-mH2nXSzVNvhmg2pKUjj7OTCS_G2eL_8UsIPU6CafCu76mQ",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfw_DGC8E2LiFCI37v_z5L0gQF3pFhqngKf22hBykX_ESPOybDaB9wjIYp",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMAUsY6QemwF48ujlv2et21tPbe1_rQVzeGpyv3L1IkzdyXiXB78jsCog",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi-uTxIS9sz--YeEuhNbIBYGSeN2j0W3c7KUpEg_DxuyaJRi-yc5QTAITo"
-  ]
-
     @menu = Menu.where(user_id: current_user.id)
+    @orders = Result.where(order: 1, menu_id: params[:menu_id].to_i)
+
     url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=udon"
 
-    food_wiki= JSON.parse(open(url).read)
+    food_wiki = JSON.parse(open(url).read)
     @food_title = food_wiki["query"]["pages"].values[0]["title"]
     @food_summary = food_wiki["query"]["pages"].values[0]["extract"]
+    search_image_for_each_food_order
+    
+    
+  end
+  def edit
+    @result = Result.find(params[:id])
+  end
+  def update
+    @result = Result.find(params[:id])
+    if @result.order.nil? || @result.order == 0
+      @result.order = 1
+    else
+      @result.order = 0
+    end
+    @result.save
+    
   end
 
   private
@@ -44,16 +49,38 @@ class ResultsController < ApplicationController
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
-        # @results_with_data[result] = [Food::SAMPLE_IMAGES.sample]
+        @results_with_data[result] = [Food::SAMPLE_IMAGES.sample]
         # ***** FOP PRODUCTION purpose *****
         # call searhcimages method and store the returned array
-        @results_with_data[result] = SearchImages.call(result.food.name)
+        # @results_with_data[result] = SearchImages.call(result.food.name)
         # ==========================================
         completed << 1
       end
     end
     # temporary measure: wait_for_termination does not work well
     sleep(1) unless completed.count == @results.count
+    pool.shutdown
+    pool.wait_for_termination
+  end
+
+  def search_image_for_each_food_order
+    # boost threads to imcrease performance
+    pool = Concurrent::FixedThreadPool.new(10)
+    completed = []
+    @orders.each do |result|
+      pool.post do
+        # ==========================================
+        # ***** FOP DEVELOPMENT purpose *****
+        @results_with_data[result] = [Food::SAMPLE_IMAGES.sample]
+        # ***** FOP PRODUCTION purpose *****
+        # call searhcimages method and store the returned array
+        # @results_with_data[result] = SearchImages.call(result.food.name)
+        # ==========================================
+        completed << 1
+      end
+    end
+    # temporary measure: wait_for_termination does not work well
+    sleep(1) unless completed.count == @orders.count
     pool.shutdown
     pool.wait_for_termination
   end
