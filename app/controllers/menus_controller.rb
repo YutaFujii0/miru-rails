@@ -18,7 +18,6 @@ class MenusController < ApplicationController
     if @menu.save!
       # split the job to increase performance
       StoreImageInCloudinaryJob.perform_now(@menu, menu_params[:photo].tempfile.path)
-      raise
       sleep(0.1) unless words
       create_result_instances(@menu, words)
       redirect_to menu_results_path(@menu)
