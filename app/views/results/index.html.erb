@@ -23,7 +23,7 @@
                   <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
                   <div class="list">
                     <div class="text">
-                      <p id="english">English Name</p>
+                      <p id="english"><%= link_to "English name", food_path(result)%></p>
                       <p><%= result.food.name %></p>
                     </div>
                     <Cart></Cart>
