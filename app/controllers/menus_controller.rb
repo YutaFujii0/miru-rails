@@ -30,20 +30,8 @@ class MenusController < ApplicationController
 
   def create_result_instances(menu, words)
     # create result instance
-<<<<<<< HEAD
-
-    # ==========================================
-    # ***** FOP DEVELOPMENT purpose *****
-    detect_words = "00000000000 1000\n本日のおすすめ\n播磨産生カキ\nお刺身盛合せ\n秋田しいたけ\nピクルス\n天ぷら\nマヨチーズ焼き5 9\nサーモンとキノコ"
-    # ***** FOP PRODUCTION purpose *****
-    # detect_words = DetectWords.call(menu.photo.metadata["url"])
-    # ==========================================
-    refined_words = RefineWords.call(detect_words)
-    refined_words.each do |word|
-=======
     # create food instance if it's new
     words.each do |word|
->>>>>>> b4b9440c27995ac10f7650751898fe35de0685d2
       food = Food.find_by_name(word) || Food.create(name: word)
       Result.create!(menu_id: menu.id, food_id: food.id)
     end
