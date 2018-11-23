@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm top-bar">
+      <%= link_to menu_results_path(@result.menu), class: "nav-icon" do %>
+        <i class="fas fa-angle-left"></i>
+      <% end %>
+      <h2 class="heading"><%= @food_name %></h2>
+    </div>
+  </div>
+</div>
+<div class="container-fluid food-container">
+    <div class="food-banner" style="background-image: url(<%= cl_image_path(@food_images[0]) %>)">
+    </div>
+    <div class="food-desc">
+      <h2><%= @food_name %></h2>
+      <p>But my hunger (which is as existent as the sun, ’cause I am always hungry) aside, I decided to take time out from my daily occupation of feeling hungry to make a list of books that have provided remission to my hungry brain and tummy. I hope that they will do the same for you.</p>
+      <h3>Other photos</h3>
+    </div>
+    <div class="food-cards">
+      <%= link_to root_path, class: "food-card add-pic" do %>
+        <i class="fas fa-camera add-icon"></i>
+      <% end %>
+      <% @food_images.each do |image| %>
+        <%= cl_image_tag(image, class: "food-card") %>
+      <% end %>
+    </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm bot-bar">
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-camera"></i>
+      <% end %>
+
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-shopping-cart"></i>
+      <% end %>
+
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-clock"></i>
+      <% end %>
+
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-user"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

@@ -17,25 +17,27 @@
           <% counter = 0 %>
           <% @results.each do |result| %>
             <div class="col-xs-6" style="padding: 1px;">
-              <div class="cards">
-                <% counter += 1 %>
-                <div class="card">
-                  <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
-                  <div class="list">
-                    <div class="text">
-                      <p id="english">English Name</p>
-                      <p><%= result.food.name %></p>
-                    </div>
-                    <Cart></Cart>
+              <% counter += 1 %>
+              <div class="card">
+                <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
+                <div class="list">
+                  <div class="text">
+                    <p id="english"><%= link_to "English name", food_path(result)%></p>
+                    <p><%= result.food.name %></p>
                   </div>
+                  <Cart></Cart>
                 </div>
+                <%= link_to menu_result_path(@menu[-1].id, result.id), method: :patch do %>
+                  <i class="fas fa-shopping-cart"></i>
+                <% end %>
               </div>
             </div>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
 <div class="container">
   <div class="row">
