@@ -16,9 +16,7 @@
   </head>
   <body>
     <%= render 'shared/flashes' %>
-    <div id="hello">
-      <%= yield %>
-    </div>
+    <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <!-- loading bar -->
