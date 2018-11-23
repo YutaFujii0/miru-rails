@@ -25,11 +25,10 @@
                     <p id="english"><%= link_to "English name", food_path(result)%></p>
                     <p><%= result.food.name %></p>
                   </div>
-                  <Cart></Cart>
+                  <%= link_to menu_result_path(@menu[-1].id, result.id), method: :patch do %>
+                    <Cart></Cart>
+                  <% end %>
                 </div>
-                <%= link_to menu_result_path(@menu[-1].id, result.id), method: :patch do %>
-                  <i class="fas fa-shopping-cart"></i>
-                <% end %>
               </div>
             </div>
           </div>
@@ -52,3 +51,4 @@
     </div>
   </div>
 </div>
+<%= javascript_pack_tag 'hello_vue' %>
