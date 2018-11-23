@@ -1,5 +1,5 @@
 <template>
-    <a  @click="logEvent"><i class="fas fa-shopping-cart" :class="yellow"  ></i></a>
+  <a  @click="logEvent"><i class="fas fa-shopping-cart" :class="yellow"></i></a>
 </template>
 
 <script>
