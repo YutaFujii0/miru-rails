@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :menus, only: [:index, :create] do
     resources :results, only: [:index, :show, :create]
   end
-  resources :foods, only: [:show]
+  resources :foods, only: [:index, :show]
 
 end

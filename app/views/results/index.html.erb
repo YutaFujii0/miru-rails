@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<div id="app">
-=======
 <nav>
   <div class="nav-container fixed-top">
     <%= link_to root_path, class: "nav-icon left" do %>
@@ -14,7 +10,6 @@
   </div>
 </nav>
 <div id="hello">
->>>>>>> efb057b5e1b133d965103630a8fa1bd96c43c31c
   <div class="index-wrapper">
     <div class="index-container">
       <div class="row" style="margin:0;">
@@ -28,7 +23,7 @@
                   <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
                   <div class="list">
                     <div class="text">
-                      <p id="english">English Name</p>
+                      <p id="english"><%= link_to "English name", food_path(result)%></p>
                       <p><%= result.food.name %></p>
                     </div>
                     <Cart></Cart>
