@@ -16,10 +16,11 @@
   </head>
   <body>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div id="hello">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-
     <!-- loading bar -->
     <script>
       NProgress.start();
@@ -32,7 +33,6 @@
           NProgress.start();
       });
     </script>
-
     <!-- file upload loading -->
     <!-- <script>
       $(':submit').on('click', function() {
