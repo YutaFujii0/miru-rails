@@ -11,11 +11,11 @@
   }
   #form-container {
     position: relative;
-    padding-top:30%;
+    padding:0;margin:0;
     text-align:center;
     label {
       position:absolute;width:100px;height:100px;
-      left:50%;top:20%;margin:0 0 0 -50px;
+      left:50%;margin:15% 0 0 -50px;
       background: image-url("camera.png");
       background-size:contain;
       background-repeat:no-repeat;
@@ -30,6 +30,7 @@
     .btn {
       visibility:hidden;font-size:0;line-height:0;
       width:0;height:0;margin:0;padding:0;}
+    .form-group {margin:0;}
   }
 }
 
