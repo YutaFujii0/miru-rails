@@ -37,7 +37,7 @@ class ResultsController < ApplicationController
         # @results_with_data[result] = [Food::SAMPLE_IMAGES.sample]
         # ***** FOP PRODUCTION purpose *****
         # call searhcimages method and store the returned array
-        @results_with_data[result] = SearchImages.call(result.food.name)
+        results_with_data[result] = SearchImages.call(result.food.name)
         # ==========================================
         completed << 1
       end

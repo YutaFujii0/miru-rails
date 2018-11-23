@@ -32,7 +32,6 @@ class MenusController < ApplicationController
     # create result instance
     # create food instance if it's new
     words.each do |word|
->>>>>>> master
       food = Food.find_by_name(word) || Food.create(name: word)
       Result.create!(menu_id: menu.id, food_id: food.id)
     end
