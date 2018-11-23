@@ -6,10 +6,10 @@
   bottom: 0;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
-  width: 100%;
+  padding:11px 10px;
   background-color: #F4D500;
   z-index: 2;
+  .btn {padding:0;margin:0;color:#000;}
 }
 
 .top-bar {
@@ -56,11 +56,5 @@
 
 .fa-heart,
 .fa-camera {
-  color: black;
-
-}
-
-.fa-heart:hover,
-.fa-camera:hover {
-  text-shadow: 3px 3px 16px #272634;
+  color:#fff;
 }

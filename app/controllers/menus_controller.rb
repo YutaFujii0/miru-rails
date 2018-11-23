@@ -37,7 +37,7 @@ class MenusController < ApplicationController
     # detect_words = DetectWords.call(menu.photo.metadata["url"])
     # ==========================================
     # refined_words = RefineWords.call(detect_words)
-    refined_words.each do |word|
+    # refined_words.each do |word|
     # create food instance if it's new
     words.each do |word|
       food = Food.find_by_name(word) || Food.create(name: word)
