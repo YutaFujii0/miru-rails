@@ -55,7 +55,6 @@ class ResultsController < ApplicationController
         # call searhcimages method and store the returned array
 
         results_with_data[result] = SearchImages.call(result.food.name)
-
         # ==========================================
         completed << 1
       end
