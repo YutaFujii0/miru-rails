@@ -8,9 +8,8 @@ class ResultsController < ApplicationController
     # TODO: return all results with image paths
     # set the instances
     @results = Menu.find(params[:menu_id]).results
-    @results_with_data = {}
     # search images for each food
-    search_image_for_each_food
+    @results_with_data = search_image_for_each_food(@results)
   end
   def order
     @menu = Menu.where(user_id: current_user.id)
@@ -41,11 +40,13 @@ class ResultsController < ApplicationController
 
   private
 
-  def search_image_for_each_food
+  def search_image_for_each_food(results)
     # boost threads to imcrease performance
     pool = Concurrent::FixedThreadPool.new(10)
+    results_with_data = {}
     completed = []
-    @results.each do |result|
+
+    results.each do |result|
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
@@ -57,10 +58,13 @@ class ResultsController < ApplicationController
         completed << 1
       end
     end
+
     # temporary measure: wait_for_termination does not work well
-    sleep(1) unless completed.count == @results.count
+    sleep(0.1) unless completed.count == results.count
     pool.shutdown
     pool.wait_for_termination
+    # return
+    results_with_data
   end
 
   def search_image_for_each_food_order
