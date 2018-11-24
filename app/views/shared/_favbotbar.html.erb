@@ -1,25 +1,28 @@
-<div class="container">
+<div class="container" id="common-bottom">
   <div class="row">
-    <div class="col-sm bot-bar">
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-camera"></i>
-      <% end %>
-
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-heart"></i>
-      <% end %>
-
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-shopping-cart"></i>
-      <% end %>
-
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-clock"></i>
-      <% end %>
-
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-user"></i>
-      <% end %>
-    </div>
+    <!-- camera -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-camera"></i>
+    <% end %>
+    <!-- heart -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+    <!-- bag -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-shopping-bag"></i>
+      <!-- if cart is empty add 'empty' class -->
+      <span class="cart-num empty"></span>
+      <!-- <span class="cart-num">3</span> -->
+    <% end %>
+    <!-- clock -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-clock"></i>
+    <% end %>
+    <!-- user -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-user-circle"></i>
+    <% end %>
   </div>
 </div>
+
