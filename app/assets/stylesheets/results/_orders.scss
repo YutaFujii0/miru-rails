@@ -12,6 +12,7 @@
   width: 100%;
   max-width: 100% !important;
   padding:10px;
+  text-align: center;
 }
 
 .result-center {
@@ -40,15 +41,28 @@
 }
 
 .food-description {
-  font-size:$font-size-paragraph;
-  dd {height:52px;overflow:hidden;}
+  h2 {
+    font-size: $font-size-emphasize;
+  }
+  h3 {
+    font-size: 24px;
+    color: $gray;
+  }
 }
 
 .quantity {
   display:flex;
-  justify-content:space-between;
+  justify-content:space-around;
   align-items:center;
-  width:150px;
-  .quantity-amount {width:50%;text-align:center;background:#f4f4f4;border:0;font-size:28px;}
-  button {margin-top:3px;}
+  .quantity-amount {
+    text-align:center;
+    // background:#f4f4f4;
+    border:0;
+    font-size:80px;
+  }
+  button {
+    font-size: 70px;
+    color: $gray;
+    margin-top: 0 30px;
+  }
 }

@@ -11,10 +11,10 @@
 <div class="hello">
   <div class="banner result-top">
     <% @orders.each do |order| %>
-      <div class="card-order-list">
+      <div class="card-order-list active">
       <%= cl_image_tag(@results_with_data[order][0], width: 75, height: 75, crop: "fill", class: "img-circle" ) %>
       <div class="triangle-wrap">
-        <div class="triangle active"></div>
+        <div class="triangle"></div>
       </div>
       </div>
     <% end %>
@@ -23,17 +23,16 @@
     <!-- img -->
     <%= cl_image_tag(@results_with_data[@orders.first][0], width: 100, height: 100, crop: "fill", class: "img-circle result-center" ) %>
     <!-- desc -->
-
-      <dl class="food-description">
-        <dt><%= @food_title %></dt>
-        <dd><%= @food_summary %></dd>
-      </dl>
-      <!-- quantity -->
-      <div class="quantity">
-        <button class="decrease" type="button" title="Decrease Quantity"><i class="fas fa-minus-circle"></i></button>
-        <input type="text" class="quantity-amount" name="" value="1" />
-        <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button>
-      </div>
+    <div class="food-description">
+      <h2><%= @food_title %></h2>
+      <h3><%= @food_title %></h3>
+    </div>
+    <!-- quantity -->
+    <div class="quantity">
+      <button class="decrease" type="button" title="Decrease Quantity"><i class="fas fa-minus-circle"></i></button>
+      <input type="text" class="quantity-amount" name="" value="1" />
+      <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button>
+    </div>
 
   </div>
 </div>
