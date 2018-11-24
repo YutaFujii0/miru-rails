@@ -1,7 +1,18 @@
-.result-container {
+.result-top {
+  background-color: $very-dark-gray;
+  height: 110px;
+}
+
+.result-body {
+  display: block;
+  padding-top: 30px;
   width: 100%;
   max-width: 100% !important;
   padding:10px;
+}
+
+.result-center {
+  margin: 0px auto;
 }
 
 .each-food {

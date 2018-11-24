@@ -9,28 +9,37 @@
   </div>
 </div>
 <div class="hello">
-  <div class="container result-container">
+  <div class="banner result-top">
     <% @orders.each do |order| %>
-      <div class="row each-food">
-        <!-- img -->
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 pic-column">
-          <div class="food-img-div"><%= cl_image_tag(@results_with_data[order][0]) %></div>
-        </div>
-        <!-- desc -->
-        <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
-          <dl class="food-description">
-            <dt><%= @food_title %></dt>
-            <dd><%= @food_summary %></dd>
-          </dl>
-          <!-- quantity -->
-          <div class="quantity">
-            <button class="decrease" type="button" title="Decrease Quantity"><i class="fas fa-minus-circle"></i></button>
-            <input type="text" class="quantity-amount" name="" value="1" />
-            <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button>
-          </div>
-        </div>
-      </div>
+      <%= cl_image_tag(@results_with_data[order][0], width: 75, height: 75, crop: "fill", class: "img-circle" ) %>
     <% end %>
+  </div>
+  <div class="container result-body">
+    <!-- img -->
+    <%= cl_image_tag(@results_with_data[@orders.first][0], width: 100, height: 100, crop: "fill", class: "img-circle result-center" ) %>
+    <!-- desc -->
+
+      <dl class="food-description">
+        <dt><%= @food_title %></dt>
+        <dd><%= @food_summary %></dd>
+      </dl>
+      <!-- quantity -->
+      <div class="quantity">
+        <button class="decrease" type="button" title="Decrease Quantity"><i class="fas fa-minus-circle"></i></button>
+        <input type="text" class="quantity-amount" name="" value="1" />
+        <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button>
+      </div>
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm bot-bar">
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fas fa-camera"></i>
+      <% end %>
+      <h3 class=qty-ordered>Items to order<strong>#</strong></h3>
+    </div>
   </div>
 </div>
 <script>
@@ -68,13 +77,3 @@
   }
   init();
 </script>
-<div class="container">
-  <div class="row">
-    <div class="col-sm bot-bar">
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-camera"></i>
-      <% end %>
-      <h3 class=qty-ordered>Items to order<strong>#</strong></h3>
-    </div>
-  </div>
-</div>
