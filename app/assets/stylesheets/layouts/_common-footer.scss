@@ -1,0 +1,20 @@
+#common-bottom {
+  position:fixed;bottom:0;
+  width:100%;background:#303639;
+  .row {display:flex;justify-content:space-between;}
+  .bottom-icon {
+    display:inline-block;
+    position:relative;
+    padding:12px 25px;
+    font-size:28px;color:#fff;
+  }
+}
+.cart-num {
+  position:absolute;
+  top:0;right:0;margin:10px 10px 0 0;
+  width:28px;height:28px;border-radius:50%;
+  background:#ff7800;
+  font-size:16px;color:#fff;font-weight:bold;
+  text-align:center;line-height:28px;
+}
+.cart-num.empty {display:none;}

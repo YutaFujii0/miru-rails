@@ -1,13 +1,13 @@
-<div class="container">
+<!-- NEW top bar -->
+<div class="container" id="common-top">
   <div class="row">
-    <div class="col-sm top-bar">
-      <%= link_to menu_results_path, class: "nav-icon" do %>
-        <i class="fas fa-angle-left"></i>
-      <% end %>
-      <h2 class="heading">Order List</h2>
-    </div>
+    <%= link_to root_path, class: "top-back" do %>
+      <i class="fas fa-chevron-left"></i>
+    <% end %>
+    <h1>ORDER</h1>
   </div>
 </div>
+
 <div class="hello">
   <div class="container result-container">
     <% @orders.each do |order| %>
@@ -68,13 +68,32 @@
   }
   init();
 </script>
-<div class="container">
+
+<!-- NEW footer -->
+<div class="container" id="common-bottom">
   <div class="row">
-    <div class="col-sm bot-bar">
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-camera"></i>
-      <% end %>
-      <h3 class=qty-ordered>Items to order<strong>#</strong></h3>
-    </div>
+    <!-- camera -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-camera"></i>
+    <% end %>
+    <!-- heart -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+    <!-- bag -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-shopping-bag"></i>
+      <!-- if cart is empty add 'empty' class -->
+      <span class="cart-num empty"></span>
+      <!-- <span class="cart-num">3</span> -->
+    <% end %>
+    <!-- clock -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-clock"></i>
+    <% end %>
+    <!-- user -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-user-circle"></i>
+    <% end %>
   </div>
 </div>
