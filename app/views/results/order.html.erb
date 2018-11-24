@@ -1,102 +1,29 @@
+<!-- title for navbar -->
+<% content_for :title do %>
+  ORDER
+<% end %>
+
 <!-- NEW top bar -->
-<div class="container" id="common-top">
-  <div class="row">
-    <%= link_to root_path, class: "top-back" do %>
-      <i class="fas fa-chevron-left"></i>
-    <% end %>
-    <h1>ORDER</h1>
+<%= render 'shared/favtopbar' %>
+
+<div class="banner result-top">
+  <%= render 'order_list_banner' %>
+</div>
+<div class="container result-body">
+  <!-- img -->
+  <%= cl_image_tag(@results_with_data[@orders.first][0], width: 100, height: 100, crop: "fill", class: "img-circle result-center" ) %>
+  <!-- desc -->
+  <div class="food-description">
+    <h2><%= @food_title %></h2>
+    <h3><%= @food_title %></h3>
+  </div>
+  <!-- quantity -->
+  <div class="quantity">
+    <button class="decrease" type="button" title="Decrease Quantity"><i class="fas fa-minus-circle"></i></button>
+    <input type="text" class="quantity-amount" name="" value="1" />
+    <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button>
   </div>
 </div>
-
-<div class="hello">
-  <div class="banner result-top">
-    <% @orders.each do |order| %>
-      <div class="card-order-list active">
-      <%= cl_image_tag(@results_with_data[order][0], width: 75, height: 75, crop: "fill", class: "img-circle" ) %>
-      <div class="triangle-wrap">
-        <div class="triangle"></div>
-      </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="container result-body">
-    <!-- img -->
-    <%= cl_image_tag(@results_with_data[@orders.first][0], width: 100, height: 100, crop: "fill", class: "img-circle result-center" ) %>
-    <!-- desc -->
-    <div class="food-description">
-      <h2><%= @food_title %></h2>
-      <h3><%= @food_title %></h3>
-    </div>
-    <!-- quantity -->
-    <div class="quantity">
-      <button class="decrease" type="button" title="Decrease Quantity"><i class="fas fa-minus-circle"></i></button>
-      <input type="text" class="quantity-amount" name="" value="1" />
-      <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button>
-    </div>
-
-  </div>
-</div>
-<script>
-  let value,
-  quantity = document.getElementsByClassName('quantity');
-
-  function createBindings(quantityContainer) {
-    let quantityAmount = quantityContainer.getElementsByClassName('quantity-amount')[0];
-    let increase = quantityContainer.getElementsByClassName('increase')[0];
-    let decrease = quantityContainer.getElementsByClassName('decrease')[0];
-    increase.addEventListener('click', function () { increaseValue(quantityAmount); });
-    decrease.addEventListener('click', function () { decreaseValue(quantityAmount); });
-  }
-  function init() {
-      for (let i = 0; i < quantity.length; i++ ) {
-        createBindings(quantity[i]);
-      }
-  };
-  function increaseValue(quantityAmount) {
-      value = parseInt(quantityAmount.value, 10);
-
-      // console.log(quantityAmount, quantityAmount.value);
-
-      value = isNaN(value) ? 0 : value;
-      value++;
-      quantityAmount.value = value;
-  }
-  function decreaseValue(quantityAmount) {
-      value = parseInt(quantityAmount.value, 10);
-
-      value = isNaN(value) ? 0 : value;
-      if (value > 0) value--;
-
-      quantityAmount.value = value;
-  }
-  init();
-</script>
-
 <!-- NEW footer -->
-<div class="container" id="common-bottom">
-  <div class="row">
-    <!-- camera -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-camera"></i>
-    <% end %>
-    <!-- heart -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-heart"></i>
-    <% end %>
-    <!-- bag -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-shopping-bag"></i>
-      <!-- if cart is empty add 'empty' class -->
-      <span class="cart-num empty"></span>
-      <!-- <span class="cart-num">3</span> -->
-    <% end %>
-    <!-- clock -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-clock"></i>
-    <% end %>
-    <!-- user -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-user-circle"></i>
-    <% end %>
-  </div>
-</div>
+<%= render 'shared/favbotbar' %>
+<%= javascript_pack_tag 'results/order' %>
