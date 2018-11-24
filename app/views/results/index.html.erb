@@ -9,34 +9,41 @@
     <% end %>
   </div>
 </nav>
-
-<!-- contents -->
-<div id="hello">
-  <div class="container search-container">
+<div class="controller-sort-wrapper">
+  <div class="controller-container">
+    <center>
+      <ul class="list-inline">
+        <li>Name <i class="fas fa-sort"></i></li>
+        <li>Recent <i class="fas fa-sort"></i></li>
+        <li>Size <i class="fas fa-sort"></i></li>
+      </ul>
+    </center>
+  </div>
+</div>
+<div class="hello">
+  <div class="search-container">
     <% counter = 0 %>
     <% @results.each do |result| %>
-    <div class="row">
-      <% counter += 1 %>
-      <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 pic-column">
-        <div class="img-div"><%= cl_image_tag(@results_with_data[result][0], class: "img") %></div>
-      </div>
-      <div class="col-xs-6 col-sm-8 col-md-10 col-lg-10">
-        <!-- food title en -->
-        <div class="search-food-english" id="english"><%= link_to "English name", food_path(result)%></div>
-        <!-- food desc -->
-        <div class="search-food-desc"><%= result.food.name %></div>
-        <!-- cart -->
-        <div class="cart">
-          <%= link_to menu_result_path(@menu[-1].id, result.id), method: :patch do %>
-          <!-- cart --><Cart></Cart>
-          <% end %>
+      <div class="content">
+        <div class="img-div">
+          <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
+        </div>
+        <div class="text-info">
+          <div class="text-content">
+            <p style="margin:0;">English name</p>
+            <small class="search-food-desc"><%= result.food.name %></small>
+          </div>
+          <div class="show-page">
+            <%= link_to menu_result_path(@menu[-1].id, result.id) do %>
+              <i class="fas fa-angle-right"></i>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
-</div><!-- // hello -->
-
+</div>
+<!-- // hello -->
 <div class="container">
   <div class="row">
     <div class="col-sm bot-bar fixed-bottom">
