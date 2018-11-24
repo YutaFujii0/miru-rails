@@ -1,9 +1,9 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Bree+Serif|M+PLUS+1p:400,700|Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p:400,500|Open+Sans:400,600');
 
 // Define fonts for body and headers
-$body-font: "Bree Serif", "M Plus 1p", "Source Sans Pro", "Helvetica", "Arial", "sans-serif";
-$headers-font: "Bree Serif", "Helvetica", "sans-serif";
+$body-font: 'Open Sans', 'M PLUS 1p', sans-serif;
+$headers-font: 'Open Sans', 'M PLUS 1p', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

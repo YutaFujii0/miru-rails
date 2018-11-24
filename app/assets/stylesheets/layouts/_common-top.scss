@@ -1,0 +1,13 @@
+#common-top {
+  position:fixed;top:0;
+  width: 100%;background:$navbar-gray;
+  .top-back {
+    position:absolute;
+    padding:10px 15px;
+    color:#fff;
+  }
+  h1 {
+    margin:0;padding:12px 0;
+    text-align:center;color:#fff;font-size:20px;
+  }
+}
