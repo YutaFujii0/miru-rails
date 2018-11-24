@@ -4,7 +4,6 @@ require "open-uri"
 class ResultsController < ApplicationController
   def index
     @menu = Menu.where(user_id: current_user.id)
-
     # TODO: return all results with image paths
     # set the instances
     @results = Menu.find(params[:menu_id]).results
@@ -12,7 +11,7 @@ class ResultsController < ApplicationController
     @results_with_data = search_image_for_each_food(@results)
   end
   def order
-    @menu = Menu.where(user_id: current_user.id)
+    # @menu = Menu.where(user_id: current_user.id)
     @orders = Result.where(order: 1, menu_id: params[:menu_id].to_i)
 
     url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=udon"
@@ -21,8 +20,6 @@ class ResultsController < ApplicationController
     @food_title = food_wiki["query"]["pages"].values[0]["title"]
     @food_summary = food_wiki["query"]["pages"].values[0]["extract"]
     @results_with_data = search_image_for_each_food_order(@orders)
-
-
   end
   def edit
     @result = Result.find(params[:id])
