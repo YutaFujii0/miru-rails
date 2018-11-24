@@ -1,4 +1,7 @@
 .result-top {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   background-color: $very-dark-gray;
   height: 110px;
 }
