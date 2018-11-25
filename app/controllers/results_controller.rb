@@ -26,13 +26,12 @@ class ResultsController < ApplicationController
   end
   def update
     @result = Result.find(params[:id])
-    if @result.order.nil? || @result.order == 0
-      @result.order = 1
-    else
-      @result.order = 0
-    end
+    @result.order += params[:result][:order].to_i
+    @result.order = 0 if @result.order < 0
     @result.save
-
+    respond_to do |format|
+        format.js
+    end
   end
 
   private
