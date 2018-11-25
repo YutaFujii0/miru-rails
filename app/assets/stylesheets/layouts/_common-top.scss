@@ -1,6 +1,8 @@
 #common-top {
   position:fixed;top:0;
   width: 100%;background:$navbar-gray;
+  height: 50px;
+  z-index: 3;
   .top-back {
     position:absolute;
     padding:10px 15px;
