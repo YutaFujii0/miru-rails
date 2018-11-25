@@ -1,5 +1,5 @@
-<% @orders.each do |order| %>
-  <div class="card-order-list active">
+<% @orders.each_with_index do |order, index| %>
+  <div class="card-order-list <%= "active" if index == 0 %>">
   <%= cl_image_tag(@results_with_data[order][0], width: 75, height: 75, crop: "fill", class: "img-circle" ) %>
   <div class="triangle-wrap">
     <div class="triangle"></div>
