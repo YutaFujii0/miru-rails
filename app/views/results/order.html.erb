@@ -10,23 +10,7 @@
     <%= render 'order_list_banner', object: [@orders, @results_with_data] %>
   </div>
   <div class="container result-body">
-    <% @orders.each_with_index do |order, index| %>
-      <div class="card-result-body <%= "list-#{index}" %> <%= "hidden" unless index == 0 %>">
-        <!-- img -->
-        <%= cl_image_tag(@results_with_data[order][0], width: 100, height: 100, crop: "fill", class: "img-circle result-center" ) %>
-        <!-- desc -->
-        <div class="food-description">
-          <h2><%= @food_title %></h2>
-          <h3><%= @food_title %></h3>
-        </div>
-        <!-- quantity -->
-        <div class="quantity">
-          <button class="decrease" type="button" title="Decrease Quantity"><i class="fas fa-minus-circle"></i></button>
-          <input type="text" class="quantity-amount" name="" value="1" />
-          <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'order_list_body', object: [@orders, @results_with_data, @food_title] %>
   </div>
   <%= render 'order_list_summary', object: [@orders, @food_title] %>
 </div>
