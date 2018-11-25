@@ -1,6 +1,9 @@
 #common-bottom {
-  position:fixed;bottom:0;
-  width:100%;background:$navbar-gray;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height: 50px;
+  background:$navbar-gray;
   .row {display:flex;justify-content:space-between;}
   .bottom-icon {
     display:inline-block;
