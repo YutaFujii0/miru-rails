@@ -8,22 +8,21 @@ class ResultsController < ApplicationController
     # set the instances
     @results = Menu.find(params[:menu_id]).results
     # search images for each food
-    @results_with_data = search_image_for_each_food(@results)
+    search_image_for_each_food(@results)
   end
+
   def order
     # @menu = Menu.where(user_id: current_user.id)
-    @orders = Result.where(order: 1, menu_id: params[:menu_id].to_i)
+    @orders = Result.where(order: 0, menu_id: params[:menu_id].to_i)
 
     url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=udon"
 
     food_wiki = JSON.parse(open(url).read)
     @food_title = food_wiki["query"]["pages"].values[0]["title"]
     @food_summary = food_wiki["query"]["pages"].values[0]["extract"]
-    @results_with_data = search_image_for_each_food_order(@orders)
+    search_image_for_each_food_order(@orders)
   end
-  def edit
-    @result = Result.find(params[:id])
-  end
+
   def update
     @result = Result.find(params[:id])
     @result.order += params[:result][:order].to_i
@@ -39,18 +38,17 @@ class ResultsController < ApplicationController
   def search_image_for_each_food(results)
     # boost threads to imcrease performance
     pool = Concurrent::FixedThreadPool.new(10)
-    results_with_data = {}
     completed = []
 
     results.each do |result|
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
-        results_with_data[result] = [Food::SAMPLE_IMAGES.sample]
+        result.food.images = [Food::SAMPLE_IMAGES.sample]
         # ***** FOP PRODUCTION purpose *****
         # call searhcimages method and store the returned array
 
-        # results_with_data[result] = SearchImages.call(result.food.name)
+        # result.food.images = SearchImages.call(result.food.name)
         # ==========================================
         completed << 1
       end
@@ -60,24 +58,21 @@ class ResultsController < ApplicationController
     sleep(0.1) unless completed.count == results.count
     pool.shutdown
     pool.wait_for_termination
-    # return
-    results_with_data
   end
 
   def search_image_for_each_food_order(results)
     # boost threads to imcrease performance
     pool = Concurrent::FixedThreadPool.new(10)
     completed = []
-    results_with_data = {}
 
     @orders.each do |result|
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
-        results_with_data[result] = [Food::SAMPLE_IMAGES.sample]
+        result.food.images = [Food::SAMPLE_IMAGES.sample]
         # ***** FOP PRODUCTION purpose *****
         # call searhcimages method and store the returned array
-        # results_with_data[result] = SearchImages.call(result.food.name)
+        # result.food.images = SearchImages.call(result.food.name)
         # ==========================================
         completed << 1
       end
@@ -86,6 +81,5 @@ class ResultsController < ApplicationController
     sleep(1) unless completed.count == @orders.count
     pool.shutdown
     pool.wait_for_termination
-    results_with_data
   end
 end
