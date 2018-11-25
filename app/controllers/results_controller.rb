@@ -44,11 +44,11 @@ class ResultsController < ApplicationController
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
-        result.food.images = [Food::SAMPLE_IMAGES.sample]
+        result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
         # ***** FOP PRODUCTION purpose *****
         # call searhcimages method and store the returned array
 
-        # result.food.images = SearchImages.call(result.food.name)
+        # result.food.images = SearchImages.call(result.food.name) if result.food.images.nil?
         # ==========================================
         completed << 1
       end
@@ -69,10 +69,10 @@ class ResultsController < ApplicationController
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
-        result.food.images = [Food::SAMPLE_IMAGES.sample]
+        result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
         # ***** FOP PRODUCTION purpose *****
         # call searhcimages method and store the returned array
-        # result.food.images = SearchImages.call(result.food.name)
+        # result.food.images = SearchImages.call(result.food.name) if result.food.images.nil?
         # ==========================================
         completed << 1
       end
