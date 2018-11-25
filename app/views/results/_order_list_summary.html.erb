@@ -1,0 +1,33 @@
+<div class="order-list-arrow"></div>
+
+<div class="order-list-summary">
+  <table>
+    <thead>
+      <tr>
+        <td class="table-margin-column"></td>
+        <td>MENUS</td>
+        <td>QUANTITY</td>
+        <td class="table-margin-column"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each_with_index do |order, index| %>
+      <tr>
+        <!-- need modifying with @food_title -->
+        <td class="table-margin-column"></td>
+        <td><%= order.food.name %>(<%= @food_title %>)</td>
+        <td class="<%= "list-#{index}" %>"></td>
+        <td class="table-margin-column"></td>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="table-margin-column"></td>
+        <td>total</td>
+        <td class="total"></td>
+        <td class="table-margin-column"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
