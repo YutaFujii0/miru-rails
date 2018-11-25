@@ -11,13 +11,11 @@
 </nav>
 <div class="controller-sort-wrapper">
   <div class="controller-container">
-    <center>
-      <ul class="list-inline">
-        <li>Name <i class="fas fa-sort"></i></li>
-        <li>Recent <i class="fas fa-sort"></i></li>
-        <li>Size <i class="fas fa-sort"></i></li>
-      </ul>
-    </center>
+    <ul class="list-inline">
+      <li>Name <i class="fas fa-sort"></i></li>
+      <li>Recent <i class="fas fa-sort"></i></li>
+      <li>Size <i class="fas fa-sort"></i></li>
+    </ul>
   </div>
 </div>
 <div class="hello">
@@ -44,17 +42,14 @@
   </div>
 </div>
 <!-- // hello -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm bot-bar fixed-bottom">
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-camera"></i>
-      <% end %>
-      <%= link_to 'See Order', order_path, class: "btn btn-secondary" %>
-      <%= link_to root_path, class: "nav-icon" do %>
-        <i class="fas fa-heart"></i>
-      <% end %>
-    </div>
+<footer class="footer">
+  <div class="bottom-container" >
+    <%= link_to root_path, class: "nav-icon" do %>
+      <i class="fas fa-camera"></i>
+    <% end %>
+    <%= link_to 'See Order', order_path, class: "btn btn-secondary" %>
+    <%= link_to root_path, class: "nav-icon" do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
   </div>
-</div>
-<%= javascript_pack_tag 'hello_vue' %>
+</footer>
