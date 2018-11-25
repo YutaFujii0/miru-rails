@@ -40,6 +40,7 @@
     width: 75%;
     font-size: 14px;
     color: black;
+    animation: movieInDown 0.5s linear;
 
     .p {
       font-weight: semi-bold;
@@ -51,6 +52,8 @@
   }
 
   .show-page {
+    animation: movieInLeft 1s linear;
+
     .fa-angle-right {
       color: black;
     }
@@ -94,4 +97,43 @@
 .hello {
   height: 100vh;
   background-color: white;
+}
+
+.img-div {
+  animation: appearSlowly 2s linear;
+}
+
+@keyframes appearSlowly {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes movieInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes movieInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
