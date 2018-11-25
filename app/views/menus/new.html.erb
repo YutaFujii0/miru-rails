@@ -4,14 +4,12 @@
   </div>
   <%= render 'form', menu: @menu %>
 </div>
-
 <div id="loading-layer">
   <div class="img">
     <%= image_tag "loading-animations.gif" %>
     <div>scanning the menus...</div>
   </div>
 </div>
-
 <script>
   // auto submit when selected a file
   document.getElementById("menu_photo").onchange = function() {
