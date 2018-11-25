@@ -12,6 +12,7 @@
 
 
 
+
   .text-info {
     padding: 5px;
     padding-bottom: 10px;
@@ -40,6 +41,7 @@
     width: 75%;
     font-size: 14px;
     color: black;
+    animation: movieInDown 0.5s linear;
 
     .p {
       font-weight: semi-bold;
@@ -51,6 +53,8 @@
   }
 
   .show-page {
+    animation: movieInLeft 1s linear;
+
     .fa-angle-right {
       color: black;
     }
@@ -85,13 +89,80 @@
   background-color: #ECECEC;
   height: 10vh;
   margin-top: 50px;
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
 
   .controller-container {
-    padding: 5.5%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
 .hello {
   height: 100vh;
   background-color: white;
+}
+
+.img-div {
+  animation: appearSlowly 2s linear;
+}
+
+@keyframes appearSlowly {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes movieInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes movieInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+
+  color: white;
+}
+
+.bottom-container {
+  height: 7vh;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  ul {
+    margin: 0;
+  }
 }
