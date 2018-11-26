@@ -32,7 +32,7 @@
             <small class="search-food-desc"><%= result.food.name %></small>
           </div>
           <div class="show-page">
-            <%= link_to menu_result_path(@menu[-1].id, result.id) do %>
+            <%= link_to food_path(result.id) do %>
               <i class="fas fa-angle-right"></i>
             <% end %>
           </div>

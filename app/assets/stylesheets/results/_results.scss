@@ -4,7 +4,7 @@
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 0.25px;
+  grid-gap: 0;
 
   .content {
     grid-column-start: auto;
