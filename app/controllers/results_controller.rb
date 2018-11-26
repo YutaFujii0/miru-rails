@@ -37,13 +37,12 @@ class ResultsController < ApplicationController
 
   def search_image_for_each_food(results)
     # boost threads to imcrease performance
-    # pool = Concurrent::FixedThreadPool.new(10)
+    pool = Concurrent::FixedThreadPool.new(10)
     completed = []
 
     translation_of_meal = Language.find_by(code: results.first.lang).meal_is
-    puts translation_of_meal
     results.each do |result|
-      # pool.post do
+      pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
         # puts translation_of_meal
@@ -59,13 +58,13 @@ class ResultsController < ApplicationController
         end
         # ==========================================
         completed << 1
-      # end
+      end
     end
 
     # temporary measure: wait_for_termination does not work well
-    # sleep(0.1) unless completed.count == results.count
-    # pool.shutdown
-    # pool.wait_for_termination
+    sleep(0.1) unless completed.count == results.count
+    pool.shutdown
+    pool.wait_for_termination
   end
 
   # def search_image_for_each_food_order(results)
