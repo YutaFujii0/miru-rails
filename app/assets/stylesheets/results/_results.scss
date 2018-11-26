@@ -4,7 +4,7 @@
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2px;
+  grid-gap: 0.25px;
 
   .content {
     grid-column-start: auto;
@@ -14,7 +14,7 @@
 
 
   .text-info {
-    padding: 5px;
+    padding: 10px;
     padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
@@ -53,7 +53,8 @@
   }
 
   .show-page {
-    animation: movieInLeft 1s linear;
+    animation: movieInLeft 1s linear 2s;
+    animation-fill-mode: backwards;
 
     .fa-angle-right {
       color: black;
@@ -70,7 +71,7 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 10px;
+  padding: 10px 20px;
   background: #fff;
   display: flex;
   align-items: center;
@@ -135,7 +136,7 @@
 @keyframes movieInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-15px);
   }
 
 
@@ -156,10 +157,9 @@ footer {
 }
 
 .bottom-container {
-  height: 7vh;
-  padding: 5px;
+  padding: 10px 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   ul {
