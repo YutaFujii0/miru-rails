@@ -16,7 +16,8 @@
       <%= link_to root_path, class: "bottom-icon" do %>
         <i class="fas fa-shopping-bag"></i>
       <% end %>
-      <%= link_to root_path, class: "bottom-icon" do %>
+
+      <%= button_to favourites_path, method: :patch, class: "bottom-icon" do %>
         <i class="fas fa-heart"></i>
       <% end %>
   </div>
