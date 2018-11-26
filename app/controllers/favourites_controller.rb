@@ -11,6 +11,7 @@ class FavouritesController < ApplicationController
   def show
     @food = Food.find(params[:id])
     @user = User.find(params[:id])
+    @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 
   def destroy

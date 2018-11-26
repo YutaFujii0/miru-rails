@@ -9,6 +9,7 @@ class ResultsController < ApplicationController
     @results = Menu.find(params[:menu_id]).results
     # search images for each food
     search_image_for_each_food(@results)
+    @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 
   def order
