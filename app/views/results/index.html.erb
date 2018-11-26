@@ -18,26 +18,38 @@
     </ul>
   </div>
 </div>
-<div class="hello">
+<div id="hello">
   <div class="search-container">
     <% counter = 0 %>
     <% @results.each do |result| %>
       <div class="content">
-        <div class="img-div">
-          <%= cl_image_tag(result.food.images[0], class: "img") %>
-        </div>
-        <div class="text-info">
-          <div class="text-content">
-            <p style="margin:0;">English name</p>
-            <small class="search-food-desc"><%= result.food.name %></small>
+        <div onclick="imageClicked(<%= counter %>)" class="img-div" id="<%= counter %>" >
+          <div class="overlay not-clicked">
+            <div class="overlay-container">
+              <div class="icons">
+                <i class="fas fa-check-circle"></i>
+              </div>
+            </div>
           </div>
-          <div class="show-page">
-            <%= link_to menu_result_path(@menu[-1].id, result.id) do %>
-              <i class="fas fa-angle-right"></i>
-            <% end %>
-          </div>
+          <%= link_to menu_result_path(current_user,result), method: :patch, remote: true do %>
+            <%= cl_image_tag(result.food.images[0], class: "img") %>
+          <% end %>
         </div>
+        <%= link_to food_path(result.id), class: "link-food" do %>
+          <div class="text-info">
+            <div class="text-content">
+              <p style="margin:0;">English name</p>
+              <small class="search-food-desc"><%= result.food.name %></small>
+            </div>
+            <div class="show-page">
+              <%= link_to food_path(result.id) do %>
+                <i class="fas fa-angle-right"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
+      <% counter += 1 %>
     <% end %>
   </div>
 </div>
@@ -53,3 +65,18 @@
     <% end %>
   </div>
 </footer>
+<script>
+  var clicked = false;
+  function imageClicked(num){
+      const image = document.getElementById(num).firstChild;
+      if (image.classList.contains('clicked')) {
+        image.classList.remove('clicked');
+        image.classList.add("not-clicked");
+      } else {
+  
+        image.classList.add('clicked');
+        image.classList.remove("not-clicked");
+      }
+  
+  }
+</script>

@@ -1,5 +1,6 @@
 .food-show {
-  margin:46px auto 63px;
+  img {border:0;}
+  margin:46px auto 50px;
   padding:0;
 
   .food-pic {
@@ -8,7 +9,9 @@
   }
 
   .add-cart {
+    display:flex;justify-content:space-around;
     background:#000;text-align:center;
+    form, button {background:none;border:0;}
     .bottom-icon {display:block;padding:15px 0 12px;}
     .fa-shopping-bag {font-size:30px;color:#fff;}
     .fa-shopping-bag:after {
@@ -16,6 +19,13 @@
       font-size:9px;color:#fff;
       font-family:'Open Sans', San-serif;
       content:'ADD TO CART';
+    } // fa-shopping-bag:after
+    .fa-heart {font-size:30px;color:#fff;}
+    .fa-heart:after {
+      display:block;padding-top:5px;
+      font-size:9px;color:#fff;
+      font-family:'Open Sans', San-serif;
+      content:'ADD TO FAVORITE';
     } // fa-shopping-bag:after
   } // add-cart
 

@@ -6,11 +6,9 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @food = Food.find(params[:food_id])
-    @favourite = Favourite.create!(favourite_params)
-    @favourite.food = @food
-    redirect_to user_favourites_path
+    @favourite = Favourite.new
+    @favourite.user = current_user
+    @favourite.food = Food.find(params[:food_id])
   end
 
   private

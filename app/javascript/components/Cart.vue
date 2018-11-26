@@ -1,5 +1,6 @@
 <template>
-  <a  @click="logEvent"><i class="fas fa-shopping-cart" :class="yellow"></i></a>
+  <button @click="logEvent" :class="yellow">
+  </button>
 </template>
 
 <script>
@@ -8,16 +9,16 @@ export default {
   data: function() {
     return {
       clicked: false,
-      yellow: ""
+      yellow: "not-clicked"
     };
   },
   methods: {
     logEvent(number) {
       this.clicked = !this.clicked;
       if (this.clicked === false) {
-        this.yellow = "black-cart";
+        this.yellow = "clicked";
       } else {
-        this.yellow = "yellow-cart";
+        this.yellow = "not-clicked";
       }
     }
   }

@@ -2,6 +2,7 @@
 puts "Destroy Foods/Menus/Results tabels"
 Food.destroy_all
 Menu.destroy_all
+Language.destroy_all
 
 # results table should be empty since it's a joint table
 raise unless Result.all.empty?
@@ -68,6 +69,22 @@ Menu.all.each do |menu|
   end
 end
 puts "Finished (results table)"
+
+# seeds for languages table =============================
+puts "Start creating languages table"
+
+language_base = [
+  {code: "ja", name: "Japanese", meal_is: "食事"},
+  {code: "ko", name: "Korean", meal_is: "식사"},
+  {code: "ru", name: "Russian", meal_is: "еда"}
+]
+
+language_base.each do |language|
+  Language.create!(language)
+end
+
+puts "Finished (languages table)"
+
 
 puts "Finished creating seeds"
 puts "instance - first id"
