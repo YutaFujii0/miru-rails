@@ -1,11 +1,11 @@
 <nav>
   <div class="nav-container fixed-top">
     <%= link_to root_path, class: "nav-icon left" do %>
-      <i class="fas fa-angle-left"></i>
+      <i class=""></i>
     <% end %>
     <h3>Favourites</h3>
     <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-sort-amount-down"></i>
+      <i class=""></i>
     <% end %>
   </div>
 </nav>
@@ -25,9 +25,9 @@
       <div class="content">
         <div class="img-fav">
           <% if favourited_food.images.nil? %>
-            <%= cl_image_tag(@food_images[:image_paths][0], class: "img") %>
+            <%= image_tag(@food_images[:image_paths][0], class: "img") %>
           <% else %>
-            <%= cl_image_tag(favourited_food.images[0], class: "img") %>
+            <%= image_tag(favourited_food.images[0], class: "img") %>
           <% end %>
         </div>
         <div class="text-info">

@@ -35,14 +35,14 @@
             <%= cl_image_tag(result.food.images[0], class: "img") %>
           <% end %>
         </div>
-        <%= link_to food_path(result.id), class: "link-food" do %>
+        <%= link_to food_path(result.food.id), class: "link-food" do %>
           <div class="text-info">
             <div class="text-content">
               <p style="margin:0;">English name</p>
               <small class="search-food-desc"><%= result.food.name %></small>
             </div>
             <div class="show-page">
-              <%= link_to food_path(result.id) do %>
+              <%= link_to food_path(result.food.id) do %>
                 <i class="fas fa-angle-right"></i>
               <% end %>
             </div>
