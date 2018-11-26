@@ -1,4 +1,10 @@
 class FavouritesController < ApplicationController
+  def index
+    @user = User.find(params[:user_id])
+    @favourited_foods = @user.favourited_foods
+    @food_images = SearchImages.call(@user.favourited_foods[0].name)
+  end
+
   def create
     @favourite = Favourite.new
     @favourite.user = current_user
@@ -20,8 +26,7 @@ class FavouritesController < ApplicationController
     @result = Result.find(params[:result_id])
     redirect_to food_path(@favourite.food, result_id: @result.id)
   end
-
-
+  
   private
 
   def favourite_params
