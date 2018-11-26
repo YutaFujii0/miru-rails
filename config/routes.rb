@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :results, only: [:index, :show, :create, :edit, :update]
   end
   resources :foods, only: [:index, :show]
+  resources :favourites, only: [:index, :show, :create]
 
 end
