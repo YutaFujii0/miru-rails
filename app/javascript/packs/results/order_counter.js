@@ -1,5 +1,5 @@
-let value,
-quantity = document.getElementsByClassName('quantity');
+let value;
+const quantity = document.getElementsByClassName('quantity');
 const table = document.querySelector(".order-list-summary");
 const total = document.querySelector(".total");
 

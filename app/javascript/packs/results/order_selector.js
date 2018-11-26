@@ -11,9 +11,7 @@ const changeActiveSelector = (event) => {
 
 const changeBodyContent = (event) => {
   const index = event.target.classList[1];
-  console.log(`.card-result-body .${index}`);
   const targetBodyContent = document.querySelector(`.card-result-body.${index}`);
-  console.log(targetBodyContent);
   bodyContents.forEach((content) => {
     content.classList.add("hidden");
   })
