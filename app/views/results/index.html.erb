@@ -23,7 +23,6 @@
     <% counter = 0 %>
     <% @results.each do |result| %>
       <div class="content">
-<<<<<<< HEAD
         <div onclick="imageClicked(<%= counter %>)" class="img-div" id="<%= counter %>" >
           <div class="overlay not-clicked">
             <div class="overlay-container">
@@ -31,23 +30,9 @@
                 <i class="fas fa-check-circle"></i>
               </div>
             </div>
-=======
-        <div class="img-div">
-          <%= cl_image_tag(result.food.images[0], class: "img") %>
-        </div>
-        <div class="text-info">
-          <div class="text-content">
-            <p style="margin:0;">English name</p>
-            <small class="search-food-desc"><%= result.food.name %></small>
-          </div>
-          <div class="show-page">
-            <%= link_to menu_result_path(@menu[-1].id, result.id) do %>
-              <i class="fas fa-angle-right"></i>
-            <% end %>
->>>>>>> fbd156b473b88776dabafaf8d1418eb2ba7755f1
           </div>
           <%= link_to menu_result_path(current_user,result), method: :patch, remote: true do %>
-            <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
+            <%= cl_image_tag(result.food.images[0], class: "img") %>
           <% end %>
         </div>
         <%= link_to food_path(result.id), class: "link-food" do %>
