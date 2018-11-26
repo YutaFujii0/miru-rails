@@ -32,7 +32,6 @@ class ResultsController < ApplicationController
     respond_to do |format|
         format.js
     end
-    raise
   end
 
   private
