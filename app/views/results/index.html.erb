@@ -26,10 +26,14 @@
         <div onclick="imageClicked(<%= counter %>)" class="img-div" id="<%= counter %>" >
           <div class="overlay not-clicked">
             <div class="overlay-container">
-              <i class="icons fas fa-check-circle"></i>
+              <div class="icons">
+                <i class="fas fa-check-circle"></i>
+              </div>
             </div>
           </div>
-          <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
+          <%= link_to menu_result_path(current_user,result), method: :patch, remote: true do %>
+            <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
+          <% end %>
         </div>
         <%= link_to food_path(result.id), class: "link-food" do %>
           <div class="text-info">

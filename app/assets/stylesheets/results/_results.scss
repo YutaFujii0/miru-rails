@@ -39,7 +39,6 @@
   .text-content {
     overflow: hidden;
     height: 40px;
-    width: 75%;
     font-size: 14px;
     color: black;
     animation: movieInDown 0.5s linear;
@@ -205,6 +204,14 @@ footer {
   justify-content: space-around;
   align-items: center;
   font-size: 75px;
+  color: #FF7800;
 }
 
-.icons {}
+.fa-check-circle:after {
+  background-color: white;
+  z-index: 1;
+}
+
+.text-content {
+  margin: 0;
+}
