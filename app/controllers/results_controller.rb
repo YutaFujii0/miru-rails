@@ -8,7 +8,7 @@ class ResultsController < ApplicationController
     # set the instances
     @results = Menu.find(params[:menu_id]).results
     # search images for each food
-    search_image_for_each_food(@results)
+    @results_with_data = search_image_for_each_food(@results)
   end
 
   def order
