@@ -45,9 +45,8 @@ class ResultsController < ApplicationController
     results.each do |result|
       pool.post do
         # ==========================================
-        # ***** FOP DEVELOPMENT purpose *****
         result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
-        # ***** FOP PRODUCTION purpose *****
+        # ------------------------------------------
         # if result.food.images.nil?
         #   keyword = "#{result.food.name}+#{translation_of_meal}"
         #   attributes = SearchImages.call(keyword)
@@ -65,27 +64,4 @@ class ResultsController < ApplicationController
     pool.shutdown
     pool.wait_for_termination
   end
-
-  # def search_image_for_each_food_order(results)
-  #   # boost threads to imcrease performance
-  #   pool = Concurrent::FixedThreadPool.new(10)
-  #   completed = []
-
-  #   @orders.each do |result|
-  #     pool.post do
-  #       # ==========================================
-  #       # ***** FOP DEVELOPMENT purpose *****
-  #       result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
-  #       # ***** FOP PRODUCTION purpose *****
-  #       # call searhcimages method and store the returned array
-  #       # result.food.images = SearchImages.call(result.food.name) if result.food.images.nil?
-  #       # ==========================================
-  #       completed << 1
-  #     end
-  #   end
-  #   # temporary measure: wait_for_termination does not work well
-  #   sleep(1) unless completed.count == @orders.count
-  #   pool.shutdown
-  #   pool.wait_for_termination
-  # end
 end
