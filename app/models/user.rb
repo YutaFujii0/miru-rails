@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :menus, dependent: :destroy
   has_many :favourites, dependent: :destroy
-
+  # has_many :foods, through: :favourites
+  has_many :favourited_foods, class_name: 'Food', through: :favourites, source: :food
 end

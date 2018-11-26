@@ -1,18 +1,16 @@
 class FavouritesController < ApplicationController
+  def index
+    @user = User.find(params[:user_id])
+    @favourite = Favourite.where(user_id: @user.id)
+    @favourited_foods = Favourite.where(user_id: @user.id)
+  end
+
   def create
     @user = User.find(params[:user_id])
     @food = Food.find(params[:food_id])
-    @favourite = Favourite.new(favourite_params)
-    if @favourite.save
-      redirect_to favourite_path(@user)
-    else
-      render "show"
-    end
-  end
-
-  def show
-    @food = Food.find(params[:id])
-    @user = User.find(params[:id])
+    @favourite = Favourite.create!(favourite_params)
+    @favourite.food = @food
+    redirect_to user_favourites_path
   end
 
   private

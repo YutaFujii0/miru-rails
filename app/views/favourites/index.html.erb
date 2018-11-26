@@ -1,0 +1,49 @@
+<nav>
+  <div class="nav-container fixed-top">
+    <%= link_to root_path, class: "nav-icon left" do %>
+      <i class="fas fa-angle-left"></i>
+    <% end %>
+    <h3>Favourites</h3>
+    <%= link_to root_path, class: "nav-icon" do %>
+      <i class="fas fa-sort-amount-down"></i>
+    <% end %>
+  </div>
+</nav>
+<div class="controller-sort-wrapper">
+  <div class="controller-container">
+    <ul class="list-inline">
+      <li>Name <i class="fas fa-sort"></i></li>
+      <li>Recent <i class="fas fa-sort"></i></li>
+      <li>Size <i class="fas fa-sort"></i></li>
+    </ul>
+  </div>
+</div>
+<div class="hello">
+  <div class="favourite-container">
+    <% counter = 0 %>
+    <% @favourited_foods.each do |favourited_food| %>
+      <div class="content">
+        <div class="img-fav">
+          <%= cl_image_tag(favourited_food.images[0], class: "img") %>
+        </div>
+        <div class="text-info">
+          <div class="text-content">
+            <p style="margin:0;">English name</p>
+            <small class="search-food-desc"><%= favourited_food.name %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<!-- // hello -->
+<footer class="footer">
+  <div class="bottom-container" >
+    <%= link_to root_path, class: "nav-icon" do %>
+      <i class="fas fa-camera"></i>
+    <% end %>
+    <%= link_to root_path, class: "nav-icon" do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  </div>
+</footer>
