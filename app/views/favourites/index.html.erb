@@ -24,7 +24,11 @@
     <% @favourited_foods.each do |favourited_food| %>
       <div class="content">
         <div class="img-fav">
-          <%= cl_image_tag(favourited_food.images[0], class: "img") %>
+          <% if favourited_food.images.nil? %>
+            <%= cl_image_tag(@food_images[:image_paths][0], class: "img") %>
+          <% else %>
+            <%= cl_image_tag(favourited_food.images[0], class: "img") %>
+          <% end %>
         </div>
         <div class="text-info">
           <div class="text-content">
