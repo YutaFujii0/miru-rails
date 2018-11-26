@@ -6,5 +6,6 @@ class FoodsController < ApplicationController
     @result = Result.find(params[:result_id])
     @favourite = current_user.favourites.find_by(food: @food)
     @food_images = SearchImages.call(@food.name)
+    @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 end
