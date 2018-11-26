@@ -16,9 +16,25 @@
       <%= link_to root_path, class: "bottom-icon" do %>
         <i class="fas fa-shopping-bag"></i>
       <% end %>
-      <%= button_to food_favourites_path(current_user, @food), method: :post, class: "bottom-icon" do %>
-        <i class="fas fa-heart"></i>
+      <% if @favourite %>
+        <%= button_to food_favourite_path(@food, @favourite, result_id: @result.id), method: :delete, class: "bottom-icon" do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      <% else %>
+        <%= button_to food_favourites_path(@food, result_id: @result.id), method: :post, class: "bottom-icon", id: "add-heart" do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
       <% end %>
+
+
+      <script>
+        $(function() {
+          $("#add-heart").on("click", function() {
+            $("#add-heart .fa-heart").toggleClass("added");
+          });
+        });
+      </script>
+
   </div>
   <!-- desc -->
   <div class="food-desc">
