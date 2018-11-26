@@ -1,6 +1,3 @@
-require "json"
-require "open-uri"
-
 class ResultsController < ApplicationController
   def index
     @menu = Menu.where(user_id: current_user.id)

@@ -1,5 +1,3 @@
-require 'json'
-
 class SearchImages
   base_url = "https://www.googleapis.com/customsearch/v1?&"
   parameters = {
@@ -37,8 +35,10 @@ end
 # 5. use begin/rescue method for the case the url returns no images
 
 # REFERENCES
-# 1. We set some parameters out of "call" method to improve the runtime performance.
-#
+# 1. We set some variables out of "call" method to improve the runtime performance.
+#     All these variables are to create endpoint URL.
+#     In parameters[:fields], you can manipulate the returned hash content
+#     To improve runtime performance, we narrow results to necessary things.
 
 # 2. It's important to use "URI.encode" method for the keyword to
 #     convert NON-english language into ascii code.
