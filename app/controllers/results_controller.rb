@@ -46,7 +46,7 @@ class ResultsController < ApplicationController
         # ------------------------------------------
         # if result.food.images.nil?
         #   keyword = "#{result.food.name}+#{translation_of_meal}"
-        #   attributes = SearchImages.call(keyword)
+        #   attributes = SearchImagesAndPopularity.call(keyword)
         #   result.food.popularity = attributes[:popularity]
         #   result.food.images = attributes[:image_paths]
         #   result.food.save!
