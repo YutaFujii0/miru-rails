@@ -13,7 +13,7 @@ class ResultsController < ApplicationController
 
   def order
     # @menu = Menu.where(user_id: current_user.id)
-    @orders = Result.where(order: 0, menu_id: params[:menu_id].to_i)
+    @orders = Result.where(order: 1, menu_id: params[:menu_id].to_i)
 
     url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=udon"
 
