@@ -15,7 +15,6 @@ class FavouritesController < ApplicationController
     redirect_to food_path(@favourite.food, result_id: @result.id)
   end
 
-
   def destroy
     @favourite = Favourite.find(params[:id])
     @favourite.delete

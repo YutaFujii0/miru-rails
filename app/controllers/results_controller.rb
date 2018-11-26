@@ -9,6 +9,8 @@ class ResultsController < ApplicationController
     @results = Menu.find(params[:menu_id]).results
     # search images for each food
     @results_with_data = search_image_for_each_food(@results)
+    @fav = Favourite.where(user_id: current_user) #footer favourite number
+    @all = @results.to_json
   end
 
   def order
@@ -41,11 +43,12 @@ class ResultsController < ApplicationController
     pool = Concurrent::FixedThreadPool.new(10)
     completed = []
 
-    translation_of_meal = Language.find_by(code: results.first.lang).meal_is
+    # translation_of_meal = Language.find_by(code: results.first.lang).meal_is
     results.each do |result|
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
+
         result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
         # ***** FOP PRODUCTION purpose *****
         # if result.food.images.nil?
