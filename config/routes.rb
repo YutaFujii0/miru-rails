@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :results, only: [:index, :show, :create, :edit]
   end
   resources :results, only: [:update]
+
   resources :foods, only: [:index, :show] do
     resources :favourites, only: [:create, :destroy]
   end

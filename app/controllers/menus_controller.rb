@@ -6,8 +6,8 @@ class MenusController < ApplicationController
   def create
     # ==========================================
     # ***** FOP DEVELOPMENT purpose *****
-    detect_words = "-7 チキンナンバン690\nかきあげ690 |\n山田醤油\nおでん盛合せ690|みりん干し,590モモステーキ"
-    words = RefineWords.call(detect_words)
+    detect_words = "かんぱち"
+    words = { language: "ja", text: RefineWords.call(detect_words) }
     # ***** FOP PRODUCTION purpose *****
     # words = GoogleCloudVisionJob.perform_now(params[:menu][:photo].tempfile.path)
     # ==========================================
@@ -19,7 +19,7 @@ class MenusController < ApplicationController
       # split the job to increase performance
       StoreImageInCloudinaryJob.perform_now(@menu, menu_params[:photo].tempfile.path)
       sleep(0.1) unless words
-      create_result_instances(@menu, words)
+      create_result_instances(@menu, words[:language], words[:text])
       redirect_to menu_results_path(@menu)
     else
       render 'new'
@@ -28,20 +28,12 @@ class MenusController < ApplicationController
 
   private
 
-  def create_result_instances(menu, words)
+  def create_result_instances(menu, language, words)
     # create result instance
-    # ==========================================
-    # ***** FOP DEVELOPMENT purpose *****
-    detect_words = "00000000000 1000\n本日のおすすめ\n播磨産生カキ\nお刺身盛合せ\n秋田しいたけ\nピクルス\n天ぷら\nマヨチーズ焼き5 9\nサーモンとキノコ"
-    # ***** FOP PRODUCTION purpose *****
-    # detect_words = DetectWords.call(menu.photo.metadata["url"])
-    # ==========================================
-    # refined_words = RefineWords.call(detect_words)
-    # refined_words.each do |word|
     # create food instance if it's new
     words.each do |word|
       food = Food.find_by_name(word) || Food.create(name: word)
-      Result.create!(menu_id: menu.id, food_id: food.id)
+      Result.create!(menu_id: menu.id, food_id: food.id, lang: language)
     end
   end
 
