@@ -6,7 +6,9 @@ class MenusController < ApplicationController
   def create
     # ==========================================
     # ***** FOP DEVELOPMENT purpose *****
-    detect_words = "かんぱち"
+
+    detect_words = "かんぱち\nうどん\nお好み焼き\n天丼"
+
     words = { language: "ja", text: RefineWords.call(detect_words) }
     # ***** FOP PRODUCTION purpose *****
     # words = GoogleCloudVisionJob.perform_now(params[:menu][:photo].tempfile.path)
