@@ -11,6 +11,7 @@
   .add-cart {
     display:flex;justify-content:space-around;
     background:#000;text-align:center;
+    form, button {background:none;border:0;}
     .bottom-icon {display:block;padding:15px 0 12px;}
     .fa-shopping-bag {font-size:30px;color:#fff;}
     .fa-shopping-bag:after {
