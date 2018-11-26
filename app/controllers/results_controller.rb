@@ -13,13 +13,14 @@ class ResultsController < ApplicationController
 
   def order
     # @menu = Menu.where(user_id: current_user.id)
-    @orders = Result.where(order: 1, menu_id: params[:menu_id].to_i)
+    @orders = Result.where("results.order > ?", 0).where(menu_id: params[:menu_id].to_i)
 
     url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=udon"
 
     food_wiki = JSON.parse(open(url).read)
     @food_title = food_wiki["query"]["pages"].values[0]["title"]
     @food_summary = food_wiki["query"]["pages"].values[0]["extract"]
+
     # search_image_for_each_food_order(@orders)
   end
 
@@ -31,6 +32,7 @@ class ResultsController < ApplicationController
     respond_to do |format|
         format.js
     end
+    raise
   end
 
   private
@@ -45,17 +47,15 @@ class ResultsController < ApplicationController
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
-        # puts translation_of_meal
-        # result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
+        result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
         # ***** FOP PRODUCTION purpose *****
-        # call searhcimages method and store the returned array
-        if result.food.images.nil?
-          keyword = "#{result.food.name}+#{translation_of_meal}"
-          attributes = SearchImages.call(keyword)
-          result.food.popularity = attributes[:popularity]
-          result.food.images = attributes[:image_paths]
-          result.food.save!
-        end
+        # if result.food.images.nil?
+        #   keyword = "#{result.food.name}+#{translation_of_meal}"
+        #   attributes = SearchImages.call(keyword)
+        #   result.food.popularity = attributes[:popularity]
+        #   result.food.images = attributes[:image_paths]
+        #   result.food.save!
+        # end
         # ==========================================
         completed << 1
       end
