@@ -21,6 +21,7 @@
       content:'ADD TO CART';
     } // fa-shopping-bag:after
     .fa-heart {font-size:30px;color:#fff;}
+    .fa-heart.added {color:#ff7800 !important;}
     .fa-heart:after {
       display:block;padding-top:5px;
       font-size:9px;color:#fff;

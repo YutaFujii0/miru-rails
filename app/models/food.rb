@@ -1,5 +1,6 @@
 class Food < ApplicationRecord
   has_many :results, dependent: :destroy
+  has_many :favourites, dependent: :destroy
 
   # for temporary use
   SAMPLE_IMAGES = [
