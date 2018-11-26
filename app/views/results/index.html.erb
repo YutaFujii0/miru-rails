@@ -19,24 +19,23 @@
   </div>
 </div>
 <div id="hello">
-  <div class="search-container">
-    <% counter = 0 %>
+  <div class="search-container" >
     <% @results.each do |result| %>
-      <div class="content">
-        <div onclick="imageClicked(<%= counter %>)" class="img-div" id="<%= counter %>" >
-          <div class="overlay not-clicked">
+      <div class="content" id="<%= result.food_id %>">
+        <div onclick="imageClicked(<%= result.id %>, <%= result.food_id%> )" class="img-div"  >
+          <div class="overlay not-clicked" id="<%= result.id %>">
             <div class="overlay-container">
               <div class="icons">
                 <i class="fas fa-check-circle"></i>
               </div>
             </div>
           </div>
-          <%= link_to menu_result_path(current_user,result), method: :patch, remote: true do %>
+          <%= link_to menu_result_path(current_user, result), method: :patch, remote: true do %>
             <%= cl_image_tag(result.food.images[0], class: "img") %>
           <% end %>
         </div>
         <%= link_to food_path(result.id), class: "link-food" do %>
-          <div class="text-info">
+          <div class="text-info" >
             <div class="text-content">
               <p style="margin:0;">English name</p>
               <small class="search-food-desc"><%= result.food.name %></small>
@@ -49,7 +48,6 @@
           </div>
         <% end %>
       </div>
-      <% counter += 1 %>
     <% end %>
   </div>
 </div>
@@ -59,24 +57,42 @@
     <%= link_to root_path, class: "nav-icon" do %>
       <i class="fas fa-camera"></i>
     <% end %>
-    <%= link_to 'See Order', order_path, class: "btn btn-secondary" %>
+    <%= link_to 'See Order', order_path, class: "btn-order" %>
     <%= link_to root_path, class: "nav-icon" do %>
       <i class="fas fa-heart"></i>
     <% end %>
   </div>
 </footer>
 <script>
+  function imageClicked(num, foodname){
+      let image = document.getElementById(num);
+      let textImage = document.getElementById(foodname);
+      image.classList.add('clicked');
+      image.classList.remove("not-clicked");
+      textImage.classList.add("some");
+    }
+    var see_ordered = <%= raw @all %>;
+    see_ordered.forEach((result)=>{
+      if(result.order === 1){
+        console.log("yesn")
+        imageClicked(result.id, result.food_id)
+        console.log("yes")
+      }
+    })
+</script>
+<script>
   var clicked = false;
-  function imageClicked(num){
-      const image = document.getElementById(num).firstChild;
+  function imageClicked(num, foodname){
+      const image = document.getElementById(num);
+      const textImage = document.getElementById(foodname);
       if (image.classList.contains('clicked')) {
         image.classList.remove('clicked');
         image.classList.add("not-clicked");
+        textImage.classList.remove("some");
       } else {
-  
         image.classList.add('clicked');
         image.classList.remove("not-clicked");
+        textImage.classList.add("some");
       }
-  
   }
 </script>

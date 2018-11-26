@@ -8,7 +8,8 @@ class ResultsController < ApplicationController
     # set the instances
     @results = Menu.find(params[:menu_id]).results
     # search images for each food
-    @results_with_data = search_image_for_each_food(@results)
+    search_image_for_each_food(@results)
+    @all = @results.to_json
   end
 
   def order
@@ -40,22 +41,22 @@ class ResultsController < ApplicationController
     pool = Concurrent::FixedThreadPool.new(10)
     completed = []
 
-    translation_of_meal = Language.find_by(code: results.first.lang).meal_is
+    # translation_of_meal = Language.find_by(code: results.first.lang).meal_is
     results.each do |result|
       pool.post do
         # ==========================================
         # ***** FOP DEVELOPMENT purpose *****
         # puts translation_of_meal
-        # result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
+        result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
         # ***** FOP PRODUCTION purpose *****
         # call searhcimages method and store the returned array
-        if result.food.images.nil?
-          keyword = "#{result.food.name}+#{translation_of_meal}"
-          attributes = SearchImages.call(keyword)
-          result.food.popularity = attributes[:popularity]
-          result.food.images = attributes[:image_paths]
-          result.food.save!
-        end
+        # if result.food.images.nil?
+        #   keyword = "#{result.food.name}+#{translation_of_meal}"
+        #   attributes = SearchImages.call(keyword)
+        #   result.food.popularity = attributes[:popularity]
+        #   result.food.images = attributes[:image_paths]
+        #   result.food.save!
+        # end
         # ==========================================
         completed << 1
       end
