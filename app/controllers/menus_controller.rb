@@ -6,10 +6,10 @@ class MenusController < ApplicationController
   def create
     # ==========================================
     # ***** FOP DEVELOPMENT purpose *****
-    # detect_words = "かんぱち"
-    # words = { language: "ja", text: RefineWords.call(detect_words) }
+    detect_words = "かんぱち"
+    words = { language: "ja", text: RefineWords.call(detect_words) }
     # ***** FOP PRODUCTION purpose *****
-    words = GoogleCloudVisionJob.perform_now(params[:menu][:photo].tempfile.path)
+    # words = GoogleCloudVisionJob.perform_now(params[:menu][:photo].tempfile.path)
     # ==========================================
 
     # make new instance without any params on purpose
