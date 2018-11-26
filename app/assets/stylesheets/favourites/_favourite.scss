@@ -1,0 +1,23 @@
+.favourite-container {
+  width: 100%;
+  max-width: 100% !important;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2px;
+
+  .content {
+    grid-column-start: auto;
+  }
+}
+
+.img-fav {
+  width: 100%;
+  height: 120px;
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
