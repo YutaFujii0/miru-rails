@@ -24,7 +24,7 @@
     <% @results.each do |result| %>
       <div class="content">
         <div class="img-div">
-          <%= cl_image_tag(@results_with_data[result][0], class: "img") %>
+          <%= cl_image_tag(result.food.images[0], class: "img") %>
         </div>
         <div class="text-info">
           <div class="text-content">
