@@ -8,7 +8,7 @@ class ResultsController < ApplicationController
     # set the instances
     @results = Menu.find(params[:menu_id]).results
     # search images for each food
-    @results_with_data = search_image_for_each_food(@results)
+    search_image_for_each_food(@results)
     @fav = Favourite.where(user_id: current_user) #footer favourite number
     @all = @results.to_json
   end
