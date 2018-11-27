@@ -30,19 +30,18 @@
               </div>
             </div>
           </div>
-
-          <%= link_to result_path(result), method: :patch, remote: true do %>
+          <%= link_to result_path(result), method: :patch do %>
             <%= cl_image_tag(result.food.images[0], class: "img") %>
           <% end %>
         </div>
-        <%= link_to food_path(result), class: "link-food" do %>
+        <%= link_to food_path(result.food_id), class: "link-food" do %>
           <div class="text-info" >
             <div class="text-content">
               <p style="margin:0;">English name</p>
               <small class="search-food-desc"><%= result.food.name %></small>
             </div>
             <div class="show-page">
-              <%= link_to food_path(result.id) do %>
+              <%= link_to food_path(result.food_id) do %>
                 <i class="fas fa-angle-right"></i>
               <% end %>
             </div>
@@ -74,10 +73,10 @@
     }
     var see_ordered = <%= raw @all %>;
     see_ordered.forEach((result)=>{
-      if(result.order != null){
-        imageClicked(result.id, result.food_id)
+      if(result.order){
+        imageClicked(result.id, result.food_id);
       }
-    })
+    });
 </script>
 <script>
   var clicked = false;
