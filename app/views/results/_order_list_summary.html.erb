@@ -26,7 +26,7 @@
         <td class="table-margin-column"></td>
         <td>total</td>
         <td class="total">
-          <%= @orders.reduce(0) { |product, order| product + order.order } %>
+          <%= @orders.map {|order| order.order}.sum %>
         </td>
         <td class="table-margin-column"></td>
       </tr>

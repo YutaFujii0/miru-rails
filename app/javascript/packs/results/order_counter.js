@@ -42,6 +42,5 @@ function init() {
     for (let i = 0; i < quantity.length; i++ ) {
       createBindings(quantity[i]);
     }
-    total.innerText += quantity.length;
 };
 export default init;
