@@ -23,7 +23,9 @@
       <tr>
         <td class="table-margin-column"></td>
         <td></td>
-        <td class="total text-center"></td>
+        <td class="total text-center">
+          <%= @orders.map {|order| order.order}.sum %>
+        </td>
         <td class="table-margin-column"></td>
       </tr>
     </tfoot>

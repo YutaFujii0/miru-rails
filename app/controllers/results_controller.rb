@@ -28,8 +28,11 @@ class ResultsController < ApplicationController
   # for the order page/ + and - icon
   def update
     @result = Result.find(params[:id])
-    @result.order += params[:result][:order].to_i
-    @result.order = 0 if @result.order < 0
+    if params[:button] == "increase"
+      @result.order += 1
+    elsif params[:button] == "decrease"
+      @result.order -= 1
+    end
     @result.save!
   end
 

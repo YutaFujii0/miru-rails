@@ -10,19 +10,19 @@
     <!-- quantity -->
     <div class="quantity">
       <%= simple_form_for order,remote: true do |f| %>
-        <%= f.input :order, as: :hidden, value: -1 %>
-        <%= f.button :button, class: "decrease", title: "Decrease Quantity" do %>
+        <%= f.input :order, as: :hidden %>
+        <%= f.button :button, value: "decrease", class: "decrease", title: "Decrease Quantity" do %>
           <i class="fas fa-minus-circle"></i>
         <% end %>
       <% end %>
       <input type="text" class="quantity-amount" name="" value="<%= order.order %>" />
-  <%= simple_form_for order,remote: true do |f| %>
-    <%= f.input :order, as: :hidden, value: 1 %>
-    <%= f.button :button, class: "increase", title: "Increase Quantity" do %>
-      <!-- <button class="increase" type="button" title="Increase Quantity"><i class="fas fa-plus-circle"></i></button> -->
-      <i class="fas fa-plus-circle"></i>
-    <% end %>
-  <% end %>
-</div>
-</div>
+
+      <%= simple_form_for order do |f| %>
+        <%= f.input :order, as: :hidden %>
+        <%= f.button :button, value: "increase", class: "increase", title: "Increase Quantity" do %>
+          <i class="fas fa-plus-circle"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
