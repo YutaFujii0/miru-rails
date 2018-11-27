@@ -4,10 +4,14 @@ class ResultsController < ApplicationController
     # set the instances
     # search images for each food
 
-    @results = Menu.find(params[:menu_id]).results
+    @results = Result.where(menu_id: params[:menu_id])
     search_image_for_each_food(@results)
     @fav = Favourite.where(user_id: current_user) #footer favourite number
     @all = @results.to_json
+
+    @sort_name = @results.includes(:food).order("foods.name")
+    @sort_popularity = @results.includes(:food).order("foods.popularity")
+
   end
 
   def order
@@ -24,8 +28,11 @@ class ResultsController < ApplicationController
   # for the order page/ + and - icon
   def update
     @result = Result.find(params[:id])
-    @result.order += params[:result][:order].to_i
-    @result.order = 0 if @result.order < 0
+    if params[:button] == "increase"
+      @result.order += 1
+    elsif params[:button] == "decrease"
+      @result.order -= 1
+    end
     @result.save!
   end
 
@@ -47,18 +54,22 @@ class ResultsController < ApplicationController
     results.each do |result|
       pool.post do
         # ==========================================
-        if result.food.images.nil?
-          result.food.images = [Food::SAMPLE_IMAGES.sample]
-          result.food.save!
-        end
-        # ------------------------------------------
         # if result.food.images.nil?
-        #   keyword = "#{result.food.name}+#{translation_of_meal}"
-        #   attributes = SearchImagesAndPopularity.call(keyword)
-        #   result.food.popularity = attributes[:popularity]
-        #   result.food.images = attributes[:image_paths]
+        #   result.food.images = [Food::SAMPLE_IMAGES.sample]
         #   result.food.save!
         # end
+        # ------------------------------------------
+        if result.food.en.nil?
+          result.food.en = Translate.call(result.food.name)
+          result.food.save!
+        end
+        if result.food.images.nil?
+          keyword = "#{result.food.name}+#{translation_of_meal}"
+          attributes = SearchImagesAndPopularity.call(keyword)
+          result.food.popularity = attributes[:popularity]
+          result.food.images = attributes[:image_paths]
+          result.food.save!
+        end
         # ==========================================
         completed << 1
       end

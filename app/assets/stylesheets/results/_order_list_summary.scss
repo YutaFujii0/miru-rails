@@ -9,24 +9,28 @@
 
 .order-list-summary {
   width: 100%;
+
   table {
     width: 100%;
   }
+
   thead {
     background-color: $beige;
     color: $dark-beige;
   }
+
   tbody {
     background-color: $light-beige;
     color: $dark-gray;
   }
-  tbody td {
-    border-bottom: $beige solid 1px;
-  }
+
+  tbody td {}
+
   tfoot {
     background-color: $light-beige;
     border-top: $dark-beige solid 1px;
   }
+
   .table-margin-column {
     border: none;
     width: 10px;

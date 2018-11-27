@@ -135,10 +135,47 @@
   }
 }
 
+@keyframes movieInDownFast {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes movieInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes movieInLeft {
   0% {
     opacity: 0;
     transform: translateX(-15px);
+  }
+
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes movieInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(15px);
   }
 
 
@@ -200,10 +237,11 @@ footer {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
+
   position: absolute;
-  display: block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .not-clicked {
@@ -217,7 +255,7 @@ footer {
 .overlay-container {
   display: flex;
   width: 100%;
-  height: 160px;
+  height: 25vh;
   justify-content: space-around;
   align-items: center;
   font-size: 75px;
