@@ -31,7 +31,7 @@
         <%= link_to results_food_show_path(result.food_id, result), class: "link-food" do %>
           <div class="text-info" >
             <div class="text-content">
-              <p style="margin:0;">English name</p>
+              <p style="margin:0;"><%= result.food.en %></p>
               <small class="search-food-desc"><%= result.food.name %></small>
             </div>
             <div class="show-page">
