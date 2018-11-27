@@ -28,8 +28,8 @@ class MenusController < ApplicationController
     # words = GoogleCloudVisionJob.perform_now(params[:menu][:photo].tempfile.path)
     # ==========================================
 
-    if words[:text].nil? # -> REFERENCE 5 (refer to the bottom)
-      flash[:alert] = "We can't detect any words from your photo."
+    if words[:text].nil? || words[:text].empty? # -> REFERENCE 5 (refer to the bottom)
+      flash[:alert] = "We can't detect any meaningful word from your photo."
       redirect_to root_path
     else
       @menu = Menu.new # -> REFERENCE 2 (refer to the bottom)

@@ -50,7 +50,7 @@ class ResultsController < ApplicationController
     # pool = Concurrent::FixedThreadPool.new(10)
     completed = []
 
-    translation_of_meal = Language.find_by(code: results.first.lang).meal_is # -> REFERENCE 1 (refer to the bottom)
+    translation_of_meal = Language.find_by(code: results.first.lang)&.meal_is # -> REFERENCE 1 (refer to the bottom)
     results.each do |result|
       # pool.post do
         # ==========================================
