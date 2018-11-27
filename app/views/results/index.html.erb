@@ -30,7 +30,7 @@
               </div>
             </div>
           </div>
-          <%= link_to result_path(result), method: :patch do %>
+          <%= link_to result_path(result),remote: true, method: :patch do %>
             <%= cl_image_tag(result.food.images[0], class: "img") %>
           <% end %>
         </div>
