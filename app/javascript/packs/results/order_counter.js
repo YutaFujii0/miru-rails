@@ -10,7 +10,6 @@ function createBindings(quantityContainer) {
   increase.addEventListener('click', function () { increaseValue(quantityAmount); });
   decrease.addEventListener('click', function () { decreaseValue(quantityAmount); });
   const index = quantityContainer.parentNode.classList[1];
-  console.log(quantityAmount.value);
   table.querySelector(`.${index}`).innerText = parseInt(quantityAmount.value, 10);
 }
 function increaseValue(quantityAmount) {
