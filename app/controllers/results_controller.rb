@@ -18,6 +18,7 @@ class ResultsController < ApplicationController
     food_wiki = JSON.parse(open(url).read)
     @food_title = food_wiki["query"]["pages"].values[0]["title"]
     @food_summary = food_wiki["query"]["pages"].values[0]["extract"]
+    @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 
   # for the order page/ + and - icon

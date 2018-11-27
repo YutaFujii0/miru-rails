@@ -1,8 +1,8 @@
 class FavouritesController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
+    @user = current_user
     @favourited_foods = @user.favourited_foods
-    @food_images = SearchImagesAndPopularity.call(@user.favourited_foods[0].name)
+    @food_images = SearchImagesAndPopularity.call("udon")
   end
 
   def create
