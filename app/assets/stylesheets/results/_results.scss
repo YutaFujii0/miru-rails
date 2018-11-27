@@ -260,6 +260,7 @@ footer {
   align-items: center;
   font-size: 75px;
   color: #FF7800;
+  animation: appearSlowly 0.5s ease-in;
 }
 
 .fa-check-circle:after {
@@ -274,4 +275,8 @@ footer {
 .some {
   box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
 
+}
+
+.text-info:hover {
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
 }
