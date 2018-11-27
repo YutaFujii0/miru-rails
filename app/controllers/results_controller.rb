@@ -21,14 +21,19 @@ class ResultsController < ApplicationController
     @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 
+  # for the order page/ + and - icon
   def update
     @result = Result.find(params[:id])
     @result.order += params[:result][:order].to_i
     @result.order = 0 if @result.order < 0
-    @result.save
-    respond_to do |format|
-        format.js
-    end
+    @result.save!
+  end
+
+  # for the result#index page/ check icon
+  def toggle
+    @result = Result.find(params[:id])
+    @result.order = @result.order.zero? ? 1 : 0
+    @result.save!
   end
 
   private
