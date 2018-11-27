@@ -1,7 +1,9 @@
 <!-- top bar -->
 <div class="container" id="common-top">
   <div class="row">
-
+    <%= link_to request.referer, class: "top-back" do %>
+      <i class="fas fa-chevron-left"></i>
+    <% end %>
     <h1><%= @food.name %></h1>
   </div>
 </div>
@@ -9,17 +11,18 @@
 <!-- contents -->
 <div class="container-fluid food-show">
   <!-- cover -->
-  <div class="food-pic"><%= image_tag(@food_images[0]) %></div>
+  <div class="food-pic"></div>
   <div class="add-cart">
       <%= link_to root_path, class: "bottom-icon" do %>
         <i class="fas fa-shopping-bag"></i>
       <% end %>
+
       <% if @favourite %>
-        <%= button_to food_favourite_path(@food, @favourite, result_id: @result.id), method: :delete, class: "bottom-icon added" do %>
+        <%= button_to favourite_path(@favourite), method: :delete, class: "bottom-icon added" do %>
           <i class="fas fa-heart"></i>
         <% end %>
       <% else %>
-        <%= button_to food_favourites_path(@food, result_id: @result.id), method: :post, class: "bottom-icon", id: "add-heart" do %>
+        <%= button_to food_favourites_path(@food), method: :post, class: "bottom-icon", id: "add-heart" do %>
           <i class="fas fa-heart"></i>
         <% end %>
       <% end %>
