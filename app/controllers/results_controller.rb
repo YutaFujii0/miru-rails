@@ -14,7 +14,6 @@ class ResultsController < ApplicationController
     @sort_popularity = @results.sort_by do |result|
       result.food.popularity
     end
-    raise
   end
 
   def order
