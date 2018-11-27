@@ -47,18 +47,22 @@ class ResultsController < ApplicationController
     results.each do |result|
       pool.post do
         # ==========================================
-        if result.food.images.nil?
-          result.food.images = [Food::SAMPLE_IMAGES.sample]
-          result.food.save!
-        end
-        # ------------------------------------------
         # if result.food.images.nil?
-        #   keyword = "#{result.food.name}+#{translation_of_meal}"
-        #   attributes = SearchImagesAndPopularity.call(keyword)
-        #   result.food.popularity = attributes[:popularity]
-        #   result.food.images = attributes[:image_paths]
+        #   result.food.images = [Food::SAMPLE_IMAGES.sample]
         #   result.food.save!
         # end
+        # ------------------------------------------
+        if result.food.en.nil?
+          result.food.en = Translate.call(result.food.name)
+          result.food.save!
+        end
+        if result.food.images.nil?
+          keyword = "#{result.food.name}+#{translation_of_meal}"
+          attributes = SearchImagesAndPopularity.call(keyword)
+          result.food.popularity = attributes[:popularity]
+          result.food.images = attributes[:image_paths]
+          result.food.save!
+        end
         # ==========================================
         completed << 1
       end
