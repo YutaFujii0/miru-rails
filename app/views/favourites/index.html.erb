@@ -1,14 +1,12 @@
-<nav>
-  <div class="nav-container fixed-top">
-    <%= link_to root_path, class: "nav-icon left" do %>
-      <i class=""></i>
+<!-- top bar -->
+<div class="container" id="common-top">
+  <div class="row">
+    <%= link_to request.referer, class: "top-back" do %>
+      <i class="fas fa-chevron-left"></i>
     <% end %>
-    <h3>Favourites</h3>
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class=""></i>
-    <% end %>
+    <h1>Favourites</h1>
   </div>
-</nav>
+</div>
 <div class="controller-sort-wrapper">
   <div class="controller-container">
     <ul class="list-inline">
