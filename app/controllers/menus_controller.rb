@@ -28,7 +28,7 @@ class MenusController < ApplicationController
     # words = GoogleCloudVisionJob.perform_now(params[:menu][:photo].tempfile.path)
     # ==========================================
 
-    if words[:text].nil?
+    if words[:text].nil? # -> REFERENCE 5 (refer to the bottom)
       flash[:alert] = "We can't detect any words from your photo."
       redirect_to root_path
     else
@@ -88,3 +88,11 @@ end
 #     We set it into Results table, but it might be better to set inside Food table.
 #     We use this language column when we search images for each food.
 #     See results controller, "search_image_for_each_food" method for more detail.
+
+# 5. When user upload photo which Google cant detect any words, redirect to LP
+#     For better user experience, we give feedback message.
+#     This feedback message is on template Devise gem, thus
+#     - See Devise gem README file for more detail about syntax flash[:alert]
+#     - Better to create custom flash template
+#     <NOTE>
+#     As this line we don't have Menu instance, 'render :new' causes error.
