@@ -4,11 +4,9 @@
 }
 
 .result-top {
-  display: flex;
-  flex-wrap: nowrap;
+  text-align:center;
   overflow-x: auto;
   background-color: $very-dark-gray;
-  height: 110px;
 }
 
 .result-body {
