@@ -46,17 +46,7 @@
   </div>
 </div>
 <!-- // hello -->
-<footer class="footer">
-  <div class="bottom-container" >
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-camera"></i>
-    <% end %>
-    <%= link_to 'See Order', order_path, class: "btn-order" %>
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-heart"></i>
-    <% end %>
-  </div>
-</footer>
+<%= render 'shared/favbotbar' %>
 <script>
   function imageClicked(num, foodname){
       let image = document.getElementById(num);
