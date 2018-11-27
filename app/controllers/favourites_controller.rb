@@ -2,8 +2,7 @@ class FavouritesController < ApplicationController
   def index
     @user = current_user
     @favourited_foods = @user.favourited_foods
-    @food_images = SearchImages.call(@favourited_foods[0].name)
-
+    @food_images = SearchImagesAndPopularity.call(@user.favourited_foods[0].name)
   end
 
   def create
