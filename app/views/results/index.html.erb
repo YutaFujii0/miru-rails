@@ -1,14 +1,8 @@
-<nav>
-  <div class="nav-container fixed-top">
-    <%= link_to root_path, class: "nav-icon left" do %>
-      <i class="fas fa-angle-left"></i>
-    <% end %>
-    <h3>Results</h3>
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-sort-amount-down"></i>
-    <% end %>
-  </div>
-</nav>
+<% content_for :title do %>
+  Results
+<% end %>
+<!-- NEW top bar -->
+<%= render 'shared/favtopbar' %>
 <div class="controller-sort-wrapper">
   <div class="controller-container">
     <ul class="list-inline">
