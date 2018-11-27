@@ -15,11 +15,11 @@
         <i class="fas fa-shopping-bag"></i>
       <% end %>
       <% if @favourite %>
-        <%= button_to food_favourite_path(@food, @favourite, result_id: @result.id), method: :delete, class: "bottom-icon added" do %>
+        <%= button_to favourite_path(@favourite), method: :delete, class: "bottom-icon added" do %>
           <i class="fas fa-heart"></i>
         <% end %>
       <% else %>
-        <%= button_to food_favourites_path(@food, result_id: @result.id), method: :post, class: "bottom-icon", id: "add-heart" do %>
+        <%= button_to food_favourites_path(@food), method: :post, class: "bottom-icon", id: "add-heart" do %>
           <i class="fas fa-heart"></i>
         <% end %>
       <% end %>

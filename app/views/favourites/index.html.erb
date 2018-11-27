@@ -22,6 +22,7 @@
   <div class="favourite-container">
     <% counter = 0 %>
     <% @favourited_foods.each do |favourited_food| %>
+      <%= link_to food_path(favourited_food) do %>
       <div class="content">
         <div class="img-fav">
           <% if favourited_food.images.nil? %>
@@ -42,6 +43,7 @@
             </div>
           </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>
