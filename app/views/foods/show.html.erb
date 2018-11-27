@@ -44,14 +44,15 @@
       VIEW IN WIKIPEDIA <i class="fas fa-chevron-right"></i>
     </a>
     <dl>
+      <dt><%= @food.en %></dt>
       <dt><%= @food.name %></dt>
       <dd>But my hunger (which is as existent as the sun, ’cause I am always hungry) aside, I decided to take time out from my daily occupation of feeling hungry to make a list of books that have provided remission to my hungry brain and tummy. I hope that they will do the same for you.</dd>
     </dl>
   </div>
   <!-- extra img -->
   <ul class="foods-extra">
-    <% @food_images.each do |image| %>
-      <li><%= cl_image_tag(image, class: "food-card") %></li>
+    <% @food_images[:image_paths].each do |image| %>
+      <li><%= image_tag(image, class: "food-card") %></li>
     <% end %>
   </ul>
 </div>
