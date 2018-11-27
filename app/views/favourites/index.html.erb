@@ -1,14 +1,12 @@
-<nav>
-  <div class="nav-container fixed-top">
-    <%= link_to root_path, class: "nav-icon left" do %>
-      <i class="fas fa-angle-left"></i>
+<!-- top bar -->
+<div class="container" id="common-top">
+  <div class="row">
+    <%= link_to request.referer, class: "top-back" do %>
+      <i class="fas fa-chevron-left"></i>
     <% end %>
-    <h3>Favourites</h3>
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-sort-amount-down"></i>
-    <% end %>
+    <h1>Favourites</h1>
   </div>
-</nav>
+</div>
 <div class="controller-sort-wrapper">
   <div class="controller-container">
     <ul class="list-inline">
@@ -22,32 +20,59 @@
   <div class="favourite-container">
     <% counter = 0 %>
     <% @favourited_foods.each do |favourited_food| %>
+      <%= link_to food_path(favourited_food) do %>
       <div class="content">
         <div class="img-fav">
           <% if favourited_food.images.nil? %>
-            <%= cl_image_tag(@food_images[:image_paths][0], class: "img") %>
+            <%= image_tag(@food_images[:image_paths][0], class: "img") %>
           <% else %>
-            <%= cl_image_tag(favourited_food.images[0], class: "img") %>
+            <%= image_tag(favourited_food.images[0], class: "img") %>
           <% end %>
         </div>
-        <div class="text-info">
-          <div class="text-content">
-            <p style="margin:0;">English name</p>
-            <small class="search-food-desc"><%= favourited_food.name %></small>
+          <div class="text-info" >
+            <div class="text-content">
+              <p style="margin:0;">English name</p>
+              <small class="search-food-desc"><%= favourited_food.name %></small>
+            </div>
+            <div class="show-page">
+              <%= link_to food_path(favourited_food.id) do %>
+                <i class="fas fa-angle-right"></i>
+              <% end %>
+            </div>
           </div>
-        </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>
 <!-- // hello -->
-<footer class="footer">
-  <div class="bottom-container" >
-    <%= link_to root_path, class: "nav-icon" do %>
+<div class="container" id="common-bottom">
+  <div class="row">
+    <!-- camera -->
+    <%= link_to root_path, class: "bottom-icon" do %>
       <i class="fas fa-camera"></i>
     <% end %>
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-heart"></i>
+    <!-- heart -->
+      <%= link_to favourites_path, class: "bottom-icon" do %>
+        <i class="fas fa-heart"></i>
+          <% if @fav.length > 0  %>
+            <span class="cart-num"><%= @fav.length %></span>
+          <% end %>
+      <% end %>
+    <!-- bag -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-shopping-bag"></i>
+      <!-- if cart is empty add 'empty' class -->
+      <span class="cart-num empty"></span>
+      <!-- <span class="cart-num">3</span> -->
+    <% end %>
+    <!-- clock -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-clock"></i>
+    <% end %>
+    <!-- user -->
+    <%= link_to root_path, class: "bottom-icon" do %>
+      <i class="fas fa-user-circle"></i>
     <% end %>
   </div>
-</footer>
+</div>
