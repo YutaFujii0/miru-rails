@@ -3,14 +3,14 @@ Rails.application.routes.draw do
 
   root to: 'menus#new'
   get 'menus/:menu_id/orders', to: "results#order", as: :order
-  resources :menus, only: [:index, :create] do
-    resources :results, only: [:index, :show, :create, :edit]
+  resources :menus, only: [:create] do
+    resources :results, only: [:index]
   end
   resources :results, only: [:update]
 
-  resources :foods, only: [:index, :show] do
-    resources :favourites, only: [:create, :destroy]
+  resources :foods, only: [:show] do
+    resources :favourites, only: [:create]
   end
-  resources :favourites, only: [:index]
+  resources :favourites, only: [:index, :destroy]
 end
 
