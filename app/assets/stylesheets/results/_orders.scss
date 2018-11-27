@@ -16,7 +16,7 @@
   padding-top: 30px;
   width: 100%;
   max-width: 100% !important;
-  padding:10px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -26,6 +26,7 @@
     font-size: $font-size-emphasize;
     margin: 10px 0;
   }
+
   h3 {
     font-size: 24px;
     color: $gray;
@@ -34,24 +35,100 @@
 }
 
 .quantity {
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: 100px;
+
   .quantity-amount {
-    text-align:center;
+    text-align: center;
     // background:#f4f4f4;
-    border:0;
-    font-size:80px;
+    border: 0;
+    font-size: 80px;
   }
+
   button {
     font-size: 70px;
     color: $gray;
     margin-top: 0 30px;
     background-color: $very-light-gray;
   }
+
   input {
     width: 100px;
     background-color: rgb(236, 236, 236);
+  }
+}
+
+.image-order {
+  animation: movieInUp 1s linear;
+}
+
+.banner {
+  .img-top {
+    &:hover {}
+  }
+
+  .active {
+    .img-top {
+      box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
+      animation: goUp 0.75s linear;
+
+      &:active {
+
+        border: 2px solid white;
+      }
+
+    }
+  }
+}
+
+@keyframes goUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.card-result-body {
+  background-color: white;
+}
+
+.quantity button,
+.quantity input {
+  background-color: white;
+  overflow: hidden;
+}
+
+.quantity-amount {
+  animation: appearSlowly 1s linear;
+}
+
+body {
+  background-color: white;
+}
+
+.order-list-summary {
+  color: black;
+}
+
+.order-list-summary thead {
+
+  font-weight: bold;
+}
+
+.order-list-summary tbody td {
+  color: black;
+
+  .english {
+    font-weight: bold;
+    color: #8A8A8A;
   }
 }

@@ -8,12 +8,10 @@ class ResultsController < ApplicationController
     search_image_for_each_food(@results)
     @fav = Favourite.where(user_id: current_user) #footer favourite number
     @all = @results.to_json
-    @sort_name =  @results.sort_by do |result|
-      result.food.name
-    end
-    @sort_popularity = @results.sort_by do |result|
-      result.food.popularity
-    end
+
+    @sort_name = @results.includes(:food).order("foods.name")
+    @sort_popularity = @results.includes(:food).order("foods.popularity")
+
   end
 
   def order
