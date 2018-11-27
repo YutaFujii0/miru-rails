@@ -1,20 +1,16 @@
-require "json"
-require "open-uri"
-
 class ResultsController < ApplicationController
   def index
-    @menu = Menu.where(user_id: current_user.id)
     # TODO: return all results with image paths
     # set the instances
-    @results = Menu.find(params[:menu_id]).results
     # search images for each food
+
+    @results = Menu.find(params[:menu_id]).results
     search_image_for_each_food(@results)
     @fav = Favourite.where(user_id: current_user) #footer favourite number
     @all = @results.to_json
   end
 
   def order
-    # @menu = Menu.where(user_id: current_user.id)
     @orders = Result.where("results.order > ?", 0).where(menu_id: params[:menu_id].to_i)
 
     url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=udon"
@@ -22,8 +18,6 @@ class ResultsController < ApplicationController
     food_wiki = JSON.parse(open(url).read)
     @food_title = food_wiki["query"]["pages"].values[0]["title"]
     @food_summary = food_wiki["query"]["pages"].values[0]["extract"]
-
-    # search_image_for_each_food_order(@orders)
   end
 
   def update
@@ -39,21 +33,22 @@ class ResultsController < ApplicationController
   private
 
   def search_image_for_each_food(results)
-    # boost threads to imcrease performance
+    # boost threads to increase performance
     pool = Concurrent::FixedThreadPool.new(10)
     completed = []
 
-    # translation_of_meal = Language.find_by(code: results.first.lang).meal_is
+    translation_of_meal = Language.find_by(code: results.first.lang).meal_is # -> REFERENCE 1 (refer to the bottom)
     results.each do |result|
       pool.post do
         # ==========================================
-        # ***** FOP DEVELOPMENT purpose *****
-
-        result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
-        # ***** FOP PRODUCTION purpose *****
+        if result.food.images.nil?
+          result.food.images = [Food::SAMPLE_IMAGES.sample]
+          result.food.save!
+        end
+        # ------------------------------------------
         # if result.food.images.nil?
         #   keyword = "#{result.food.name}+#{translation_of_meal}"
-        #   attributes = SearchImages.call(keyword)
+        #   attributes = SearchImagesAndPopularity.call(keyword)
         #   result.food.popularity = attributes[:popularity]
         #   result.food.images = attributes[:image_paths]
         #   result.food.save!
@@ -62,33 +57,21 @@ class ResultsController < ApplicationController
         completed << 1
       end
     end
-
     # temporary measure: wait_for_termination does not work well
     sleep(0.1) unless completed.count == results.count
     pool.shutdown
     pool.wait_for_termination
   end
-
-  # def search_image_for_each_food_order(results)
-  #   # boost threads to imcrease performance
-  #   pool = Concurrent::FixedThreadPool.new(10)
-  #   completed = []
-
-  #   @orders.each do |result|
-  #     pool.post do
-  #       # ==========================================
-  #       # ***** FOP DEVELOPMENT purpose *****
-  #       result.food.images = [Food::SAMPLE_IMAGES.sample] if result.food.images.nil?
-  #       # ***** FOP PRODUCTION purpose *****
-  #       # call searhcimages method and store the returned array
-  #       # result.food.images = SearchImages.call(result.food.name) if result.food.images.nil?
-  #       # ==========================================
-  #       completed << 1
-  #     end
-  #   end
-  #   # temporary measure: wait_for_termination does not work well
-  #   sleep(1) unless completed.count == @orders.count
-  #   pool.shutdown
-  #   pool.wait_for_termination
-  # end
 end
+
+# REFERENCES
+# 1. Here, we get the string of 'meal' translated to the language of the menu.
+#     This variable is used for creating keyword which we pass to the API.
+#     The reason for this is to improve the relevance of the result images.
+#     For example, Japanese menu has lot of fishes which really is 'sashimi',
+#     but if you put those words API returns the fish itself not the meal.
+#     There are other possibilities as an additional keyword to search with:
+#       - food(english)
+#       - meal(english)
+#       - 'food'(translated to that lang)
+#     However we feel 'meal'(translated) is the best performer.

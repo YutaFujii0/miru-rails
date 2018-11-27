@@ -7,3 +7,8 @@ class DetectWords
     { language: image.text.locale, text: image.text.text }
   end
 end
+
+# TODO: to retrieve words and language of the context
+# - words will be used to show the result
+# - language will be used to improve the relevance of the images of that meal
+# See app/services/search_images.rb for more detail.
