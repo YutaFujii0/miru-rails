@@ -1,5 +1,7 @@
 class RefineWords
   def self.call(words)
+    return nil if words.nil?
+
     # store words because argument word is frozen
     new_words = +words
     # omit letters in parentheses
