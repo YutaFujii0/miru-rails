@@ -21,7 +21,7 @@ class MenusController < ApplicationController
 
     # uncomment either part -> REFERENCE 1 (refer to the bottom)
     # ==========================================
-    detect_words = "かんぱち"
+    detect_words = "かんぱち\nうどん\nお好み焼き\n天丼"
     words = { language: "ja", text: RefineWords.call(detect_words) }
     # ------------------------------------------
     # words = GoogleCloudVisionJob.perform_now(params[:menu][:photo].tempfile.path)

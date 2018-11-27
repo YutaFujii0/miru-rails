@@ -23,6 +23,8 @@
 
   }
 
+
+
   .img-div {
     position: relative;
     width: 100%;
@@ -154,7 +156,21 @@ footer {
   background-color: black;
 
   color: white;
+  text-decoration: none;
+
+  .nav-icon:link,
+  .nav-icon:visited {
+    color: white;
+    text-decoration: none;
+  }
+
+  .btn-order:link,
+  .btn-order:visited {
+    color: grey;
+  }
 }
+
+
 
 .bottom-container {
   padding: 10px 20px;
@@ -170,6 +186,7 @@ footer {
 .link-food:hover {
   cursor: pointer;
   text-decoration: none;
+
 }
 
 .link-food:focus {
@@ -181,13 +198,12 @@ footer {
 
 .clicked {
   width: 100%;
-  height: 160px;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
   position: absolute;
   display: block;
-  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
 }
 
 .not-clicked {
@@ -215,4 +231,9 @@ footer {
 
 .text-content {
   margin: 0;
+}
+
+.some {
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+
 }
