@@ -4,10 +4,14 @@ class ResultsController < ApplicationController
     # set the instances
     # search images for each food
 
-    @results = Menu.find(params[:menu_id]).results
+    @results = Result.where(menu_id: params[:menu_id])
     search_image_for_each_food(@results)
     @fav = Favourite.where(user_id: current_user) #footer favourite number
     @all = @results.to_json
+
+    @sort_name = @results.includes(:food).order("foods.name")
+    @sort_popularity = @results.includes(:food).order("foods.popularity")
+
   end
 
   def order
