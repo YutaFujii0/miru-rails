@@ -16,7 +16,7 @@
       <%= link_to root_path, class: "bottom-icon" do %>
         <i class="fas fa-shopping-bag"></i>
       <% end %>
-
+      <!-- favorite btn -->
       <% if @favourite %>
         <%= button_to favourite_path(@favourite), method: :delete, class: "bottom-icon added" do %>
           <i class="fas fa-heart"></i>
