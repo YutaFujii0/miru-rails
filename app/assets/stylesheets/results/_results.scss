@@ -23,6 +23,8 @@
 
   }
 
+
+
   .img-div {
     position: relative;
     width: 100%;
@@ -133,10 +135,47 @@
   }
 }
 
+@keyframes movieInDownFast {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes movieInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes movieInLeft {
   0% {
     opacity: 0;
     transform: translateX(-15px);
+  }
+
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes movieInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(15px);
   }
 
 
@@ -154,7 +193,21 @@ footer {
   background-color: black;
 
   color: white;
+  text-decoration: none;
+
+  .nav-icon:link,
+  .nav-icon:visited {
+    color: white;
+    text-decoration: none;
+  }
+
+  .btn-order:link,
+  .btn-order:visited {
+    color: grey;
+  }
 }
+
+
 
 .bottom-container {
   padding: 10px 20px;
@@ -170,6 +223,7 @@ footer {
 .link-food:hover {
   cursor: pointer;
   text-decoration: none;
+
 }
 
 .link-food:focus {
@@ -181,13 +235,13 @@ footer {
 
 .clicked {
   width: 100%;
-  height: 160px;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
+
   position: absolute;
-  display: block;
-  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .not-clicked {
@@ -201,11 +255,12 @@ footer {
 .overlay-container {
   display: flex;
   width: 100%;
-  height: 160px;
+  height: 25vh;
   justify-content: space-around;
   align-items: center;
   font-size: 75px;
   color: #FF7800;
+  animation: appearSlowly 0.5s ease-in;
 }
 
 .fa-check-circle:after {
@@ -215,4 +270,13 @@ footer {
 
 .text-content {
   margin: 0;
+}
+
+.some {
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+
+}
+
+.text-info:hover {
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
 }

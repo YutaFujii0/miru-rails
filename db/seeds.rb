@@ -75,7 +75,7 @@ puts "Start creating languages table"
 
 language_base = [
   {code: "ja", name: "Japanese", meal_is: "食事"},
-  {code: "ko", name: "Korean", meal_is: "식사"},
+  {code: "ko", name: "Korean", meal_is: "메뉴"},
   {code: "ru", name: "Russian", meal_is: "еда"},
   {code: "zh", name: "Chinese", meal_is: ""}
 ]

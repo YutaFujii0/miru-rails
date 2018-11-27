@@ -7,9 +7,12 @@
     <!-- heart -->
     <%= link_to root_path, class: "bottom-icon" do %>
       <i class="fas fa-heart"></i>
+      <% if @fav.length > 0  %>
+        <span class="cart-num"><%= @fav.length %></span>
+      <% end %>
     <% end %>
     <!-- bag -->
-    <%= link_to root_path, class: "bottom-icon" do %>
+    <%= link_to order_path, class: "bottom-icon"  do %>
       <i class="fas fa-shopping-bag"></i>
       <!-- if cart is empty add 'empty' class -->
       <span class="cart-num empty"></span>
@@ -25,4 +28,3 @@
     <% end %>
   </div>
 </div>
-
