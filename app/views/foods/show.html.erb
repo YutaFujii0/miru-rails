@@ -11,7 +11,7 @@
 <!-- contents -->
 <div class="container-fluid food-show">
   <!-- cover -->
-  <div class="food-pic"><%= image_tag(@food_images[0]) %></div>
+  <div class="food-pic"><%= image_tag(@food_images[:image_paths][0]) %></div>
   <div class="add-cart">
       <%= link_to root_path, class: "bottom-icon" do %>
         <i class="fas fa-shopping-bag"></i>
