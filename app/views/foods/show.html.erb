@@ -1,7 +1,9 @@
 <!-- top bar -->
 <div class="container" id="common-top">
   <div class="row">
-
+    <%= link_to request.referer, class: "top-back" do %>
+      <i class="fas fa-chevron-left"></i>
+    <% end %>
     <h1><%= @food.name %></h1>
   </div>
 </div>
@@ -14,6 +16,7 @@
       <%= link_to root_path, class: "bottom-icon" do %>
         <i class="fas fa-shopping-bag"></i>
       <% end %>
+      <!-- favorite btn -->
       <% if @favourite %>
         <%= button_to favourite_path(@favourite), method: :delete, class: "bottom-icon added" do %>
           <i class="fas fa-heart"></i>
