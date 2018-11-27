@@ -25,7 +25,9 @@
       <tr>
         <td class="table-margin-column"></td>
         <td>total</td>
-        <td class="total"></td>
+        <td class="total">
+          <%= @orders.reduce(0) { |product, order| product + order.order } %>
+        </td>
         <td class="table-margin-column"></td>
       </tr>
     </tfoot>
