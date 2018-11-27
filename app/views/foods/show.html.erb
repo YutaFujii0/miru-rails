@@ -64,7 +64,7 @@
       <i class="fas fa-camera"></i>
     <% end %>
     <!-- heart -->
-      <%= link_to root_path, class: "bottom-icon" do %>
+      <%= link_to favourites_path, class: "bottom-icon" do %>
         <i class="fas fa-heart"></i>
           <% if @fav.length > 0  %>
             <span class="cart-num"><%= @fav.length %></span>
