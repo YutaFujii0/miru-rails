@@ -4,43 +4,69 @@
 }
 
 .result-top {
-  text-align:center;
+  display: flex;
+  flex-wrap: nowrap;
   overflow-x: auto;
   background-color: $very-dark-gray;
-  padding:15px 0;
+  padding: 15px 0;
 }
 
 .order-body {
-  width:100%;
-  padding:0;margin:0;
-  background:#fff;
-  text-align:center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  text-align: center;
+
   .card-result-body {
-    padding-top:20px;
+    padding-top: 20px;
   }
+
   .card-result-body-img {
-    display:inline-block;
-    width:120px;height:120px;
-    img {width:100%;height:100%;object-fit:cover;}
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 
 .food-description {
-  h2 {padding-top:10px;margin:0;font-size: $font-size-emphasize;color:#222;font-weight:bold;}
-  h3 {padding-top:3px;margin:0;font-size: 22px;color: $gray;}
+  h2 {
+    padding-top: 10px;
+    margin: 0;
+    font-size: $font-size-emphasize;
+    color: #222;
+    font-weight: bold;
+  }
+
+  h3 {
+    padding-top: 3px;
+    margin: 0;
+    font-size: 22px;
+    color: $gray;
+  }
 }
 
 .quantity {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
   .quantity-amount {
     text-align: center;
-    border: 0;font-size:60px;color:#222;font-weight:bold;
+    border: 0;
+    font-size: 60px;
+    color: #222;
+    font-weight: bold;
   }
 
   button {
-    font-size:60px;
+    font-size: 60px;
     margin-top: 0 30px;
     background-color: $very-light-gray;
   }
@@ -52,57 +78,66 @@
 }
 
 .image-order {
-  animation: movieInUp 1s linear;
+  animation: movieInUp 0.4s ease-out;
 }
 
-.banner {
-  .img-top {
-    &:hover {}
-  }
 
-  .active {
-    .img-top {
-      box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
-      animation: goUp 0.75s linear;
-      &:active {
-        border: 2px solid white;
-      }
-    }
-  }
-}
+
 
 @keyframes goUp {
-  0% {transform: translateY(0);}
-  50% {transform: translateY(-5px);}
-  100% {transform: translateY(0);}
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .card-result-body {
-  padding-top:30px;
+  padding-top: 30px;
+
   .card-result-body-img {
-    display:inline-block;width:120px;height:120px;
-    img {width:100%;height:100%;object-fit:cover;}
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 
 .quantity button,
 .quantity input {
-  margin:0;
+  margin: 0;
   background-color: white;
   overflow: hidden;
 }
+
 .quantity button:hover,
-.quantity button:active {color:#909090;}
-.quantity button:focus {color:#909090;}
+.quantity button:active {
+  color: #909090;
+}
+
+.quantity button:focus {
+  color: #909090;
+}
 
 .quantity-amount {
-  animation: appearSlowly 1s linear;
+  animation: appearSlowly 1s ease-out;
 }
 
 
 .top-back {
   &:focus {
-    animation: nextPage 1s linear;
+    animation: nextPage 1s ease-out;
   }
 }
 

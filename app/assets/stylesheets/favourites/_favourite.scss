@@ -4,10 +4,67 @@
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2px;
+  grid-gap: 0;
 
   .content {
     grid-column-start: auto;
+  }
+
+  .text-info {
+    padding: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+
+
+  }
+
+  .img-div {
+    position: relative;
+    width: 100%;
+    height: 160px;
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text-content {
+    overflow: hidden;
+    height: 40px;
+    font-size: 14px;
+    color: black;
+    animation: movieInDown 0.5s linear;
+
+    p {
+      height: 20px;
+      overflow: hidden;
+    }
+
+    small {
+      color: #626B71;
+    }
+  }
+
+  .show-page {
+    animation: movieInLeft 1s linear 1s;
+    animation-fill-mode: backwards;
+
+    .fa-angle-right {
+      color: black;
+    }
+
+    .fa-angle-right:hover {
+      cursor: pointer;
+      animation: nextPage 1s linear;
+
+    }
+
+    .fa-angle-right:active {}
   }
 }
 

@@ -1,16 +1,54 @@
 .card-order-list {
-  display: inline-block;margin:0 5px;
-  width:75px;height:75px;
+  display: inline-block;
+  margin: 0 5px;
+  width: 75px;
+  height: 75px;
   position: relative;
-  img {width:100%;height:100%;object-fit:cover;border:3px solid #4E4E4E;}
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 3px solid #4E4E4E;
+  }
+
   .triangle-wrap {
-  position:absolute;bottom:0;left:50%;
-  margin:0 0 -32px -10px;
-  .fas {font-size:22px;color:#4E4E4E;line-height:1em;}
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin: 0 0 -32px -10px;
+
+    .fas {
+      font-size: 22px;
+      color: #4E4E4E;
+      line-height: 1em;
+    }
   }
 }
 
 .card-order-list.active {
-  img {border-color:#fff;}
-  .fas {color:#fff;}
+
+  img {
+    border-color: #fff;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
+    animation: bounce 0.20s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+
+
+  }
+
+  .fas {
+    color: #fff;
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -5px, 0);
+  }
 }

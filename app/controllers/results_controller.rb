@@ -17,8 +17,13 @@ class ResultsController < ApplicationController
   def order
     @orders = Result.where("results.order > ?", 0).where(menu_id: params[:menu_id].to_i)
     @menu = Menu.find(params[:menu_id])
-    @food_title = @orders.first.food.name
-    @food_summary = @orders.first.food.en
+    if @orders.first.nil? # If no orders made
+      @food_title = ""
+      @food_summary = ""
+    else
+      @food_title = @orders.first.food.name
+      @food_summary = @orders.first.food.en
+    end
     @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 
