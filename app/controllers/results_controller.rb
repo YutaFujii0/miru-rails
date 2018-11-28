@@ -72,8 +72,8 @@ class ResultsController < ApplicationController
         # end
         # ==========================================
         completed << 1
-      end
-    # end
+      # end
+    end
     # temporary measure: wait_for_termination does not work well
     # sleep(0.1) unless completed.count == results.count
     # pool.shutdown

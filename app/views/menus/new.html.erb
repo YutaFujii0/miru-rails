@@ -3,21 +3,47 @@
 <% end %>
 
 <div class="main-wrapper">
-  <div class="logo-container">
-    <%= image_tag "logo.png", class: "" %>
+  <!-- <h1><%= image_tag "logo.png" %></h1> -->
+  <h1 class="alt"><%= image_tag "logo-alt.png" %></h1>
+  <div id="video-container">
+    <video autoplay muted loop class="video">
+      <source src="/assets/mirumov.mp4" type="video/mp4">
+    </video>
+    <canvas class="canvas"></canvas>
   </div>
-  <%= render 'form', menu: @menu %>
+  <div>
+    <%= render 'form', menu: @menu %>
+  </div>
 </div>
+
+<!-- loader -->
 <div id="loading-layer">
   <div class="img">
-    <%= image_tag "loading-animations.gif" %>
+    <%= image_tag "loading-blue.gif" %>
     <div>scanning the menus...</div>
   </div>
 </div>
+
 <script>
   // auto submit when selected a file
   document.getElementById("menu_photo").onchange = function() {
     document.getElementById("new_menu").submit();
     document.getElementById("loading-layer").classList.add("on");
   };
+
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.platform);
+  if (isIOS) {
+      var canvasVideo = new CanvasVideoPlayer({
+          videoSelector: '.video',
+          canvasSelector: '.canvas',
+          timelineSelector: false,
+          autoplay: true,
+          makeLoop: true,
+          pauseOnClick: false,
+          audio: false
+      });
+  }else {
+    // Use HTML5 video
+    document.querySelectorAll('.canvas')[0].style.display = 'none';
+  }
 </script>
