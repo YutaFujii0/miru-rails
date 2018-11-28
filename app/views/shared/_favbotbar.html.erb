@@ -7,7 +7,7 @@
     <!-- bag -->
     <% if @menu %>
       <% orders = Result.where("results.order > ?", 0).where(menu_id: @menu.id).sum("order") %>
-      <%= link_to order_path(@menu), class: "bottom-icon" do %>
+      <%= link_to order_path(@menu), class: "bottom-icon cart-bottom" do %>
         <i class="fas fa-shopping-bag"></i>
         <!-- if cart is empty add 'empty' class -->
         <% if orders > 0  %>
@@ -15,14 +15,11 @@
         <% end %>
         <!-- <span class="cart-num">3</span> -->
       <% end %>
-
-
-
     <% else %>
       <a href="#" class="bottom-icon"><i class="fas fa-shopping-bag hidden"></i></a>
     <% end %>
     <!-- heart -->
-      <%= link_to favourites_path, class: "bottom-icon" do %>
+      <%= link_to favourites_path, class: "bottom-icon heart-bottom" do %>
         <i class="fas fa-heart"></i>
           <% if @fav.length > 0  %>
             <span class="cart-num"><%= @fav.length %></span>

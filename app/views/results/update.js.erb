@@ -1,0 +1,11 @@
+function refreshOrderNum(html) {
+  const cartIconBottom = document.querySelector('.bottom-icon.cart-bottom');
+  if (<%= @order_total %> > 0){
+    cartIconBottom.insertAdjacentHTML("beforeend", html);
+  } else {
+    elem = cartIconBottom.querySelector('.cart-num');
+    elem.parentNode.removeChild(elem);
+  }
+}
+
+refreshOrderNum('<span class="cart-num"><%= @order_total %></span>');

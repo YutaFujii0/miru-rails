@@ -28,7 +28,7 @@ class FavouritesController < ApplicationController
     @favourite.delete
     @fav = Favourite.where(user_id: current_user)
     respond_to do |format|
-      # format.html { redirect_to food_path(@favourite.food) }
+      format.html { redirect_to food_path(@favourite.food) }
       format.js
     end
   end
