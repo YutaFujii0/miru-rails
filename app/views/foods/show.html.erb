@@ -18,11 +18,11 @@
   <div class="food-pic"><%= image_tag(@food.images[0]) %></div>
   <div class="add-cart" id="cart-favourite">
       <% if @result %>
-        <%= button_to toggle_result_path(@result), method: :patch, class: "bottom-icon icon-cart " do %>
+        <%= button_to toggle_result_path(@result),remote: true, method: :patch, class: "bottom-icon icon-cart " do %>
           <i class="fas fa-shopping-bag"></i>
         <% end %>
       <% else %>
-        <%= link_to root_path, class: "bottom-icon" do %>
+        <%= link_to root_path, class: "bottom-icon hidden" do %>
           <i class="fas fa-shopping-bag"></i>
         <% end %>
       <% end %>

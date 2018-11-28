@@ -7,7 +7,7 @@ class FoodsController < ApplicationController
       # from results index page
       @food = Food.find(params[:food_id])
       @result = Result.find(params[:id])
-      @menu = @result.menu.id
+      @menu = @result.menu
     else
       # from favourite index page
       @food = Food.find(params[:id])

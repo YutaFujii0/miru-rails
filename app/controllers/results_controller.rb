@@ -36,6 +36,10 @@ class ResultsController < ApplicationController
       @result.order -= 1
     end
     @result.save!
+    @order_total = Result.where("results.order > ?", 0).where(menu_id: @result.menu.id).sum("order")
+    respond_to do |format|
+      format.js
+    end
   end
 
   # for the result#index page/ check icon
@@ -43,6 +47,10 @@ class ResultsController < ApplicationController
     @result = Result.find(params[:id])
     @result.order = @result.order.zero? ? 1 : 0
     @result.save!
+    @order_total = Result.where("results.order > ?", 0).where(menu_id: @result.menu.id).sum("order")
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

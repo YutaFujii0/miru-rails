@@ -15,7 +15,7 @@
         <% end %>
       <% end %>
       <input type="text" class="quantity-amount total" name="" value="<%= order.order %>" />
-  <%= simple_form_for order do |f| %>
+  <%= simple_form_for order,remote: true do |f| %>
     <%= f.input :order, as: :hidden %>
     <%= f.button :button, value: "increase", class: "increase", title: "Increase Quantity" do %>
       <i class="fas fa-plus-circle"></i>

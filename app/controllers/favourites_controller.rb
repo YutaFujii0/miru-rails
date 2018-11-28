@@ -16,7 +16,10 @@ class FavouritesController < ApplicationController
     @favourite.user = current_user
     @favourite.save
     @fav = Favourite.where(user_id: current_user)
-    # redirect_to food_path(@favourite.food)
+    respond_to do |format|
+      format.html { redirect_to food_path(@favourite.food) }
+      format.js
+    end
   end
 
   def destroy
@@ -24,8 +27,10 @@ class FavouritesController < ApplicationController
     @food = @favourite.food
     @favourite.delete
     @fav = Favourite.where(user_id: current_user)
-    # @result = Result.find(params[:result_id])
-    # redirect_to food_path(@favourite.food)
+    respond_to do |format|
+      format.html { redirect_to food_path(@favourite.food) }
+      format.js
+    end
   end
 
   private
