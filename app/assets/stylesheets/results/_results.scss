@@ -1,6 +1,7 @@
 #hello {
   padding-top: 50px;
   padding-bottom: 50px;
+  height: 100vh;
 }
 
 .search-container {
@@ -45,11 +46,11 @@
     color: black;
     animation: movieInDown 0.5s linear;
 
-    .p {
+    p {
       font-weight: semi-bold;
     }
 
-    .small {
+    small {
       color: #626B71;
     }
   }
@@ -189,20 +190,26 @@
 }
 
 footer {
-  position:fixed;
-  bottom:0;
-  width:100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   height: 50px;
-  background:$navbar-gray;
+  background: $navbar-gray;
   color: white;
   text-decoration: none;
-  .row {display:flex;justify-content:space-between;}
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .bottom-icon {
-    display:inline-block;
-    position:relative;
-    padding:12px 25px;
-    font-size:28px;color:#fff;
-    line-height:0.8em;
+    display: inline-block;
+    position: relative;
+    padding: 12px 25px;
+    font-size: 28px;
+    color: #fff;
+    line-height: 0.8em;
   }
 
   .btn-order:link,
@@ -210,15 +217,27 @@ footer {
     color: white;
     text-decoration: none;
   }
+
   .cart-num {
-  position:absolute;
-  top:0;right:0;margin:10px 12px 0 0;
-  width:24px;height:24px;border-radius:50%;
-  background:$orange;
-  font-size:14px;color:#fff;font-weight:bold;letter-spacing:-1px;
-  text-align:center;line-height:24px;
-}
-.cart-num.empty {display:none;}
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px 12px 0 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: $orange;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: -1px;
+    text-align: center;
+    line-height: 24px;
+  }
+
+  .cart-num.empty {
+    display: none;
+  }
 }
 
 .bottom-container {
@@ -332,7 +351,7 @@ footer {
   margin-left: 170px;
   margin-top: 60px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation: modalopen 1s ease-in;
+  animation: modalopen 1s ease-out;
 
 }
 
@@ -341,7 +360,7 @@ footer {
   margin-left: 175px;
   margin-top: 95%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation: modalopen 1s ease-in 2s;
+  animation: modalopen 0.5s ease-out 2s;
   animation-fill-mode: backwards;
 }
 
