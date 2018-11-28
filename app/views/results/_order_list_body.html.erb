@@ -4,8 +4,8 @@
     <%= cl_image_tag(order.food.images[0], width: 100, height: 100, crop: "fill", class: "img-circle result-center image-order" ) %>
     <!-- desc -->
     <div class="food-description">
-      <h2><%= @food_title %></h2>
-      <h3><%= @food_title %></h3>
+      <h2><%= order.food.name %></h2>
+      <h3><%= order.food.en %></h3>
     </div>
     <!-- quantity -->
     <div class="quantity">
