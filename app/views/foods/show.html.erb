@@ -18,15 +18,17 @@
         <% end %>
       <% end %>
       <!-- favorite btn -->
-      <% if @favourite %>
-        <%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %>
-          <i class="fas fa-heart"></i>
+      <div class="favourite-buttom">
+        <% if @favourite %>
+          <%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= button_to food_favourites_path(@food), method: :post, remote: true, class: "bottom-icon", id: "add-heart" do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= button_to food_favourites_path(@food), method: :post, remote: true, class: "bottom-icon", id: "add-heart" do %>
-          <i class="fas fa-heart"></i>
-        <% end %>
-      <% end %>
+      </div>
       <!--
       <script>
         $(function() {
