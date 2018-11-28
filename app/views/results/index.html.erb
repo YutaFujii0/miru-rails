@@ -1,15 +1,13 @@
 <% content_for :title do %>
   Results
 <% end %>
-<!-- NEW top bar -->
-<%= render 'shared/favtopbar' %>
-<div class="controller-sort-wrapper">
-  <div class="controller-container">
-    <ul class="list-inline">
-      <li>Name <i class="fas fa-sort"></i></li>
-      <li>Recent <i class="fas fa-sort"></i></li>
-      <li>Size <i class="fas fa-sort"></i></li>
-    </ul>
+<div class="container" id="common-top">
+  <div class="row">
+    <%= link_to request.referer, class: "top-back" do %>
+      <i class="fas fa-chevron-left"></i>
+    <% end %>
+    <h1>Result</h1>
+    <a id="modal-btn"><i class="fas fa-question "></i></a>
   </div>
 </div>
 <div id="hello">
@@ -36,13 +34,21 @@
             </div>
             <div class="show-page">
               <%= link_to results_food_show_path(result.food_id, result) do %>
-                <i class="fas fa-angle-right"></i>
+                <i class="fas fa-angle-right "></i>
               <% end %>
             </div>
           </div>
         <% end %>
       </div>
     <% end %>
+  </div>
+</div>
+<div id="my-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-body">
+      <span class="close">&times;</span>
+      <p>Tap on food image to order!</p>
+    </div>
   </div>
 </div>
 <!-- // hello -->
@@ -76,5 +82,33 @@
         image.classList.remove("not-clicked");
         textImage.classList.add("some");
       }
+  }
+</script>
+<script>
+  // Get DOM Elements
+  const modal = document.querySelector('#my-modal');
+  const modalBtn = document.querySelector('#modal-btn');
+  const closeBtn = document.querySelector('.close');
+  
+  // Events
+  modalBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  window.addEventListener('click', outsideClick);
+  
+  // Open
+  function openModal() {
+    modal.style.display = 'block';
+  }
+  
+  // Close
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+  
+  // Close If Outside Click
+  function outsideClick(e) {
+    if (e.target == modal) {
+      modal.style.display = 'none';
+    }
   }
 </script>
