@@ -4,11 +4,9 @@
 }
 
 .result-top {
-  display: flex;
-  flex-wrap: nowrap;
+  text-align:center;
   overflow-x: auto;
   background-color: $very-dark-gray;
-  height: 110px;
 }
 
 .result-body {
@@ -44,7 +42,7 @@
     text-align: center;
     // background:#f4f4f4;
     border: 0;
-    font-size: 80px;
+    font-size: 50px;
   }
 
   button {
@@ -140,4 +138,28 @@ body {
 
 .not-big {
   font-size: 16px;
+}
+
+.top-back {
+  &:focus {
+    animation: nextPage 1s linear;
+  }
+}
+
+@keyframes nextPage {
+  0% {
+    transform: translateX(0px);
+  }
+
+  25% {
+    transform: translateX(5px);
+  }
+
+  50% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(-5px);
+  }
 }

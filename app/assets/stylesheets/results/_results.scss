@@ -1,3 +1,8 @@
+#hello {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 .search-container {
   width: 100%;
   max-width: 100% !important;
@@ -17,6 +22,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: white;
+
 
   }
 
@@ -49,7 +55,7 @@
   }
 
   .show-page {
-    animation: movieInLeft 1s linear 2s;
+    animation: movieInLeft 1s linear 1s;
     animation-fill-mode: backwards;
 
     .fa-angle-right {
@@ -58,7 +64,11 @@
 
     .fa-angle-right:hover {
       cursor: pointer;
+      animation: nextPage 1s linear;
+
     }
+
+    .fa-angle-right:active {}
   }
 }
 
@@ -99,7 +109,6 @@
 }
 
 #hello {
-  height: 100vh;
   background-color: white;
 }
 
@@ -263,6 +272,7 @@ footer {
   align-items: center;
   font-size: 75px;
   color: #FF7800;
+  animation: appearSlowly 0.5s ease-in;
 }
 
 .fa-check-circle:after {
@@ -276,4 +286,116 @@ footer {
 
 .some {
   box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+}
+
+.text-info:hover {
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+}
+
+.link-food {
+  .text-content {
+    p {
+      height: 55%;
+      overflow: hidden;
+    }
+  }
+}
+
+:root {
+  --modal-duration: 1s;
+}
+
+
+
+.fa-question {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.up {
+  width: 50%;
+  margin-left: 170px;
+  margin-top: 60px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation: modalopen 1s ease-in;
+
+}
+
+.down {
+  width: 50%;
+  margin-left: 175px;
+  margin-top: 95%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation: modalopen 1s ease-in 2s;
+  animation-fill-mode: backwards;
+}
+
+.modal-content {
+  background-color: transparent;
+}
+
+.modal-header h2,
+.modal-footer h3 {
+  margin: 0;
+}
+
+
+
+.modal-body {
+  padding: 8px;
+  color: white;
+  font-weight: 700;
+
+  p {
+    font-size: 16px;
+
+  }
+}
+
+.modal-footer {
+  background: var(--modal-color);
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.close {
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+  color: #fff;
+}
+
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fa-shopping-bag:hover,
+.fa-shopping-bag:active {
+  color: lightgrey;
+
 }

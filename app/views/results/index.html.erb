@@ -1,36 +1,31 @@
-<nav>
-  <div class="nav-container fixed-top">
-    <%= link_to root_path, class: "nav-icon left" do %>
-      <i class="fas fa-angle-left"></i>
+<% content_for :meta_title do %>
+  Results
+<% end %>
+<% content_for :title do %>
+  Results
+<% end %>
+<div class="container" id="common-top">
+  <div class="row">
+    <%= link_to request.referer, class: "top-back" do %>
+      <i class="fas fa-chevron-left"></i>
     <% end %>
-    <h3>Results</h3>
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-sort-amount-down"></i>
-    <% end %>
-  </div>
-</nav>
-<div class="controller-sort-wrapper">
-  <div class="controller-container">
-    <ul class="list-inline">
-      <li>Name <i class="fas fa-sort"></i></li>
-      <li>Recent <i class="fas fa-sort"></i></li>
-      <li>Size <i class="fas fa-sort"></i></li>
-    </ul>
+    <h1>Result</h1>
+    <a id="modal-btn"><i class="fas fa-question "></i></a>
   </div>
 </div>
 <div id="hello">
   <div class="search-container" >
-    <% @sort_name.each do |result| %>
+    <% @sort_popularity.each do |result| %>
       <div class="content" id="<%= result.food_id %>">
         <div onclick="imageClicked(<%= result.id %>, <%= result.food_id%> )" class="img-div"  >
-          <div class="overlay not-clicked" id="<%= result.id %>">
-            <div class="overlay-container">
-              <div class="icons">
-                <i class="fas fa-check-circle"></i>
+          <%= link_to toggle_result_path(result), method: :patch, remote: true do %>
+            <div class="overlay not-clicked" id="<%= result.id %>">
+              <div class="overlay-container">
+                <div class="icons">
+                  <i class="fas fa-check-circle"></i>
+                </div>
               </div>
             </div>
-          </div>
-          <%= link_to toggle_result_path(result), method: :patch, remote: true do %>
             <%= cl_image_tag(result.food.images[0], class: "img") %>
           <% end %>
         </div>
@@ -42,7 +37,7 @@
             </div>
             <div class="show-page">
               <%= link_to results_food_show_path(result.food_id, result) do %>
-                <i class="fas fa-angle-right"></i>
+                <i class="fas fa-angle-right "></i>
               <% end %>
             </div>
           </div>
@@ -51,25 +46,26 @@
     <% end %>
   </div>
 </div>
-<!-- // hello -->
-<footer class="footer">
-  <div class="row">
-    <!-- camera -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-camera"></i>
-    <% end %>
-    <!-- bag -->
-    <%= link_to 'See Order', order_path, class: "btn-order bottom-icon" %>
-    <!-- heart -->
-    <%= link_to favourites_path, class: "bottom-icon" do %>
-      <i class="fas fa-heart"></i>
-        <% if @fav.length > 0  %>
-          <span class="cart-num"><%= @fav.length %></span>
-        <% end %>
-    <% end %>
+<div id="my-modal" class="modal">
+  <div class="modal-content up">
+    <div class="modal-body ">
+      <span class="close">&times;</span>
+      <i class="fas fa-arrow-left"></i>
+      <p >
+        Tap on the pic to order!
+      </p>
+    </div>
   </div>
-</footer>
-
+  <div class="modal-content down">
+    <div class="modal-body">
+      <span class="close">&times;</span>
+      <p>Tap on the icon below to confirm your order</p>
+      <i class="fas fa-arrow-down"></i>
+    </div>
+  </div>
+</div>
+<!-- // hello -->
+<%= render 'shared/favbotbar' %>
 <script>
   function imageClicked(num, foodname){
       let image = document.getElementById(num);
@@ -99,5 +95,33 @@
         image.classList.remove("not-clicked");
         textImage.classList.add("some");
       }
+  }
+</script>
+<script>
+  // Get DOM Elements
+  const modal = document.querySelector('#my-modal');
+  const modalBtn = document.querySelector('#modal-btn');
+  const closeBtn = document.querySelector('.close');
+
+  // Events
+  modalBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  window.addEventListener('click', outsideClick);
+
+  // Open
+  function openModal() {
+    modal.style.display = 'block';
+  }
+
+  // Close
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  // Close If Outside Click
+  function outsideClick(e) {
+    if (e.target == modal) {
+      modal.style.display = 'none';
+    }
   }
 </script>

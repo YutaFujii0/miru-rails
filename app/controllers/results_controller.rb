@@ -6,7 +6,8 @@ class ResultsController < ApplicationController
 
     @results = Result.where(menu_id: params[:menu_id])
     search_image_for_each_food(@results)
-    @fav = Favourite.where(user_id: current_user) #footer favourite number
+    @fav = Favourite.where(user_id: current_user)
+    @menu = Menu.find(params[:menu_id]) #footer favourite number
     @all = @results.to_json
     @sort_name = @results.includes(:food).order("foods.name")
     @sort_popularity = @results.includes(:food).order("foods.popularity")
@@ -18,6 +19,7 @@ class ResultsController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     @food_title = @orders.first.food.name
     @food_summary = @orders.first.food.en
+    raise
     @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 
@@ -46,26 +48,26 @@ class ResultsController < ApplicationController
     # pool = Concurrent::FixedThreadPool.new(10)
     completed = []
 
-    translation_of_meal = Language.find_by(code: results.first.lang).meal_is # -> REFERENCE 1 (refer to the bottom)
+    translation_of_meal = Language.find_by(code: results.first.lang)&.meal_is # -> REFERENCE 1 (refer to the bottom)
     results.each do |result|
       # pool.post do
         # ==========================================
-        # if result.food.images.nil?
-        #   result.food.images = [Food::SAMPLE_IMAGES.sample]
+        if result.food.images.nil?
+          result.food.images = [Food::SAMPLE_IMAGES.sample]
+          result.food.save!
+        end
+        # ------------------------------------------
+        # if result.food.en.nil?
+        #   result.food.en = Translate.call(result.food.name)
         #   result.food.save!
         # end
-        # ------------------------------------------
-        if result.food.en.nil?
-          result.food.en = Translate.call(result.food.name)
-          result.food.save!
-        end
-        if result.food.images.nil?
-          keyword = "#{result.food.name}+#{translation_of_meal}"
-          attributes = SearchImagesAndPopularity.call(keyword)
-          result.food.popularity = attributes[:popularity]
-          result.food.images = attributes[:image_paths]
-          result.food.save!
-        end
+        # if result.food.images.nil?
+        #   keyword = "#{result.food.name}+#{translation_of_meal}"
+        #   attributes = SearchImagesAndPopularity.call(keyword)
+        #   result.food.popularity = attributes[:popularity]
+        #   result.food.images = attributes[:image_paths]
+        #   result.food.save!
+        # end
         # ==========================================
         completed << 1
       # end
