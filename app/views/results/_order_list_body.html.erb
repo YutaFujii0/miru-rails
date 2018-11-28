@@ -1,6 +1,5 @@
 <% @orders.each_with_index do |order, index| %>
-  <div class="card-result-body <%= "list-#{index}" %> <%= "hidden" unless index == 0 %>"
-    <!-- img -->
+  <div class="card-result-body <%= "list-#{index}" %> <%= "hidden" unless index == 0 %>">
     <div class="card-result-body-img"><%= cl_image_tag(order.food.images[0], class: "img-circle result-center image-order" ) %></div>
     <!-- desc -->
     <div class="food-description">
@@ -15,7 +14,7 @@
           <i class="fas fa-minus-circle"></i>
         <% end %>
       <% end %>
-      <input type="text" class="quantity-amount" name="" value="<%= order.order %>" />
+      <input type="text" class="quantity-amount total" name="" value="<%= order.order %>" />
   <%= simple_form_for order do |f| %>
     <%= f.input :order, as: :hidden %>
     <%= f.button :button, value: "increase", class: "increase", title: "Increase Quantity" do %>

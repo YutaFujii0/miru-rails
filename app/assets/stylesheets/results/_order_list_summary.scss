@@ -10,7 +10,7 @@
   th:first-child {padding-left:10px;border-right:1px solid #fff;text-align:left;}
   td {
     background-color: $light-beige;padding:5px;border-bottom:1px solid #EBE0B6;
-    font-size:16px;color:#222;
+    font-size:18px;color:#222;
     .english {color:#8a8a8a;}
   }
   td:first-child {padding-left:10px;border-right:1px solid #fff;}
@@ -19,5 +19,8 @@
     background-color: $light-beige;
     border-top: $dark-beige solid 1px;
   }
-  .sum {border-top:1px solid #C3B47C;}
+  .bottom {border-top:2px solid #d4caa3;border-bottom:0;border-right:0 !important;}
+  .sum {
+    font-size:18px;
+    text-align:center;}
 }
