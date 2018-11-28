@@ -330,8 +330,8 @@ footer {
   margin-left: 200px;
   margin-top: 60px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  animation: modalopen 1s ease-in;
+
 }
 
 .down {
@@ -339,8 +339,12 @@ footer {
   margin-left: 195px;
   margin-top: 105%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  animation: modalopen 1s ease-in 2s;
+  animation-fill-mode: backwards;
+}
+
+.modal-content {
+  background-color: transparent;
 }
 
 .modal-header h2,
@@ -352,9 +356,12 @@ footer {
 
 .modal-body {
   padding: 8px;
+  color: white;
+  font-weight: 700;
 
   p {
     font-size: 16px;
+
   }
 }
 
