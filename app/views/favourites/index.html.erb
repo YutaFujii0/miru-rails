@@ -1,7 +1,6 @@
 <% content_for :meta_title do %>
   Favourites
 <% end %>
-
 <!-- top bar -->
 <div class="container" id="common-top">
   <div class="row">
@@ -11,28 +10,19 @@
     <h1>Favourites</h1>
   </div>
 </div>
-<div class="controller-sort-wrapper">
-  <div class="controller-container">
-    <ul class="list-inline">
-      <li>Name <i class="fas fa-sort"></i></li>
-      <li>Recent <i class="fas fa-sort"></i></li>
-      <li>Size <i class="fas fa-sort"></i></li>
-    </ul>
-  </div>
-</div>
-<div class="hello">
+<div id="hello">
   <div class="favourite-container">
     <% counter = 0 %>
     <% @favourited_foods.each do |favourited_food| %>
       <div class="content">
         <div class="img-fav">
           <%= link_to food_path(favourited_food) do %>
-          <% if favourited_food.images.nil? %>
-            <%= image_tag(@food_images[:image_paths][0], class: "img") %>
-          <% else %>
-            <%= image_tag(favourited_food.images[0], class: "img") %>
-          <% end %>
-        </div>
+            <% if favourited_food.images.nil? %>
+              <%= image_tag(@food_images[:image_paths][0], class: "img") %>
+            <% else %>
+              <%= image_tag(favourited_food.images[0], class: "img") %>
+            <% end %>
+          </div>
           <div class="text-info" >
             <div class="text-content">
               <p style="margin:0;"><%= favourited_food.en %></p>
@@ -44,7 +34,7 @@
               <% end %>
             </div>
           </div>
-      </div>
+        </div>
       <% end %>
     <% end %>
   </div>
@@ -66,9 +56,9 @@
     <!-- heart -->
     <%= link_to favourites_path, class: "bottom-icon" do %>
       <i class="fas fa-heart"></i>
-        <% if @fav.length > 0  %>
-          <span class="cart-num"><%= @fav.length %></span>
-        <% end %>
+      <% if @fav.length > 0  %>
+        <span class="cart-num"><%= @fav.length %></span>
+      <% end %>
     <% end %>
   </div>
 </div>
