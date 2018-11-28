@@ -9,8 +9,10 @@
 <!-- NEW top bar -->
 <%= render 'shared/favtopbar' %>
 <div class="container-body">
-  <div class="banner result-top">
-    <%= render 'order_list_banner', object: [@orders] %>
+  <div class="result-top-wrap">
+    <div class="banner result-top">
+      <%= render 'order_list_banner', object: [@orders] %>
+    </div>
   </div>
   <div class="container order-body">
     <%= render 'order_list_body', object: [@orders, @food_title] %>
@@ -20,3 +22,12 @@
 <!-- NEW footer -->
 <%= render 'shared/favbotbar' %>
 <%= javascript_pack_tag 'results/order' %>
+
+<script>
+  $(document).ready(function() {
+    var thumwrap = $('.result-top');
+    var thumlist = $('.card-order-list').length;
+    var thumwidth = thumlist * 88;
+    $(thumwrap).css({"min-width": "375px", "width": thumwidth});
+});
+</script>
