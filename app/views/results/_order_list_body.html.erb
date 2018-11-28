@@ -3,8 +3,8 @@
     <div class="card-result-body-img"><%= cl_image_tag(order.food.images[0], class: "img-circle result-center image-order" ) %></div>
     <!-- desc -->
     <div class="food-description">
-      <h2><%= @food_title %></h2>
-      <h3><%= @food_title %></h3>
+      <h2><%= order.food.name %></h2>
+      <h3><%= order.food.en %></h3>
     </div>
     <!-- quantity -->
     <div class="quantity">

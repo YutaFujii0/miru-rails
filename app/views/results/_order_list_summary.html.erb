@@ -10,7 +10,8 @@
       <% @orders.each_with_index do |order, index| %>
         <tr>
           <!-- need modifying with @food_title -->
-          <td><%= order.food.name %><span class="english">(<%= @food_title %>)</span></td>
+          <td class="table-margin-column"></td>
+          <td clas="not-big"><%= order.food.name %><span class="english"> (<%= order.food.en %>)</span></td>
           <td class="<%= "list-#{index} text-center bold" %>"></td>
         </tr>
       <% end %>

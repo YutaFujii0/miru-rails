@@ -10,10 +10,10 @@
 <%= render 'shared/favtopbar' %>
 <div class="container-body">
   <div class="banner result-top">
-    <%= render 'order_list_banner', object: [@orders, @results_with_data] %>
+    <%= render 'order_list_banner', object: [@orders] %>
   </div>
-  <div class="container order-body">
-    <%= render 'order_list_body', object: [@orders, @results_with_data, @food_title] %>
+  <div class="container result-body">
+    <%= render 'order_list_body', object: [@orders, @food_title] %>
   </div>
   <%= render 'order_list_summary', object: [@orders, @food_title] %>
 </div>
