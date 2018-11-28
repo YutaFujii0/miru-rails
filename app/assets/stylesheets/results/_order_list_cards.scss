@@ -1,30 +1,16 @@
 .card-order-list {
-  display: block;
-  padding: 10px 10px 0 10px;
+  display: inline-block;margin:0 5px;
+  width:75px;height:75px;
   position: relative;
-}
-
-.triangle-wrap {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-}
-
-.triangle {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 10px 10px 10px;
-  border-color: transparent transparent $very-dark-gray transparent;
-  position: relative;
-  left: -50%;
-}
-
-.active {
-  img {
-    border: 3px solid $light-gray;
+  img {width:100%;height:100%;object-fit:cover;border:3px solid #4E4E4E;}
+  .triangle-wrap {
+  position:absolute;bottom:0;left:50%;
+  margin:0 0 -32px -10px;
+  .fas {font-size:22px;color:#4E4E4E;line-height:1em;}
   }
-  .triangle {
-    border-color: transparent transparent $light-gray transparent;
-  }
+}
+
+.card-order-list.active {
+  img {border-color:#fff;}
+  .fas {color:#fff;}
 }

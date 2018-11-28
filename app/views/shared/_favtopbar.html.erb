@@ -1,6 +1,6 @@
 <div class="container" id="common-top">
   <div class="row">
-    <%= link_to 'Back', 'javascript:history.go(-1);', class: "top-back" do %>
+    <%= link_to request.referer, class: "top-back" do %>
       <i class="fas fa-chevron-left"></i>
     <% end %>
    <h1><%= content_for :title %></h1>
