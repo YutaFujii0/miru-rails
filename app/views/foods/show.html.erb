@@ -23,15 +23,17 @@
         <% end %>
       <% end %>
       <!-- favorite btn -->
-      <% if @favourite %>
-        <%= button_to favourite_path(@favourite), method: :delete, class: "bottom-icon added" do %>
-          <i class="fas fa-heart"></i>
+      <div class="favourite-buttom">
+        <% if @favourite %>
+          <%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= button_to food_favourites_path(@food), method: :post, remote: true, class: "bottom-icon", id: "add-heart" do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= button_to food_favourites_path(@food), method: :post, class: "bottom-icon", id: "add-heart" do %>
-          <i class="fas fa-heart"></i>
-        <% end %>
-      <% end %>
+      </div>
 
       <!--
       <script>
@@ -71,7 +73,7 @@
       <i class="fas fa-camera"></i>
     <% end %>
     <!-- heart -->
-      <%= link_to favourites_path, class: "bottom-icon" do %>
+      <%= link_to favourites_path, class: "bottom-icon heart-bottom" do %>
         <i class="fas fa-heart"></i>
           <% if @fav.length > 0  %>
             <span class="cart-num"><%= @fav.length %></span>

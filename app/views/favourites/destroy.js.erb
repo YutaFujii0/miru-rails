@@ -1,0 +1,18 @@
+function insertNumber(html) {
+  const heartIconBottom = document.querySelector('.bottom-icon.heart-bottom');
+  if (<%= @fav.length %> > 0){
+    heartIconBottom.insertAdjacentHTML("beforeend", html);
+  } else {
+    elem = heartIconBottom.querySelector('.cart-num');
+    elem.parentNode.removeChild(elem);
+  }
+}
+
+function insertCreateLink() {
+  const heartIconBody = document.querySelector('.favourite-buttom');
+  heartIconBody.innerHTML = '<%= button_to food_favourites_path(@food), method: :post, remote: true, class: "bottom-icon", id: "add-heart" do %><i class="fas fa-heart"></i><% end %>';
+}
+
+
+insertNumber('<span class="cart-num"><%= @fav.length %></span>');
+insertCreateLink();
