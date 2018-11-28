@@ -3,11 +3,15 @@
   margin-bottom: 50px;
 }
 
-.result-top {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+.result-top-wrap {
+  overflow-x:auto;
+  overflow-y:hidden;
   background-color: $very-dark-gray;
+}
+
+.result-top {
+  display: flex;justify-content:space-around;
+  flex-wrap: nowrap;
   padding: 15px 0;
 }
 
