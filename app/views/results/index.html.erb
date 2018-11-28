@@ -1,3 +1,6 @@
+<% content_for :meta_title do %>
+  Results
+<% end %>
 <% content_for :title do %>
   Results
 <% end %>
@@ -15,14 +18,14 @@
     <% @sort_popularity.each do |result| %>
       <div class="content" id="<%= result.food_id %>">
         <div onclick="imageClicked(<%= result.id %>, <%= result.food_id%> )" class="img-div"  >
-          <div class="overlay not-clicked" id="<%= result.id %>">
-            <div class="overlay-container">
-              <div class="icons">
-                <i class="fas fa-check-circle"></i>
+          <%= link_to toggle_result_path(result), method: :patch, remote: true do %>
+            <div class="overlay not-clicked" id="<%= result.id %>">
+              <div class="overlay-container">
+                <div class="icons">
+                  <i class="fas fa-check-circle"></i>
+                </div>
               </div>
             </div>
-          </div>
-          <%= link_to toggle_result_path(result), method: :patch, remote: true do %>
             <%= cl_image_tag(result.food.images[0], class: "img") %>
           <% end %>
         </div>

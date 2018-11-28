@@ -16,7 +16,7 @@ class SearchImagesAndPopularity
     doc = JSON.parse(open(URI.encode(@url + "&q=#{keyword}")).read) # -> REFERENCE 2 (refer to the bottom)
     {
       popularity: doc["searchInformation"]["totalResults"].to_i,
-      image_paths: doc["items"].map { |item| item["link"] }
+      image_paths: doc["items"]&.map { |item| item["link"] } || [Food::DEFAULT_IMAGE]
     }
   rescue OpenURI::HTTPError => e # -> REFERENCE 3 (refer to the bottom)
     puts "============================================================"

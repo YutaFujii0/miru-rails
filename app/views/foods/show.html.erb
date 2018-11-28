@@ -1,3 +1,7 @@
+<% content_for :meta_title do %>
+  <%= @food.name %>
+<% end %>
+
 <!-- top bar -->
 <div class="container" id="common-top">
   <div class="row">
@@ -12,7 +16,7 @@
 <div class="container-fluid food-show">
   <!-- cover -->
   <div class="food-pic"><%= image_tag(@food.images[0]) %></div>
-  <div class="add-cart">
+  <div class="add-cart" id="cart-favourite">
       <% if @result %>
         <%= button_to toggle_result_path(@result), method: :patch, class: "bottom-icon icon-cart " do %>
           <i class="fas fa-shopping-bag"></i>
@@ -23,15 +27,17 @@
         <% end %>
       <% end %>
       <!-- favorite btn -->
-      <% if @favourite %>
-        <%= button_to favourite_path(@favourite), method: :delete, class: "bottom-icon added" do %>
-          <i class="fas fa-heart"></i>
+      <div class="favourite-buttom">
+        <% if @favourite %>
+          <%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= button_to food_favourites_path(@food), method: :post, remote: true, class: "bottom-icon", id: "add-heart" do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= button_to food_favourites_path(@food), method: :post, class: "bottom-icon", id: "add-heart" do %>
-          <i class="fas fa-heart"></i>
-        <% end %>
-      <% end %>
+      </div>
 
       <!--
       <script>
@@ -42,7 +48,6 @@
         });
       </script>
       -->
-
   </div>
   <!-- desc -->
   <div class="food-desc">
@@ -64,35 +69,5 @@
 </div>
 
 <!-- footer -->
-<div class="container" id="common-bottom">
-  <div class="row">
-    <!-- camera -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-camera"></i>
-    <% end %>
-    <!-- heart -->
-      <%= link_to favourites_path, class: "bottom-icon" do %>
-        <i class="fas fa-heart"></i>
-          <% if @fav.length > 0  %>
-            <span class="cart-num"><%= @fav.length %></span>
-          <% end %>
-      <% end %>
-    <!-- bag -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-shopping-bag"></i>
-      <!-- if cart is empty add 'empty' class -->
-      <span class="cart-num empty"></span>
-      <!-- <span class="cart-num">3</span> -->
-    <% end %>
-    <!-- clock -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-clock"></i>
-    <% end %>
-    <!-- user -->
-    <%= link_to root_path, class: "bottom-icon" do %>
-      <i class="fas fa-user-circle"></i>
-    <% end %>
-  </div>
-</div>
-
+<%= render 'shared/favbotbar' %>
 <%= javascript_pack_tag 'foods/show' %>
