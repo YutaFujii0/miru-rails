@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>MIRU MENU</title>
+    <title>MIRU MENU | <%= yield :meta_title %></title>
+    <%= favicon_link_tag asset_path('logo.png'), rel: 'icon', type: "image/x-icon" %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
@@ -17,7 +18,6 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= javascript_pack_tag 'hello_vue' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <!-- loading bar -->
