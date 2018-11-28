@@ -5,7 +5,7 @@
       <i class="fas fa-camera"></i>
     <% end %>
     <!-- bag -->
-    <%= link_to root_path, class: "bottom-icon" do %>
+    <%= link_to order_path(@menu), class: "bottom-icon" do %>
       <i class="fas fa-shopping-bag"></i>
       <!-- if cart is empty add 'empty' class -->
       <span class="cart-num empty"></span>
