@@ -2,28 +2,26 @@ class FavouritesController < ApplicationController
   def index
     @user = current_user
     @favourited_foods = @user.favourited_foods
-    @food_images = SearchImagesAndPopularity.call("udon")
+    @food_images = SearchImagesAndPopularity.call(@user.favourited_foods[0].name)
+    @fav = Favourite.where(user_id: current_user)
   end
 
   def create
     @favourite = Favourite.new
-    @favourite.user = current_user
     @favourite.food = Food.find(params[:food_id])
+    @favourite.user = current_user
     @favourite.save
-    redirect_to food_path(@favourite.food)
-  end
-
-  def show
-    @food = Food.find(params[:id])
-    @user = User.find(params[:id])
-    @fav = Favourite.where(user_id: current_user) #footer favourite number
+    @fav = Favourite.where(user_id: current_user)
+    # redirect_to food_path(@favourite.food)
   end
 
   def destroy
     @favourite = Favourite.find(params[:id])
+    @food = @favourite.food
     @favourite.delete
+    @fav = Favourite.where(user_id: current_user)
     # @result = Result.find(params[:result_id])
-    redirect_to food_path(@favourite.food)
+    # redirect_to food_path(@favourite.food)
   end
 
   private

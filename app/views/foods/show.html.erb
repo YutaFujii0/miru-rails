@@ -1,3 +1,7 @@
+<% content_for :meta_title do %>
+  <%= @food.name %>
+<% end %>
+
 <!-- top bar -->
 <div class="container" id="common-top">
   <div class="row">
@@ -11,21 +15,29 @@
 <!-- contents -->
 <div class="container-fluid food-show">
   <!-- cover -->
-  <div class="food-pic"><%= image_tag(@food_images[0]) %></div>
+  <div class="food-pic"><%= image_tag(@food.images[0]) %></div>
   <div class="add-cart">
-      <%= link_to root_path, class: "bottom-icon" do %>
-        <i class="fas fa-shopping-bag"></i>
-      <% end %>
-      <!-- favorite btn -->
-      <% if @favourite %>
-        <%= button_to favourite_path(@favourite), method: :delete, class: "bottom-icon added" do %>
-          <i class="fas fa-heart"></i>
+      <% if @result %>
+        <%= button_to toggle_result_path(@result), method: :patch, class: "bottom-icon icon-cart " do %>
+          <i class="fas fa-shopping-bag"></i>
         <% end %>
       <% else %>
-        <%= button_to food_favourites_path(@food), method: :post, class: "bottom-icon", id: "add-heart" do %>
-          <i class="fas fa-heart"></i>
+        <%= link_to root_path, class: "bottom-icon" do %>
+          <i class="fas fa-shopping-bag"></i>
         <% end %>
       <% end %>
+      <!-- favorite btn -->
+      <div class="favourite-buttom">
+        <% if @favourite %>
+          <%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= button_to food_favourites_path(@food), method: :post, remote: true, class: "bottom-icon", id: "add-heart" do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% end %>
+      </div>
 
       <!--
       <script>
@@ -44,13 +56,14 @@
       VIEW IN WIKIPEDIA <i class="fas fa-chevron-right"></i>
     </a>
     <dl>
+      <dt><%= @food.en %></dt>
       <dt><%= @food.name %></dt>
       <dd>But my hunger (which is as existent as the sun, ’cause I am always hungry) aside, I decided to take time out from my daily occupation of feeling hungry to make a list of books that have provided remission to my hungry brain and tummy. I hope that they will do the same for you.</dd>
     </dl>
   </div>
   <!-- extra img -->
   <ul class="foods-extra">
-    <% @food_images.each do |image| %>
+    <% @food.images.each do |image| %>
       <li><%= cl_image_tag(image, class: "food-card") %></li>
     <% end %>
   </ul>
@@ -64,7 +77,7 @@
       <i class="fas fa-camera"></i>
     <% end %>
     <!-- heart -->
-      <%= link_to root_path, class: "bottom-icon" do %>
+      <%= link_to favourites_path, class: "bottom-icon heart-bottom" do %>
         <i class="fas fa-heart"></i>
           <% if @fav.length > 0  %>
             <span class="cart-num"><%= @fav.length %></span>
@@ -88,3 +101,4 @@
   </div>
 </div>
 
+<%= javascript_pack_tag 'foods/show' %>

@@ -1,14 +1,11 @@
-<nav>
-  <div class="nav-container fixed-top">
-    <%= link_to root_path, class: "nav-icon left" do %>
-      <i class="fas fa-angle-left"></i>
-    <% end %>
-    <h3>Results</h3>
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-sort-amount-down"></i>
-    <% end %>
-  </div>
-</nav>
+<% content_for :meta_title do %>
+  Results
+<% end %>
+<% content_for :title do %>
+  Results
+<% end %>
+<!-- NEW top bar -->
+<%= render 'shared/favtopbar' %>
 <div class="controller-sort-wrapper">
   <div class="controller-container">
     <ul class="list-inline">
@@ -20,7 +17,7 @@
 </div>
 <div id="hello">
   <div class="search-container" >
-    <% @results.each do |result| %>
+    <% @sort_name.each do |result| %>
       <div class="content" id="<%= result.food_id %>">
         <div onclick="imageClicked(<%= result.id %>, <%= result.food_id%> )" class="img-div"  >
           <%= link_to toggle_result_path(result), method: :patch, remote: true do %>
@@ -37,7 +34,7 @@
         <%= link_to results_food_show_path(result.food_id, result), class: "link-food" do %>
           <div class="text-info" >
             <div class="text-content">
-              <p style="margin:0;">English name</p>
+              <p style="margin:0;"><%= result.food.en %></p>
               <small class="search-food-desc"><%= result.food.name %></small>
             </div>
             <div class="show-page">
@@ -52,17 +49,7 @@
   </div>
 </div>
 <!-- // hello -->
-<footer class="footer">
-  <div class="bottom-container" >
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-camera"></i>
-    <% end %>
-    <%= link_to 'See Order', order_path, class: "btn-order" %>
-    <%= link_to root_path, class: "nav-icon" do %>
-      <i class="fas fa-heart"></i>
-    <% end %>
-  </div>
-</footer>
+<%= render 'shared/favbotbar' %>
 <script>
   function imageClicked(num, foodname){
       let image = document.getElementById(num);

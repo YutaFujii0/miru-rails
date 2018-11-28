@@ -7,7 +7,7 @@ class SearchImagesAndPopularity
     searchType: "image",
     imgColorType: "color",
     safe: "active",
-    fields: "searchInformation(searchTime,totalResults),items/image/thumbnailLink"
+    fields: "searchInformation(searchTime,totalResults),items/link"
   }
   @url = base_url + parameters.map { |k, v| "#{k}=#{v}" }.join("&")
   # -> REFERENCE 1 (refer to the bottom)
@@ -16,7 +16,7 @@ class SearchImagesAndPopularity
     doc = JSON.parse(open(URI.encode(@url + "&q=#{keyword}")).read) # -> REFERENCE 2 (refer to the bottom)
     {
       popularity: doc["searchInformation"]["totalResults"].to_i,
-      image_paths: doc["items"].map { |item| item["image"]["thumbnailLink"] }
+      image_paths: doc["items"]&.map { |item| item["link"] } || [Food::DEFAULT_IMAGE]
     }
   rescue OpenURI::HTTPError => e # -> REFERENCE 3 (refer to the bottom)
     puts "============================================================"

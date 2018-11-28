@@ -1,5 +1,3 @@
-<div class="order-list-arrow"></div>
-
 <div class="order-list-summary">
   <table>
     <thead>
@@ -12,20 +10,22 @@
     </thead>
     <tbody>
       <% @orders.each_with_index do |order, index| %>
-      <tr>
-        <!-- need modifying with @food_title -->
-        <td class="table-margin-column"></td>
-        <td><%= order.food.name %>(<%= @food_title %>)</td>
-        <td class="<%= "list-#{index}" %>"></td>
-        <td class="table-margin-column"></td>
-      </tr>
+        <tr>
+          <!-- need modifying with @food_title -->
+          <td class="table-margin-column"></td>
+          <td clas="not-big"><%= order.food.name %><span class="english">(<%= @food_title %>)</span></td>
+          <td class="<%= "list-#{index} text-center bold" %>"></td>
+          <td class="table-margin-column"></td>
+        </tr>
       <% end %>
     </tbody>
     <tfoot>
       <tr>
         <td class="table-margin-column"></td>
-        <td>total</td>
-        <td class="total"></td>
+        <td></td>
+        <td class="total text-center">
+          <%= @orders.map {|order| order.order}.sum %>
+        </td>
         <td class="table-margin-column"></td>
       </tr>
     </tfoot>
