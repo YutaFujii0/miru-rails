@@ -12,7 +12,7 @@
 </div>
 <div id="hello">
   <div class="search-container" >
-    <% @sort_name.each do |result| %>
+    <% @sort_popularity.each do |result| %>
       <div class="content" id="<%= result.food_id %>">
         <div onclick="imageClicked(<%= result.id %>, <%= result.food_id%> )" class="img-div"  >
           <div class="overlay not-clicked" id="<%= result.id %>">
