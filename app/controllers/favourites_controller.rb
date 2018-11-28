@@ -8,9 +8,8 @@ class FavouritesController < ApplicationController
 
   def create
     @favourite = Favourite.new
-    @food = Food.find(params[:food_id])
+    @favourite.food = Food.find(params[:food_id])
     @favourite.user = current_user
-    @favourite.food = @food
     @favourite.save
     @fav = Favourite.where(user_id: current_user)
     # redirect_to food_path(@favourite.food)
@@ -18,6 +17,7 @@ class FavouritesController < ApplicationController
 
   def destroy
     @favourite = Favourite.find(params[:id])
+    @food = @favourite.food
     @favourite.delete
     @fav = Favourite.where(user_id: current_user)
     # @result = Result.find(params[:result_id])

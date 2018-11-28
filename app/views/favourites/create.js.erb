@@ -1,13 +1,15 @@
-const heartIconBottom = document.querySelector('.bottom-icon.heart-bottom');
 function insertNumber(html) {
+  const heartIconBottom = document.querySelector('.bottom-icon.heart-bottom');
   heartIconBottom.insertAdjacentHTML("beforeend", html);
 }
 
-const heartIconBody = document.querySelector('.favourite-buttom');
-console.log(heartIconBody.innerHTML);
-heartIconBody.innerHTML = '<%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %><i class="fas fa-heart"></i><% end %>';
+function insertDeleteLink() {
+  const heartIconBody = document.querySelector('.favourite-buttom');
+  heartIconBody.innerHTML = '<%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %><i class="fas fa-heart"></i><% end %>';
+}
 
 <% if @fav.length > 0  %>
   insertNumber('<span class="cart-num"><%= @fav.length %></span>');
 <% end %>
 
+insertDeleteLink();
