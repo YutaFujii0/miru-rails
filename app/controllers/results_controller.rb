@@ -19,7 +19,6 @@ class ResultsController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     @food_title = @orders.first.food.name
     @food_summary = @orders.first.food.en
-    raise
     @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 
