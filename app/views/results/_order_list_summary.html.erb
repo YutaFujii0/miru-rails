@@ -2,10 +2,8 @@
   <table>
     <thead>
       <tr>
-        <td class="table-margin-column"></td>
-        <td>MENUS</td>
-        <td>QUANTITY</td>
-        <td class="table-margin-column"></td>
+        <th>MENUS</th>
+        <th>QUANTITY</th>
       </tr>
     </thead>
     <tbody>
@@ -15,18 +13,14 @@
           <td class="table-margin-column"></td>
           <td clas="not-big"><%= order.food.name %><span class="english"> (<%= order.food.en %>)</span></td>
           <td class="<%= "list-#{index} text-center bold" %>"></td>
-          <td class="table-margin-column"></td>
         </tr>
       <% end %>
     </tbody>
     <tfoot>
       <tr>
-        <td class="table-margin-column"></td>
-        <td></td>
-        <td class="total text-center">
+        <td colspan="2" class="sum">
           <%= @orders.map {|order| order.order}.sum %>
         </td>
-        <td class="table-margin-column"></td>
       </tr>
     </tfoot>
   </table>
