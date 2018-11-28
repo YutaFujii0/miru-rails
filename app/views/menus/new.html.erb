@@ -6,7 +6,7 @@
   <!-- <h1><%= image_tag "logo.png" %></h1> -->
   <h1 class="alt"><%= image_tag "logo-alt.png" %></h1>
   <div id="video-container">
-    <video autoplay muted loop class="video">
+    <video autoplay muted loop playsinline class="video">
       <source src="/assets/mirumov.mp4" type="video/mp4">
     </video>
     <canvas class="canvas"></canvas>
@@ -45,5 +45,15 @@
   }else {
     // Use HTML5 video
     document.querySelectorAll('.canvas')[0].style.display = 'none';
+  }
+
+  var promise = document.querySelector('video').play();
+  if (promise !== undefined) {
+      promise.catch(error => {
+          // Auto-play was prevented
+          // Show a UI element to let the user manually start playback
+      }).then(() => {
+          // Auto-play started
+      });
   }
 </script>
