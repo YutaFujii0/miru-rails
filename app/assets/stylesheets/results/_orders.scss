@@ -12,26 +12,27 @@
 }
 
 .order-body {
-<<<<<<< HEAD
   width: 100%;
   padding: 0;
   margin: 0;
   background: #fff;
   text-align: center;
-=======
-  width:100%;
-  padding:0;margin:0;
-  background:#fff;
-  text-align:center;
+
   .card-result-body {
-    padding-top:20px;
+    padding-top: 20px;
   }
+
   .card-result-body-img {
-    display:inline-block;
-    width:120px;height:120px;
-    img {width:100%;height:100%;object-fit:cover;}
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
->>>>>>> d1c51e92a1f061ccd0937db6833b7aac044828cc
 }
 
 .food-description {
@@ -77,25 +78,11 @@
 }
 
 .image-order {
-  animation: movieInUp 1s linear;
+  animation: movieInUp 0.5s ease-out;
 }
 
-.banner {
-  .img-top {
-    &:hover {}
-  }
 
-  .active {
-    .img-top {
-      box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
-      animation: goUp 0.75s linear;
 
-      &:active {
-        border: 2px solid white;
-      }
-    }
-  }
-}
 
 @keyframes goUp {
   0% {
@@ -144,13 +131,13 @@
 }
 
 .quantity-amount {
-  animation: appearSlowly 1s linear;
+  animation: appearSlowly 1s ease-out;
 }
 
 
 .top-back {
   &:focus {
-    animation: nextPage 1s linear;
+    animation: nextPage 1s ease-out;
   }
 }
 
