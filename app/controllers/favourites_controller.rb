@@ -1,8 +1,12 @@
 class FavouritesController < ApplicationController
   def index
     @user = current_user
-    @favourited_foods = @user.favourited_foods
-    @food_images = SearchImagesAndPopularity.call(@user.favourited_foods[0].name)
+    if @user.favourited_foods.first.nil?
+      @favourited_foods = []
+    else
+      @favourited_foods = @user.favourited_foods
+      @food_images = SearchImagesAndPopularity.call(@user.favourited_foods[0].name)
+    end
     @fav = Favourite.where(user_id: current_user)
   end
 
