@@ -10,9 +10,6 @@
     grid-column-start: auto;
   }
 
-
-
-
   .text-info {
     padding: 10px;
     padding-bottom: 10px;
@@ -22,8 +19,6 @@
     background-color: white;
 
   }
-
-
 
   .img-div {
     position: relative;
@@ -36,7 +31,6 @@
     height: 100%;
     object-fit: cover;
   }
-
 
   .text-content {
     overflow: hidden;
@@ -186,28 +180,37 @@
 }
 
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: black;
-
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height: 50px;
+  background:$navbar-gray;
   color: white;
   text-decoration: none;
-
-  .nav-icon:link,
-  .nav-icon:visited {
-    color: white;
-    text-decoration: none;
+  .row {display:flex;justify-content:space-between;}
+  .bottom-icon {
+    display:inline-block;
+    position:relative;
+    padding:12px 25px;
+    font-size:28px;color:#fff;
+    line-height:0.8em;
   }
 
   .btn-order:link,
   .btn-order:visited {
-    color: grey;
+    color: white;
+    text-decoration: none;
   }
+  .cart-num {
+  position:absolute;
+  top:0;right:0;margin:10px 12px 0 0;
+  width:24px;height:24px;border-radius:50%;
+  background:$orange;
+  font-size:14px;color:#fff;font-weight:bold;letter-spacing:-1px;
+  text-align:center;line-height:24px;
 }
-
-
+.cart-num.empty {display:none;}
+}
 
 .bottom-container {
   padding: 10px 20px;
@@ -273,5 +276,4 @@ footer {
 
 .some {
   box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
-
 }

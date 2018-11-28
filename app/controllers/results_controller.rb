@@ -8,7 +8,6 @@ class ResultsController < ApplicationController
     search_image_for_each_food(@results)
     @fav = Favourite.where(user_id: current_user) #footer favourite number
     @all = @results.to_json
-
     @sort_name = @results.includes(:food).order("foods.name")
     @sort_popularity = @results.includes(:food).order("foods.popularity")
 
@@ -16,12 +15,9 @@ class ResultsController < ApplicationController
 
   def order
     @orders = Result.where("results.order > ?", 0).where(menu_id: params[:menu_id].to_i)
-
-    url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=udon"
-
-    food_wiki = JSON.parse(open(url).read)
-    @food_title = food_wiki["query"]["pages"].values[0]["title"]
-    @food_summary = food_wiki["query"]["pages"].values[0]["extract"]
+    @menu = Menu.find(params[:menu_id])
+    @food_title = @orders.first.food.name
+    @food_summary = @orders.first.food.en
     @fav = Favourite.where(user_id: current_user) #footer favourite number
   end
 
@@ -47,12 +43,12 @@ class ResultsController < ApplicationController
 
   def search_image_for_each_food(results)
     # boost threads to increase performance
-    pool = Concurrent::FixedThreadPool.new(10)
+    # pool = Concurrent::FixedThreadPool.new(10)
     completed = []
 
     translation_of_meal = Language.find_by(code: results.first.lang).meal_is # -> REFERENCE 1 (refer to the bottom)
     results.each do |result|
-      pool.post do
+      # pool.post do
         # ==========================================
         # if result.food.images.nil?
         #   result.food.images = [Food::SAMPLE_IMAGES.sample]
@@ -72,12 +68,12 @@ class ResultsController < ApplicationController
         end
         # ==========================================
         completed << 1
-      end
+      # end
     end
     # temporary measure: wait_for_termination does not work well
-    sleep(0.1) unless completed.count == results.count
-    pool.shutdown
-    pool.wait_for_termination
+    # sleep(0.1) unless completed.count == results.count
+    # pool.shutdown
+    # pool.wait_for_termination
   end
 end
 
