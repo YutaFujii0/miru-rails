@@ -16,7 +16,7 @@
     <% @favourited_foods.each do |favourited_food| %>
       <div class="content">
         <div class="img-fav">
-          <%= link_to food_path(favourited_food) do %>
+          <%= link_to food_path(favourited_food), class: "link-food" do %>
             <% if favourited_food.images.nil? %>
               <%= image_tag(@food_images[:image_paths][0], class: "img") %>
             <% else %>
