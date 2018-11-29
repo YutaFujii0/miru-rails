@@ -28,6 +28,7 @@ gem 'google-cloud-translate'
 gem 'concurrent-ruby'
 gem 'faker'
 gem 'google-cloud-vision'
+gem 'image_optim_rails'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
