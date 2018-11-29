@@ -24,21 +24,23 @@
             <% else %>
               <%= image_tag(favourited_food.images[0], class: "img") %>
             <% end %>
+          <% end %>
+        </div>
+
+
+          <%= link_to food_path(favourited_food.id), class: "text-content-a" do %>
+          <div class="text-content">
+            <dl>
+              <dt><%= favourited_food.en %></dt>
+              <dd class="search-food-desc"><%= favourited_food.name %></dd>
+            </dl>
+            <div class="show-page"><i class="fas fa-angle-right "></i></div>
           </div>
-          <div class="text-info" >
-            <div class="text-content">
-              <p style="margin:0;"><%= favourited_food.en %></p>
-              <small class="search-food-desc"><%= favourited_food.name %></small>
-            </div>
-            <div class="show-page">
-              <%= link_to food_path(favourited_food.id) do %>
-                <i class="fas fa-angle-right"></i>
-              <% end %>
-            </div>
-          </div>
+          <% end %>
+
         </div>
       <% end %>
-    <% end %>
+
   </div>
 </div>
 <!-- // hello -->
