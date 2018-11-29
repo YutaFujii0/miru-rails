@@ -15,5 +15,25 @@ class Food < ApplicationRecord
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMAUsY6QemwF48ujlv2et21tPbe1_rQVzeGpyv3L1IkzdyXiXB78jsCog",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi-uTxIS9sz--YeEuhNbIBYGSeN2j0W3c7KUpEg_DxuyaJRi-yc5QTAITo"
   ]
-  DEFAULT_IMAGE = "default_image.png"
+  DEFAULT_IMAGE = "https://res.cloudinary.com/dwoaw9y1s/image/upload/v1543452501/jo2zhhomilrau2h9dsy2.png"
 end
+
+# default image file is stored in app/assets/images/default_image.png
+
+# [3] pry(main)> Cloudinary::Uploader.upload("app/assets/images/default_image.png")
+# => {"public_id"=>"jo2zhhomilrau2h9dsy2",
+#  "version"=>1543452501,
+#  "signature"=>"8604ce43f874b68ac7d3c882d45b3559a00e807f",
+#  "width"=>1200,
+#  "height"=>1200,
+#  "format"=>"png",
+#  "resource_type"=>"image",
+#  "created_at"=>"2018-11-29T00:48:21Z",
+#  "tags"=>[],
+#  "bytes"=>55317,
+#  "type"=>"upload",
+#  "etag"=>"d3922f45abc44b21995c6dbee10c21fd",
+#  "placeholder"=>false,
+#  "url"=>"http://res.cloudinary.com/dwoaw9y1s/image/upload/v1543452501/jo2zhhomilrau2h9dsy2.png",
+#  "secure_url"=>"https://res.cloudinary.com/dwoaw9y1s/image/upload/v1543452501/jo2zhhomilrau2h9dsy2.png",
+#  "original_filename"=>"default_image"}

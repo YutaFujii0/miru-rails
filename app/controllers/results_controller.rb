@@ -76,7 +76,7 @@ class ResultsController < ApplicationController
         if result.food.images.nil?
           keyword = "#{result.food.name}+#{translation_of_meal}"
           attributes = SearchImagesAndPopularity.call(keyword)
-          result.food.popularity = attributes[:popularity]
+          result.food.popularity = [999999999, attributes[:popularity]].min
           result.food.images = attributes[:image_paths]
           result.food.save!
         end
