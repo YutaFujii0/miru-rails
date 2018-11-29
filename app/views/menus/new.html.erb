@@ -2,8 +2,21 @@
   Home
 <% end %>
 
-<div id="preloader">
-  <img src="https://res.cloudinary.com/kayimg/image/upload/v1543399643/loading-blue.gif" width="1" height="1" />
+<div class="hidden">
+  <script type="text/javascript">
+    <!--//--><![CDATA[//><!--
+      var images = new Array()
+      function preload() {
+        for (i = 0; i < preload.arguments.length; i++) {
+          images[i] = new Image()
+          images[i].src = preload.arguments[i]
+        }
+      }
+      preload(
+        "https://res.cloudinary.com/kayimg/image/upload/v1543399643/loading-blue.gif"
+      )
+    //--><!]]>
+  </script>
 </div>
 
 <!-- loader -->
