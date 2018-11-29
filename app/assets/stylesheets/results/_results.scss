@@ -281,6 +281,13 @@ footer {
 
 .text-content-a:hover {
   text-decoration: none !important;
+
+  .fa-angle-right {
+    animation: bunce 250ms infinite;
+    animation-direction: alternate;
+  }
+
+
 }
 
 .text-content {
@@ -438,4 +445,14 @@ footer {
 .fa-shopping-bag:active {
   color: lightgrey;
 
+}
+
+@keyframes bunce {
+  from {
+    transform: translateX(0px)
+  }
+
+  to {
+    transform: translateX(-10px)
+  }
 }
