@@ -1,7 +1,6 @@
 <% content_for :meta_title do %>
   <%= @food.name %>
 <% end %>
-
 <!-- top bar -->
 <div class="container" id="common-top">
   <div class="row">
@@ -11,7 +10,6 @@
     <h1><%= @food.en.nil? ? @food.name : @food.en %></h1>
   </div>
 </div>
-
 <!-- contents -->
 <div class="container-fluid food-show">
   <!-- cover -->
@@ -28,19 +26,19 @@
           <% end %>
         <% end %>
       <% end %>
-      <!-- favorite btn -->
-      <div class="favourite-buttom">
-        <% if @favourite %>
-          <%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %>
-            <i class="fas fa-heart"></i>
-          <% end %>
-        <% else %>
-          <%= button_to food_favourites_path(@food), method: :post, remote: true, class: "bottom-icon", id: "add-heart" do %>
-            <i class="fas fa-heart"></i>
-          <% end %>
+    <!-- favorite btn -->
+    <div class="favourite-buttom">
+      <% if @favourite %>
+        <%= button_to favourite_path(@favourite), method: :delete, remote: true, class: "bottom-icon added" do %>
+          <i class="fas fa-heart"></i>
         <% end %>
-      </div>
-      <!--
+      <% else %>
+        <%= button_to food_favourites_path(@food), method: :post, remote: true, class: "bottom-icon", id: "add-heart" do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <!--
       <script>
         $(function() {
           $("#add-heart").on("click", function() {
@@ -54,8 +52,7 @@
   <div class="food-desc">
     <dl>
       <dt><%= @food.en %></dt>
-      <dt><%= @food.name %></dt>
-      <dd>More photos:</dd>
+      <dt class="smaller-japanese"><%= @food.name %></dt>
     </dl>
   </div>
   <!-- extra img -->
@@ -65,8 +62,6 @@
     <% end %>
   </ul>
 </div>
-
 <!-- footer -->
 <%= render 'shared/favbotbar', object: @menu %>
 <%= javascript_pack_tag 'foods/show' %>
-
