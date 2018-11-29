@@ -88,6 +88,7 @@
 
     dl {
       margin: 0;
+      padding: 0 5px;
     }
 
     dt {
@@ -138,4 +139,10 @@
       object-fit: cover;
     }
   }
+}
+
+.smaller-japanese {
+  font-size: 16px;
+  padding-top: 5px;
+  color: #333;
 }
