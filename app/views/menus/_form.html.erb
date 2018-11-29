@@ -1,7 +1,8 @@
 <%= simple_form_for @menu, html: {enctype: "multipart/form-data"} do |f| %>
   <div id="form-container">
-    <%= f.label :menu_photo, label: 'take picture' %>
+    <%= f.label :menu_photo, label: 'take picture', class: "labeling" %>
     <%= f.input :photo, capture: "camera", accept: "image/*", class: "form-control upload"  %>
     <%= f.submit class: "btn btn-secondary", value: "Upload" %>
   </div>
 <% end %>
+< 
