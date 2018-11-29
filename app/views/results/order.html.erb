@@ -2,7 +2,12 @@
 <% content_for :meta_title do %>
   Order List
 <% end %>
-<% content_for :title do %>
+<% content_for :navbar_left do %>
+  <%= link_to menu_results_path(@menu), class: "top-back" do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+<% end %>
+<% content_for :navbar_center do %>
   ORDER
 <% end %>
 

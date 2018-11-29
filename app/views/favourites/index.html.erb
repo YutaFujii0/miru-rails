@@ -1,15 +1,17 @@
+<% content_for :navbar_left do %>
+  <% menu = Menu.where(user_id: current_user.id).last %>
+  <%= link_to menu_results_path(menu), class: "top-back" do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+<% end %>
+<% content_for :navbar_center do %>
+  Favourites
+<% end %>
 <% content_for :meta_title do %>
   Favourites
 <% end %>
 <!-- top bar -->
-<div class="container" id="common-top">
-  <div class="row">
-    <%= link_to request.referer, class: "top-back" do %>
-      <i class="fas fa-chevron-left"></i>
-    <% end %>
-    <h1>Favourites</h1>
-  </div>
-</div>
+<%= render 'shared/favtopbar' %>
 <div id="hello">
   <div class="favourite-container">
     <% counter = 0 %>
