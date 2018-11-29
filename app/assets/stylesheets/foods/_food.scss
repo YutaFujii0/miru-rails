@@ -1,62 +1,148 @@
 .food-show {
-  img {border:0;}
+  img {
+    border: 0;
+  }
+
   margin:46px auto 50px;
   padding:0;
 
   .food-pic {
-    height:35vh;
-    img {width:100%;height:100%;object-fit: cover;}
+    height: 35vh;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .add-cart {
-    display:flex;justify-content:space-around;
-    background:#000;text-align:center;
-    form, button {background:none;border:0;}
-    .bottom-icon {display:block;padding:15px 0 12px;}
-    .fa-shopping-bag {font-size:30px;color:#fff;}
+    display: flex;
+    justify-content: space-around;
+    background: #000;
+    text-align: center;
+
+    form,
+    button {
+      background: none;
+      border: 0;
+    }
+
+    .bottom-icon {
+      display: block;
+      padding: 15px 0 12px;
+    }
+
+    .fa-shopping-bag {
+      font-size: 30px;
+      color: #fff;
+    }
+
     .fa-shopping-bag:after {
-      display:block;padding-top:5px;
-      font-size:9px;color:#fff;
-      font-family:'Open Sans', San-serif;
-      content:'ADD TO CART';
-    } // fa-shopping-bag:after
-    .fa-heart {font-size:30px;color:#fff;}
+      display: block;
+      padding-top: 5px;
+      font-size: 9px;
+      color: #fff;
+      font-family: 'Open Sans', San-serif;
+      content: 'ADD TO CART';
+    }
+
+    // fa-shopping-bag:after
+    .fa-heart {
+      font-size: 30px;
+      color: #fff;
+    }
+
     .fa-heart:after {
-      display:block;padding-top:5px;
-      font-size:9px;color:#fff;
-      font-family:'Open Sans', San-serif;
-      content:'ADD TO FAVORITE';
-    } // fa-heart:after
+      display: block;
+      padding-top: 5px;
+      font-size: 9px;
+      color: #fff;
+      font-family: 'Open Sans', San-serif;
+      content: 'ADD TO FAVORITE';
+    }
+
+    // fa-heart:after
     // delete favorite
     .bottom-icon.added {
-      .fa-heart {color:#ff7800 !important;}
-      .fa-heart:after {content:'DELETE TO FAVORITE';}
+      .fa-heart {
+        color: #ff7800 !important;
+      }
+
+      .fa-heart:after {
+        content: 'DELETE TO FAVORITE';
+      }
     }
+
     .icon-cart.added {
-      .fa-shopping-bag {color:#ff7800 !important;}
+      .fa-shopping-bag {
+        color: #ff7800 !important;
+      }
     }
-  } // add-cart
+  }
+
+  // add-cart
 
   .food-desc {
-    padding:25px 15px 20px;
-    dl {margin:0;}
-    dt {font-size:20px;font-weight:normal;}
-    dd {padding-top:10px;font-size:12px;}
-  .link-wiki {
-    position:absolute;right:15px;padding-top:8px;font-size:10px;color:#222;
-    .fas {margin-left:2px;color:#626B71;}
+    padding: 25px 15px 20px;
+
+    dl {
+      margin: 0;
+      padding: 0 5px;
+    }
+
+    dt {
+      font-size: 20px;
+      font-weight: normal;
+      color: black;
+    }
+
+    dd {
+      padding-top: 10px;
+      font-size: 12px;
+    }
+
+    .link-wiki {
+      position: absolute;
+      right: 15px;
+      padding-top: 8px;
+      font-size: 10px;
+      color: #222;
+
+      .fas {
+        margin-left: 2px;
+        color: #626B71;
+      }
     }
   }
-} // food-show
+}
+
+// food-show
 
 .foods-extra {
-  width:100%;padding:0;margin:0 0 1px -1px;
-  display:flex;flex-wrap:wrap;
-  list-style:none;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 1px -1px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+
   li {
-    width:33%;height:18vh;
-    margin-top:1px;
-    margin-left:1px;
-    img {width:100%;height:100%;object-fit: cover;}
+    width: 33%;
+    height: 18vh;
+    margin-top: 1px;
+    margin-left: 1px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
+}
+
+.smaller-japanese {
+  font-size: 16px;
+  padding-top: 5px;
+  color: #666;
 }
