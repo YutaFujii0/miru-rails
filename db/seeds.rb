@@ -74,10 +74,12 @@ puts "Finished (results table)"
 puts "Start creating languages table"
 
 language_base = [
+  {code: "ar", name: "Arabic", meal_is: "وجبة"},
+  {code: "fr", name: "French", meal_is: "repas"},
   {code: "ja", name: "Japanese", meal_is: "食事"},
   {code: "ko", name: "Korean", meal_is: "메뉴"},
   {code: "ru", name: "Russian", meal_is: "еда"},
-  {code: "zh", name: "Chinese", meal_is: ""}
+  {code: "zh", name: "Chinese", meal_is: "膳食"}
 ]
 
 language_base.each do |language|
