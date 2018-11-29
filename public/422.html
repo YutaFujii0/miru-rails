@@ -1,67 +1,136 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>The change you wanted was rejected (422)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+    * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    body {
+        padding: 0;
+        margin: 0;
+    }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    #notfound {
+        position: relative;
+        height: 100vh;
+    }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    #notfound .notfound {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+    .notfound {
+        max-width: 920px;
+        width: 100%;
+        line-height: 1.4;
+        text-align: center;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .notfound .notfound-404 {
+        position: absolute;
+        height: 100px;
+        top: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+
+    .notfound .notfound-404 h1 {
+        font-family: 'Maven Pro', sans-serif;
+        color: #ececec;
+        font-weight: 900;
+        font-size: 276px;
+        margin: 0px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .notfound h2 {
+        font-family: 'Maven Pro', sans-serif;
+        font-size: 46px;
+        color: #000;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin: 0px;
+    }
+
+    .notfound p {
+        font-family: 'Maven Pro', sans-serif;
+        font-size: 16px;
+        color: #000;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-top: 15px;
+    }
+
+    .notfound a {
+        font-family: 'Maven Pro', sans-serif;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        background: #189cf0;
+        display: inline-block;
+        margin: 10px;
+        padding: 16px 20px;
+        border: 2px solid transparent;
+        border-radius: 40px;
+        color: #fff;
+        font-weight: 400;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+
+    .notfound a:hover {
+        background-color: #fff;
+        border-color: #189cf0;
+        color: #189cf0;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .notfound .notfound-404 h1 {
+            font-size: 162px;
+        }
+
+        .notfound h2 {
+            font-size: 26px;
+        }
+    }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,900" rel="stylesheet">
+    <title>The change you wanted was rejected (422)</title>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
+<body>
+    <div id="notfound">
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1>422</h1>
+            </div>
+            <h2>The change you wanted was rejected.</h2>
+            <p>Maybe you tried to change something you didn't have access to.</p>
+            <p>If you are the application owner check the logs for more information.</p>
+            <a href="https://www.mirumenu.com">Back To Mirumenu</a>
+        </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
 </body>
+
 </html>

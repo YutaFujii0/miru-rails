@@ -2,25 +2,42 @@
   Home
 <% end %>
 
-<div class="main-wrapper">
-  <!-- <h1><%= image_tag "logo.png" %></h1> -->
-  <h1 class="alt"><%= image_tag "logo-alt.png" %></h1>
-  <div id="video-container">
-    <video autoplay muted loop playsinline class="video">
-      <source src="/assets/mirumov.mp4" type="video/mp4">
-    </video>
-    <canvas class="canvas"></canvas>
-  </div>
-  <div>
-    <%= render 'form', menu: @menu %>
-  </div>
+<div class="hidden">
+  <script type="text/javascript">
+    <!--//--><![CDATA[//><!--
+      var images = new Array()
+      function preload() {
+        for (i = 0; i < preload.arguments.length; i++) {
+          images[i] = new Image()
+          images[i].src = preload.arguments[i]
+        }
+      }
+      preload(
+        "https://res.cloudinary.com/kayimg/image/upload/v1543399643/loading-blue.gif"
+      )
+    //--><!]]>
+  </script>
 </div>
 
 <!-- loader -->
 <div id="loading-layer">
   <div class="img">
-    <%= image_tag "loading-blue.gif" %>
+    <%= image_tag "https://res.cloudinary.com/kayimg/image/upload/v1543399643/loading-blue.gif" %>
     <div>scanning the menus...</div>
+  </div>
+</div>
+
+<div class="main-wrapper">
+  <h1><%= image_tag "cover.png" %></h1>
+  <!-- <h1 class="alt"><%= image_tag "logo-alt.png" %></h1> -->
+  <div id="video-container">
+    <video autoplay muted loop playsinline class="video">
+      <source src="https://res.cloudinary.com/kayimg/video/upload/v1543399513/mirumov.mp4" type="video/mp4">
+    </video>
+    <canvas class="canvas"></canvas>
+  </div>
+  <div>
+    <%= render 'form', menu: @menu %>
   </div>
 </div>
 

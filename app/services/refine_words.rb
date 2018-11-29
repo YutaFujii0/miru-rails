@@ -6,12 +6,10 @@ class RefineWords
     new_words = +words
     # omit letters in parentheses
     new_words.gsub!(/\(.*\)/, "")
-    # omit japanese price
-    new_words.gsub!(/(\d+.?)円/, "")
     # omit numbers
     new_words.gsub!(/(\d+.?)/, "")
     # omit non-alphabet letters(pipes, commas, slashes)
-    new_words.gsub!(/[\|\/\,\.\:\;\[\]\=\$\円]/, "")
+    new_words.gsub!(/[\|\/\,\.\:\;\[\]\=\$\¥\円]/, "")
     # after these actions, omit whitespaces both head and tail
     # call reduce method with empty? in the brock
     new_words.split("\n").reject do |word|
