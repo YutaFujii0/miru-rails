@@ -273,9 +273,9 @@ footer {
   display:flex;
   justify-content:space-between;
   padding:10px 15px;
-  dl {padding:0;margin:0;}
-  dt {font-size:14px;color:#222;}
-  dd {font-size:12px;color:#333;}
+  dl {padding:0;margin:0;padding-right:10px;}
+  dt {font-size:14px;color:#222;height:22px;overflow:hidden;}
+  dd {font-size:12px;color:#333;height:20px;overflow:hidden;}
   .show-page {
     animation: movieInLeft 1s linear 1s;
     animation-fill-mode: backwards;
