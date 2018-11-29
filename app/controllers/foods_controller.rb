@@ -11,7 +11,7 @@ class FoodsController < ApplicationController
     else
       # from favourite index page
       @food = Food.find(params[:id])
-      @result = Result.where(food_id: params[:id])
+      # @result = Result.where(food_id: params[:id])
       # @menu = @result.last
     end
     @favourite = current_user.favourites.find_by(food: @food)
