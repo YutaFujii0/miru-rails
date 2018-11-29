@@ -55,7 +55,7 @@
     <div class="modal-body">
       <span class="close"></span>
       <i class="fas fa-arrow-left"></i>
-      <p>Tap on the pic to order!</p>
+      <p>Tap on the pic<br> to order!</p>
     </div>
   </div>
   <div class="modal-content down">
@@ -107,7 +107,7 @@
   // Events
   modalBtn.addEventListener('click', openModal);
   closeBtn.addEventListener('click', closeModal);
-  window.addEventListener('click', outsideClick);
+  modal.addEventListener('click', outsideClick);
 
   // Open
   function openModal() {
