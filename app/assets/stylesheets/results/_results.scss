@@ -312,7 +312,7 @@ footer {
   }
 
   .show-page {
-    animation: movieInLeft 1s linear 1s;
+    animation: movieInLeft 500ms;
     animation-fill-mode: backwards;
 
     .fa-angle-right {
@@ -323,7 +323,7 @@ footer {
 
     .fa-angle-right:hover {
       cursor: pointer;
-      animation: nextPage 1s linear;
+      animation: nextPage 500ms;
     }
 
     .fa-angle-right:active {}
