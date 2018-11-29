@@ -3,7 +3,7 @@ class SearchImagesAndPopularity
   parameters = {
     cx: ENV["SEARCH_ENGINE_ID"],
     key: ENV["GOOGLE_CUSTOM_SEARCH_KEY"],
-    num: 5,
+    num: 9,
     searchType: "image",
     imgColorType: "color",
     safe: "active",
