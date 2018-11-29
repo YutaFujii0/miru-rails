@@ -27,9 +27,17 @@
 
 <script>
   // auto submit when selected a file
+  var loadingScreen = document.querySelector("#loading-layer");
+  if (loadingScreen) {
+    loadingScreen.classList.remove("on");
+  }
   document.getElementById("menu_photo").onchange = function() {
-    document.getElementById("new_menu").submit();
     document.getElementById("loading-layer").classList.add("on");
+    document.getElementById("video-container").classList.add("off");
+    setTimeout(function() {
+      console.log('now');
+      document.getElementById("new_menu").querySelector(".btn").click();
+    }, 1000);
   };
 
   var isIOS = /iPad|iPhone|iPod/.test(navigator.platform);
