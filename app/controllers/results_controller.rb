@@ -58,7 +58,7 @@ class ResultsController < ApplicationController
   def search_image_for_each_food(results)
     # boost threads to increase performance
     # pool = Concurrent::FixedThreadPool.new(10)
-    completed = []
+    # completed = []
 
     translation_of_meal = Language.find_by(code: results.first.lang)&.meal_is # -> REFERENCE 1 (refer to the bottom)
     results.each do |result|
@@ -81,7 +81,7 @@ class ResultsController < ApplicationController
           result.food.save!
         end
         # ==========================================
-        completed << 1
+        # completed << 1
       # end
     end
     # temporary measure: wait_for_termination does not work well
