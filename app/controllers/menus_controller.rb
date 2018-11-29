@@ -30,7 +30,10 @@ class MenusController < ApplicationController
 
     if words[:text].nil? || words[:text].empty? # -> REFERENCE 5 (refer to the bottom)
       flash[:alert] = "We can't detect any meaningful word from your photo."
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       @menu = Menu.new # -> REFERENCE 2 (refer to the bottom)
       @menu.user = current_user
@@ -38,9 +41,15 @@ class MenusController < ApplicationController
         StoreImageInCloudinaryJob.perform_now(@menu, menu_params[:photo].tempfile.path)
         sleep(0.1) unless words # -> REFERENCE 3 (refer to the bottom)
         create_result_instances(@menu, words[:language], words[:text])
-        redirect_to menu_results_path(@menu)
+        respond_to do |format|
+          format.html { redirect_to menu_results_path(@menu) }
+          format.js
+        end
       else
-        render 'new'
+        respond_to do |format|
+          format.html { redirect_to root_path }
+          format.js
+        end
       end
     end
   end
