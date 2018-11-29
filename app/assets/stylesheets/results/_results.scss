@@ -350,7 +350,7 @@ footer {
   margin-left: 170px;
   margin-top: 60px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation: modalopen 1s ease-out;
+  animation: modalopen 250ms ease-out;
 
 }
 
@@ -359,7 +359,7 @@ footer {
   margin-left: 175px;
   margin-top: 95%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation: modalopen 0.5s ease-out 2s;
+  animation: modalopen 250ms ease-out 500ms;
   animation-fill-mode: backwards;
 }
 
