@@ -1,5 +1,6 @@
+// changing color of icon
+
 const cartButton = document.querySelector('.icon-cart');
-console.log(cartButton);
 
 function toggleIcon() {
   cartButton.addEventListener("click", (event) => {
@@ -7,4 +8,18 @@ function toggleIcon() {
   });
 }
 
-toggleIcon();
+if (cartButton) {
+  toggleIcon();
+}
+
+// changing banner picture
+const extraImages = document.querySelector('.foods-extra');
+const coverImage = document.querySelector('.food-pic img');
+
+function changeCoverImage() {
+  extraImages.addEventListener("click", (event) => {
+    coverImage.src = event.target.src;
+  });
+}
+
+changeCoverImage();
