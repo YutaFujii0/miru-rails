@@ -1,18 +1,19 @@
 <% content_for :meta_title do %>
   Results
 <% end %>
+<% content_for :navbar_left do %>
+  <%= link_to request.referer, class: "top-back" do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+<% end %>
+<% content_for :navbar_center do %>
+  Result
+<% end %>
+<% content_for :navbar_right do %>
+  <a id="modal-btn"><i class="fas fa-question "></i></a>
+<% end %>
 
-<!-- topbar -->
-<div class="container" id="common-top">
-  <div class="row">
-    <%= link_to request.referer, class: "top-back" do %>
-      <i class="fas fa-chevron-left"></i>
-    <% end %>
-    <h1>Result</h1>
-    <a id="modal-btn"><i class="fas fa-question-circle"></i></a>
-  </div>
-</div>
-
+<%= render 'shared/favtopbar' %>
 <!-- body -->
 <div id="hello">
   <div class="search-container" >

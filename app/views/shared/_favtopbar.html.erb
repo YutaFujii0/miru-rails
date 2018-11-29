@@ -1,8 +1,7 @@
 <div class="container" id="common-top">
   <div class="row">
-    <%= link_to request.referer, class: "top-back" do %>
-      <i class="fas fa-chevron-left"></i>
-    <% end %>
-   <h1><%= content_for :title %></h1>
+    <%= content_for :navbar_left %>
+    <h1><%= content_for :navbar_center %></h1>
+    <%= content_for :navbar_right %>
   </div>
 </div>
