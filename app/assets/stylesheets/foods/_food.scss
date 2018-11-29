@@ -25,12 +25,12 @@
       display:block;padding-top:5px;
       font-size:9px;color:#fff;
       font-family:'Open Sans', San-serif;
-      content:'ADD TO FAVORITE';
+      content:'ADD TO FAVOURITE';
     } // fa-heart:after
     // delete favorite
     .bottom-icon.added {
       .fa-heart {color:#ff7800 !important;}
-      .fa-heart:after {content:'DELETE TO FAVORITE';}
+      .fa-heart:after {content:'DELETE FROM FAVOURITE';}
     }
     .icon-cart.added {
       .fa-shopping-bag {color:#ff7800 !important;}
