@@ -1,15 +1,16 @@
+<% content_for :navbar_left do %>
+  <%= link_to request.referer, class: "top-back" do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+<% end %>
+<% content_for :navbar_center do %>
+  <%= @food.en.nil? ? @food.name : @food.en %>
+<% end %>
 <% content_for :meta_title do %>
   <%= @food.name %>
 <% end %>
-<!-- top bar -->
-<div class="container" id="common-top">
-  <div class="row">
-    <%= link_to request.referer, class: "top-back" do %>
-      <i class="fas fa-chevron-left"></i>
-    <% end %>
-    <h1><%= @food.en.nil? ? @food.name : @food.en %></h1>
-  </div>
-</div>
+
+<%= render 'shared/favtopbar' %>
 <!-- contents -->
 <div class="container-fluid food-show">
   <!-- cover -->
@@ -52,7 +53,7 @@
   <div class="food-desc">
     <dl>
       <dt><%= @food.en %></dt>
-      <dt class="smaller-japanese"><%= @food.name %></dt>
+      <dd class="smaller-japanese"><%= @food.name %></dd>
     </dl>
   </div>
   <!-- extra img -->
