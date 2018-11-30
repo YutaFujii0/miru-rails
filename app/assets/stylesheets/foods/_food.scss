@@ -1,5 +1,6 @@
 .food-show {
-  animation:appearSlowly 250ms ease-out;
+  animation: appearSlowly 250ms ease-out;
+
   img {
     border: 0;
   }
@@ -86,6 +87,7 @@
 
   .food-desc {
     padding: 25px 15px 20px;
+    text-align: center;
 
     dl {
       margin: 0;
@@ -96,11 +98,13 @@
       font-size: 20px;
       font-weight: normal;
       color: black;
+      height: 26px;
+      overflow: hidden;
     }
 
     dd {
       padding-top: 10px;
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .link-wiki {
@@ -143,7 +147,7 @@
 }
 
 .smaller-japanese {
-  font-size: 16px;
+  font-size: 14px;
   padding-top: 5px;
   color: #666;
 }
