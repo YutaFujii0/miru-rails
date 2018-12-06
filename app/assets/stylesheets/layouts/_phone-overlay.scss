@@ -1,0 +1,34 @@
+// mobile
+.body-wrapper {
+
+}
+
+.body-container {
+
+}
+
+.phone-overlay {
+  display: none;
+}
+
+// for laptop
+@media screen and (min-width: 768px) {
+  .body-wrapper {
+    background-color: black;
+    min-height: 100vh;
+  }
+
+  .body-container {
+    position: relative;
+    width: 240px;
+    height: 438px;
+    margin: 0 auto;
+  }
+
+  .phone-overlay {
+    position: absolute;
+    width: 280px;
+    height: 566px;
+    top: 0;
+  }
+}
