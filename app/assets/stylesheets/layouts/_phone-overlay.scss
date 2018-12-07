@@ -11,6 +11,10 @@
   visibility: hidden;
 }
 
+.explanation {
+  visibility: hidden;
+}
+
 // for laptop
 @media screen and (min-width: 768px) {
   .body-wrapper {
@@ -41,9 +45,9 @@
     border-radius: 5px;
   }
 
-  #form-container label {
-    position: absolute;
-    top: 350px;
+  .explanation {
+    visibility: visible;
+    padding: 70px;
+    max-width: 50vw;
   }
-
 }
