@@ -21,7 +21,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'rest-client', '~> 2.0', '>= 2.0.2'
 gem 'jquery', '~> 0.0.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
-gem 'nprogress-rails', '~> 0.2.0.2'
+# gem 'nprogress-rails', '~> 0.2.0.2'
 gem 'google-cloud-translate'
 
 # added gems
