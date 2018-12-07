@@ -7,8 +7,8 @@
 
 }
 
-.phone-overlay {
-  display: none;
+.phone-overlay svg {
+  visibility: hidden;
 }
 
 // for laptop
@@ -16,19 +16,34 @@
   .body-wrapper {
     background-color: black;
     min-height: 100vh;
-  }
-
-  .body-container {
-    position: relative;
-    width: 240px;
-    height: 438px;
-    margin: 0 auto;
+    display: flex;
   }
 
   .phone-overlay {
-    position: absolute;
-    width: 280px;
-    height: 566px;
-    top: 0;
+    position: relative;
+    margin: 0px auto;
+    padding: 70px 0;
+    width: 310px;
+    height: 634px;
   }
+
+  .phone-overlay svg {
+    visibility: visible;
+  }
+
+  .body-container {
+    position: absolute;
+    width: 272px;
+    height: 494px;
+    top: 140px;
+    left: 20px;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  #form-container label {
+    position: absolute;
+    top: 350px;
+  }
+
 }
