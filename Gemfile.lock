@@ -164,7 +164,6 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
-    nprogress-rails (0.2.0.2)
     orm_adapter (0.5.0)
     os (1.0.0)
     pg (0.21.0)
@@ -307,7 +306,6 @@ DEPENDENCIES
   jquery (~> 0.0.1)
   jquery-rails (~> 4.3, >= 4.3.3)
   listen (~> 3.0.5)
-  nprogress-rails (~> 0.2.0.2)
   pg (~> 0.21)
   pry-byebug
   pry-rails
