@@ -8,11 +8,11 @@
 }
 
 .phone-overlay svg {
-  visibility: hidden;
+  display: none;
 }
 
 .explanation {
-  visibility: hidden;
+  display: none;
 }
 
 // for laptop
@@ -32,7 +32,7 @@
   }
 
   .phone-overlay svg {
-    visibility: visible;
+    display: block;
   }
 
   .body-container {
@@ -46,8 +46,8 @@
   }
 
   .explanation {
-    visibility: visible;
-    padding: 70px;
+    display: block;
+    padding: 70px 70px 70px 0;
     max-width: 50vw;
   }
 }
