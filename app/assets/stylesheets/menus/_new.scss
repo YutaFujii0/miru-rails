@@ -170,3 +170,12 @@
     transform: scale(1);
   }
 }
+
+// for laptops
+@media screen and (min-width: 768px) {
+  .main-wrapper #form-container label {
+    position: absolute;
+    top: 350px;
+    // background-color: blue;
+  }
+}

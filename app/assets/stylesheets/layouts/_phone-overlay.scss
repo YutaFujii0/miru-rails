@@ -1,0 +1,53 @@
+// mobile
+.body-wrapper {
+
+}
+
+.body-container {
+
+}
+
+.phone-overlay svg {
+  display: none;
+}
+
+.explanation {
+  display: none;
+}
+
+// for laptop
+@media screen and (min-width: 768px) {
+  .body-wrapper {
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+  }
+
+  .phone-overlay {
+    position: relative;
+    margin: 0px auto;
+    padding: 70px 0;
+    width: 310px;
+    height: 634px;
+  }
+
+  .phone-overlay svg {
+    display: block;
+  }
+
+  .body-container {
+    position: absolute;
+    width: 272px;
+    height: 494px;
+    top: 140px;
+    left: 20px;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  .explanation {
+    display: block;
+    padding: 70px 70px 70px 0;
+    max-width: 50vw;
+  }
+}
